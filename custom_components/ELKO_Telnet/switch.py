@@ -117,7 +117,7 @@ class ELKOSwitch(SwitchEntity):
         self._port = port
         self._attr_name = friendly_name
         self._attr_is_on = False
-        self._delimiter = ;
+        self._delimiter = ";"
         self._command_on = command_on
         self._command_off = command_off
         self._command_state = command_state
