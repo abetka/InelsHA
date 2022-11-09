@@ -97,7 +97,6 @@ def setup_platform(
 
 class ELKOSwitch(SwitchEntity):
     """Representation of a switch that can be toggled using telnet commands."""
-    def
     def __init__(
         self,
         object_id: str,
