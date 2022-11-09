@@ -14,6 +14,7 @@ from homeassistant.components.switch import (
     SwitchEntity,
 )
 from homeassistant.const import (
+    CONF_DEVICE_ID,
     CONF_COMMAND_OFF,
     CONF_COMMAND_ON,
     CONF_COMMAND_STATE,
@@ -73,7 +74,7 @@ def setup_platform(
             value_template.hass = hass
 
         switches.append(
-            InelsHASwitch(
+            ELKOSwitch(
                 object_id,
                 device_config[CONF_RESOURCE],
                 device_config[CONF_DEVICE_ID],
@@ -94,7 +95,7 @@ def setup_platform(
     add_entities(switches)
 
 
-class InelsHASwitch(SwitchEntity):
+class ELKOSwitch(SwitchEntity):
     """Representation of a switch that can be toggled using telnet commands."""
     def
     def __init__(
