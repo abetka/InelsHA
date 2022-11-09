@@ -1,7 +1,0 @@
-{
-    "domain": "inelsha",
-    "name": "InelsHA",
-    "documentation": "https://github.com/abetka/InelsHA",
-    "codeowners": [ "@abetka" ],
-    "iot_class": "local_polling"
-  }
