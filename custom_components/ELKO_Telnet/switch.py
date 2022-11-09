@@ -133,6 +133,7 @@ class ELKOSwitch(SwitchEntity):
             telnet.write(command)
             response = telnet.read_until(b"\r\n").decode('ascii').split(self._delimiter)[2].rstrip("\r").rstrip("\n")
             telnet.close()
+            _LOGGER.info("Telnet command run status: %s", response)
         except OSError as error:
             _LOGGER.error(
                 'Command "%s" failed with exception: %s', command, repr(error)
@@ -146,7 +147,9 @@ class ELKOSwitch(SwitchEntity):
         if not self._command_state:
             return
         command = b"GET" + self._delimiter.encode('ascii') + self._device_id.encode('ascii') + b"\r\n"
+        _LOGGER.info("Get Status: %s", command)
         response = self._telnet_command(command)
+        _LOGGER.info("Status is: %s", response)
         if response and self._value_template:
             rendered = self._value_template.render_with_possible_json_value(response)
         else:
