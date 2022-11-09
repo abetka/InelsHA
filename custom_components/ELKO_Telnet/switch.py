@@ -14,13 +14,13 @@ from homeassistant.components.switch import (
     SwitchEntity,
 )
 from homeassistant.const import (
-    CONF_DEVICE_ID,
     CONF_COMMAND_OFF,
     CONF_COMMAND_ON,
     CONF_COMMAND_STATE,
     CONF_NAME,
     CONF_PORT,
     CONF_RESOURCE,
+    CONF_DEVICE_ID,
     CONF_SWITCHES,
     CONF_TIMEOUT,
     CONF_VALUE_TEMPLATE,
@@ -40,8 +40,8 @@ SWITCH_SCHEMA = vol.Schema(
     {
         vol.Required(CONF_COMMAND_OFF): cv.string,
         vol.Required(CONF_COMMAND_ON): cv.string,
-        vol.Required(CONF_DEVICE_ID): cv.string,
         vol.Required(CONF_RESOURCE): cv.string,
+        vol.Required(CONF_DEVICE_ID): cv.string,
         vol.Optional(CONF_VALUE_TEMPLATE): cv.template,
         vol.Optional(CONF_COMMAND_STATE): cv.string,
         vol.Optional(CONF_NAME): cv.string,
@@ -100,8 +100,8 @@ class ELKOSwitch(SwitchEntity):
     def __init__(
         self,
         object_id: str,
-        device_id: str,
         resource: str,
+        device_id: str,
         port: int,
         friendly_name: str,
         command_on: str,
@@ -112,8 +112,8 @@ class ELKOSwitch(SwitchEntity):
     ) -> None:
         """Initialize the switch."""
         self.entity_id = ENTITY_ID_FORMAT.format(object_id)
-        self._device_id = device_id
         self._resource = resource
+        self._device_id = device_id
         self._port = port
         self._attr_name = friendly_name
         self._attr_is_on = False
