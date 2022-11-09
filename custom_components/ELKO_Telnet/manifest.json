@@ -1,7 +1,10 @@
 {
     "domain": "ELKO_telnet",
     "name": "ELKO Telnet",
+    "integration_type": "hub",
+    "version": "0.0.1",
     "documentation": "https://github.com/abetka/InelsHA",
     "codeowners": [],
+    "requirements": [],
     "iot_class": "local_polling"
   }
