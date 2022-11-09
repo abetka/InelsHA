@@ -128,6 +128,7 @@ class ELKOSwitch(SwitchEntity):
 
     def _telnet_command(self, command) -> str | None:
         try:
+            _LOGGER.info("Telnet connect to: %s with port: %s", self._resource, self._port)
             telnet = telnetlib.Telnet(self._resource, self._port)
             telnet.write(command)
             response = telnet.read_until(b"\r\n").decode('ascii').split(self._delimiter)[2].rstrip("\r").rstrip("\n")
@@ -156,6 +157,7 @@ class ELKOSwitch(SwitchEntity):
     def turn_on(self, **kwargs: Any) -> None:
         """Turn the device on."""
         command = b"SET" + self._delimiter.encode('ascii') + self._device_id.encode('ascii')+ self._delimiter.encode('ascii')+ self._command_on.encode('ascii') + b"\r\n"
+        _LOGGER.info("Turn On: %s", command)
         self._telnet_command(command)
         if self.assumed_state:
             self._attr_is_on = True
@@ -164,6 +166,7 @@ class ELKOSwitch(SwitchEntity):
     def turn_off(self, **kwargs: Any) -> None:
         """Turn the device off."""
         command = b"SET" + self._delimiter.encode('ascii') + self._device_id.encode('ascii')+ self._delimiter.encode('ascii')+ self._command_off.encode('ascii') + b"\r\n"
+        _LOGGER.info("Turn Off: %s", command)
         self._telnet_command(command)
         if self.assumed_state:
             self._attr_is_on = False
