@@ -128,12 +128,12 @@ class ELKOSwitch(SwitchEntity):
 
     def _telnet_command(self, command) -> str | None:
         try:
-            _LOGGER.info("Telnet connect to: %s with port: %s", self._resource, self._port)
+            _LOGGER.debug("Telnet connect to: %s with port: %s", self._resource, self._port)
             telnet = telnetlib.Telnet(self._resource, self._port)
             telnet.write(command)
             response = telnet.read_until(b"\r\n").decode('ascii').split(self._delimiter)[2].rstrip("\r").rstrip("\n")
             telnet.close()
-            _LOGGER.info("Telnet command run status: %s", response)
+            _LOGGER.debug("Telnet command run status: %s", response)
         except OSError as error:
             _LOGGER.error(
                 'Command "%s" failed with exception: %s', command, repr(error)
@@ -147,9 +147,9 @@ class ELKOSwitch(SwitchEntity):
         if not self._command_state:
             return
         command = b"GET" + self._delimiter.encode('ascii') + self._device_id.encode('ascii') + b"\r\n"
-        _LOGGER.info("Get Status: %s", command)
+        _LOGGER.debug("Get Status: %s", command)
         response = self._telnet_command(command)
-        _LOGGER.info("Status is: %s", response)
+        _LOGGER.debug("Status is: %s", response)
         if response and self._value_template:
             rendered = self._value_template.render_with_possible_json_value(response)
         else:
@@ -160,7 +160,7 @@ class ELKOSwitch(SwitchEntity):
     def turn_on(self, **kwargs: Any) -> None:
         """Turn the device on."""
         command = b"SET" + self._delimiter.encode('ascii') + self._device_id.encode('ascii')+ self._delimiter.encode('ascii')+ self._command_on.encode('ascii') + b"\r\n"
-        _LOGGER.info("Turn On: %s", command)
+        _LOGGER.debug("Turn On: %s", command)
         self._telnet_command(command)
         if self.assumed_state:
             self._attr_is_on = True
@@ -169,7 +169,7 @@ class ELKOSwitch(SwitchEntity):
     def turn_off(self, **kwargs: Any) -> None:
         """Turn the device off."""
         command = b"SET" + self._delimiter.encode('ascii') + self._device_id.encode('ascii')+ self._delimiter.encode('ascii')+ self._command_off.encode('ascii') + b"\r\n"
-        _LOGGER.info("Turn Off: %s", command)
+        _LOGGER.debug("Turn Off: %s", command)
         self._telnet_command(command)
         if self.assumed_state:
             self._attr_is_on = False
