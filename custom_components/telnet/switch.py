@@ -14,6 +14,7 @@ from homeassistant.components.switch import (
     SwitchEntity,
 )
 from homeassistant.const import (
+    CONF_DEVICE_ID,
     CONF_COMMAND_OFF,
     CONF_COMMAND_ON,
     CONF_COMMAND_STATE,
@@ -37,6 +38,7 @@ DEFAULT_TIMEOUT = 0.2
 
 SWITCH_SCHEMA = vol.Schema(
     {
+        vol.Required(CONF_DEVICE_ID): cv.string,
         vol.Required(CONF_COMMAND_OFF): cv.string,
         vol.Required(CONF_COMMAND_ON): cv.string,
         vol.Required(CONF_RESOURCE): cv.string,
@@ -75,6 +77,7 @@ def setup_platform(
             TelnetSwitch(
                 object_id,
                 device_config[CONF_RESOURCE],
+                device_config[CONF_DEVICE_ID],
                 device_config[CONF_PORT],
                 device_config.get(CONF_NAME, object_id),
                 device_config[CONF_COMMAND_ON],
@@ -99,6 +102,7 @@ class TelnetSwitch(SwitchEntity):
         self,
         object_id: str,
         resource: str,
+        device_id: str,
         port: int,
         friendly_name: str,
         command_on: str,
@@ -110,6 +114,7 @@ class TelnetSwitch(SwitchEntity):
         """Initialize the switch."""
         self.entity_id = ENTITY_ID_FORMAT.format(object_id)
         self._resource = resource
+        self._device_id = device_id
         self._port = port
         self._attr_name = friendly_name
         self._attr_is_on = False
