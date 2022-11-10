@@ -1,6 +1,6 @@
 - platform: command_line
   unique_id: hall_temperature
   name: Hall Temperature
-  command: "python3 custom_components/ELKO_Telnet/get_data.py"
+  command: "python3 custom_components/ELKO_Telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01050010"
   unit_of_measurement: "°C"
   value_template: "{{ value | multiply(0.001) | round(1) }}"
