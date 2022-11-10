@@ -133,13 +133,12 @@ class ELKOSwitch(SwitchEntity):
             telnet.write(command)
             response = telnet.read_until(b"\r\n").decode('ascii').split(self._delimiter)[2].rstrip("\r").rstrip("\n")
             telnet.close()
-            _LOGGER.debug("Telnet command run status: %s", response)
         except OSError as error:
             _LOGGER.error(
                 'Command "%s" failed with exception: %s', command, repr(error)
             )
             return None
-        _LOGGER.warning("telnet response: %s", response)
+        _LOGGER.debug("Telnet response: %s", response)
         return response
 
     def update(self) -> None:
