@@ -39,6 +39,12 @@
       <<: *settings
       name: Cabinet Curtains Close
       device_id: "0x01020026"
+- platform: ELKO_telnet
+  switches:
+    hall_floor_heater:
+      <<: *settings
+      name: Hall Floor Heater
+      device_id: "0x0102003B"
 
 - platform: template
   switches:
