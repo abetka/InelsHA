@@ -4,7 +4,7 @@
       device_class: curtain
       friendly_name: "Cabinet Curtain"
       position_template: >-
-        {% if is_state('switch.curtains_open', 'on') %}
+        {% if is_state('switch.cabinet_curtains_open', 'on') %}
           99
         {% else %}
           0
@@ -13,32 +13,32 @@
         - if:
             - alias: "If curtain in close state"
               condition: state
-              entity_id: switch.curtains_close
+              entity_id: switch.cabinet_curtains_close
               state: 'on'
           then:
             - alias: "Turn Off close state"
               service: switch.turn_off
               target:
-                entity_id: switch.curtains_close
+                entity_id: switch.cabinet_curtains_close
         - service: switch.turn_on
           target:
-            entity_id: switch.curtains_open
+            entity_id: switch.cabinet_curtains_open
       close_cover:
         - if:
             - alias: "If curtain in close state"
               condition: state
-              entity_id: switch.curtains_open
+              entity_id: switch.cabinet_curtains_open
               state: 'on'
           then:
             - alias: "Turn Off close state"
               service: switch.turn_off
               target:
-                entity_id: switch.curtains_open
+                entity_id: switch.cabinet_curtains_open
         - service: switch.turn_on
           target:
-            entity_id: switch.curtains_close
+            entity_id: switch.cabinet_curtains_close
       icon_template: >-
-        {% if is_state('switch.curtains_open', 'on') %}
+        {% if is_state('switch.cabinet_curtains_open', 'on') %}
           mdi:curtains
         {% else %}
           mdi:curtains-closed
