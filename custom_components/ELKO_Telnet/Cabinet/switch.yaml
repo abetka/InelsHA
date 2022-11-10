@@ -1,0 +1,41 @@
+
+- platform: ELKO_telnet
+  switches:
+    cabinet_light_table: &settings
+      name: Cabinet Light Table
+      resource: "192.168.88.246"
+      device_id: "0x01020029"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+- platform: ELKO_telnet
+  switches:
+    cabinet_light_wall:
+      <<: *settings
+      name: Cabinet Light Wall
+      device_id: "0x01020011"
+- platform: ELKO_telnet
+  switches:
+    cabinet_chandelier:
+      <<: *settings
+      name: Cabinet Chandelier
+      device_id: "0x01020039"
+- platform: ELKO_telnet
+  switches:
+    cabinet_curtains_open:
+      <<: *settings
+      name: Cabinet Curtains Open
+      device_id: "0x0102002f"
+- platform: ELKO_telnet
+  switches:
+    cabinet_curtains_close:
+      <<: *settings
+      name: Cabinet Curtains Close
+      device_id: "0x01020026"
