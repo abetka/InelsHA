@@ -37,4 +37,4 @@ def telnet_command(host, port, command, delimiter):
     return response
 
 if __name__ == "__main__":
-   main(sys.argv[1:])
+    main(sys.argv[1:])
