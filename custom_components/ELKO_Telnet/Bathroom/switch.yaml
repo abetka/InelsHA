@@ -1,7 +1,7 @@
 # Bathroom Floor Heater
 - platform: ELKO_telnet
   switches:
-    kitchen_floor_heater:
+    bathroom_floor_heater:
       resource: "192.168.88.246"
       port: 1111
       command_on: "1"
