@@ -4,8 +4,8 @@
     bigroom_heater:
       resource: "192.168.88.246"
       port: 1111
-      command_on: "1"
-      command_off: "0"
+      command_on: "0"
+      command_off: "1"
       value_template: >-
         {% if value == '1' %}
           True
