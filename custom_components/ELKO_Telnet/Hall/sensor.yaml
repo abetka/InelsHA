@@ -1,3 +1,4 @@
+# Hall Temperature
 - platform: command_line
   unique_id: hall_temperature
   name: Hall Temperature

@@ -1,10 +1,8 @@
-# Hall Floor Heater
+# Kitchen Floor Heater
 - platform: ELKO_telnet
   switches:
-    hall_floor_heater:
-      name: Hall Floor Heater
+    kitchen_floor_heater:
       resource: "192.168.88.246"
-      device_id: "0x0102003b"
       port: 1111
       command_on: "1"
       command_off: "0"
@@ -15,22 +13,24 @@
           False
         {% endif %}
       timeout: 0.1
+      name: Kitchen Floor Heater
+      device_id: "0x0102001a"
 # Templates
-# Hall Floor Heater Template
+# Kitchen Floor Heater Template
 - platform: template
   switches:
-    hall_floor_heater_tmp:
-      value_template: "{{ is_state('switch.hall_floor_heater', 'on') }}"
+    kitchen_floor_heater_tmp:
+      value_template: "{{ is_state('switch.kitchen_floor_heater', 'on') }}"
       turn_on:
         service: switch.turn_on
         target:
-          entity_id: switch.hall_floor_heater
+          entity_id: switch.kitchen_floor_heater
       turn_off:
         service: switch.turn_off
         target:
-          entity_id: switch.hall_floor_heater
+          entity_id: switch.kitchen_floor_heater
       icon_template: >-
-        {% if is_state('switch.hall_floor_heater', 'on') %}
+        {% if is_state('switch.kitchen_floor_heater', 'on') %}
           mdi:radiator
         {% else %}
           mdi:radiator-disabled
