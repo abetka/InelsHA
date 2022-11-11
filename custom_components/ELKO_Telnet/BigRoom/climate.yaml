@@ -1,0 +1,13 @@
+# BigRoom Heater
+- platform: generic_thermostat
+  unique_id: bigroom_heater
+  name: Big Room Heater
+  heater: switch.bigroom_heater_tmp
+  ac_mode: false
+  min_temp: 10
+  max_temp: 30
+  hot_tolerance: 0.5
+  cold_tolerance: 0.5
+  target_temp: 22
+  away_temp: 2
+  target_sensor: sensor.bigroom_temperature

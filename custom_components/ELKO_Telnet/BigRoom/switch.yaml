@@ -1,0 +1,37 @@
+# BigRoom Heater
+- platform: ELKO_telnet
+  switches:
+    bigroom_heater:
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: BigRoom Heater
+      device_id: "0x01020008"
+# Templates
+# BigRoom Heater Template
+- platform: template
+  switches:
+    bigroom_heater_tmp:
+      value_template: "{{ is_state('switch.bigroom_heater', 'on') }}"
+      turn_on:
+        service: switch.turn_on
+        target:
+          entity_id: switch.bigroom_heater
+      turn_off:
+        service: switch.turn_off
+        target:
+          entity_id: switch.bigroom_heater
+      icon_template: >-
+        {% if is_state('switch.bigroom_heater', 'on') %}
+          mdi:radiator
+        {% else %}
+          mdi:radiator-disabled
+        {% endif %}

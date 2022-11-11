@@ -5,3 +5,9 @@
   command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01050003"
   unit_of_measurement: "°C"
   value_template: "{{ value | multiply(0.01) | round(1) }}"
+- platform: command_line
+  unique_id: kitchen_window_temperature
+  name: Kitchen Window Temperature
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0105000b"
+  unit_of_measurement: "°C"
+  value_template: "{{ value | multiply(0.01) | round(1) }}"

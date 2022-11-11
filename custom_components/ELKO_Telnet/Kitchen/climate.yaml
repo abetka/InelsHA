@@ -4,10 +4,23 @@
   name: Kitchen Floor Heater
   heater: switch.kitchen_floor_heater_tmp
   ac_mode: false
-  min_temp: 18
-  max_temp: 25
+  min_temp: 10
+  max_temp: 30
   hot_tolerance: 0.5
   cold_tolerance: 0.5
-  target_temp: 20
+  target_temp: 22
   away_temp: 2
   target_sensor: sensor.kitchen_temperature
+# Kitchen Heater
+- platform: generic_thermostat
+  unique_id: kitchen_heater
+  name: Kitchen Heater
+  heater: switch.kitchen_heater_tmp
+  ac_mode: false
+  min_temp: 10
+  max_temp: 30
+  hot_tolerance: 0.5
+  cold_tolerance: 0.5
+  target_temp: 22
+  away_temp: 2
+  target_sensor: sensor.kitchen_window_temperature
