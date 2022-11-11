@@ -1,5 +1,5 @@
 # WC Temperature
-  - platform: command_line
+- platform: command_line
   unique_id: wc_temperature
   name: WC Temperature
   command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0105000d"
