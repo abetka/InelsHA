@@ -1,0 +1,6 @@
+# General Listener
+- platform: command_line
+  unique_id: event_listener
+  name: Event Listener
+  command: "custom_components/ELKO_telnet/run_script.sh"
+  value_template: ""

@@ -1,9 +1,10 @@
 import sys
 import telnetlib
 import logging
-# from homeassistant.core import HomeAssistant
+import requests
 
 #--configuration
+hass_url = "http://192.168.88.247:8123/api/webhook/"
 tn_ip = "192.168.88.246"
 tn_port = "1111"
 
@@ -19,7 +20,7 @@ def connect(host = tn_ip,port = tn_port):
             connect(host,port)
             logging.error('Try to connect to Telnet server again')
         return
-    # tn.set_debuglevel(100)
+    tn.set_debuglevel(100)
     return tn
 
 if __name__ == '__main__':
@@ -42,7 +43,10 @@ if __name__ == '__main__':
                     "device_code": splitted_line[2],
                     "device_state": splitted_line[3].rstrip("\n").rstrip("\r")
                 }
+                headers = {'Content-Type': 'application/json'}
                 print (event_data)
-                # HomeAssistant.bus.fire("ELKO_Telnet_event", event_data)
+                uri = hass_url + splitted_line[2]
+                print (uri)
+                requests.post( uri, json=event_data, headers=headers )
     except (KeyboardInterrupt, SystemExit):
         logging.debug("The application was closed")
