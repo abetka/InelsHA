@@ -75,7 +75,12 @@
       <<: *settings
       name: WC Switch 1 Red 3
       device_id: "0x0102001e"
-
+- platform: ELKO_telnet
+  switches:
+    wc_waterleak:
+      <<: *settings
+      name: WC Waterleak
+      device_id: "0x01020027"
 
 # Templates
 # WC Floor Heater Template
@@ -168,4 +173,22 @@
           mdi:ceiling-light
         {% else %}
           mdi:ceiling-light-outline
+        {% endif %}
+- platform: template
+  switches:
+    wc_waterleak_tmp:
+      value_template: "{{ is_state('switch.wc_waterleak', 'on') }}"
+      turn_on:
+        service: switch.turn_on
+        target:
+          entity_id: switch.wc_waterleak
+      turn_off:
+        service: switch.turn_off
+        target:
+          entity_id: switch.wc_waterleak
+      icon_template: >-
+        {% if is_state('switch.wc_waterleak', 'on') %}
+          mdi:water
+        {% else %}
+          mdi:water-outline
         {% endif %}
