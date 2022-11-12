@@ -1,7 +1,7 @@
 # SmallRoom Heater
 - platform: ELKO_telnet
   switches:
-    smallroom_heater:
+    smallroom_heater: &settings
       resource: "192.168.88.246"
       port: 1111
       command_on: "0"
@@ -15,6 +15,31 @@
       timeout: 0.1
       name: SmallRoom Heater
       device_id: "0x01020004"
+- platform: ELKO_telnet
+  switches:
+    smallroom_curtains_open:
+      <<: *settings
+      name: Smallroom Curtains Open
+      device_id: "0x0102006e"
+- platform: ELKO_telnet
+  switches:
+    smallroom_curtains_close:
+      <<: *settings
+      name: Smallroom Curtains Close
+      device_id: "0x0102006f"
+- platform: ELKO_telnet
+  switches:
+    smallroom_tule_open:
+      <<: *settings
+      name: Smallroom Tule Open
+      device_id: "0x01020071"
+- platform: ELKO_telnet
+  switches:
+    smallroom_tule_close:
+      <<: *settings
+      name: Smallroom Tule Close
+      device_id: "0x01020070"
+
 # Templates
 # SmallRoom Heater Template
 - platform: template

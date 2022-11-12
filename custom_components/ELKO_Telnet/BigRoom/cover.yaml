@@ -1,0 +1,90 @@
+- platform: template
+  covers:
+    bigroom_curtain:
+      device_class: curtain
+      friendly_name: "Bigroom Curtain"
+      position_template: >-
+        {% if is_state('switch.bigroom_curtains_open', 'on') %}
+          99
+        {% else %}
+          0
+        {% endif %}
+      open_cover:
+        - if:
+            - alias: "If curtain in close state"
+              condition: state
+              entity_id: switch.bigroom_curtains_close
+              state: 'on'
+          then:
+            - alias: "Turn Off close state"
+              service: switch.turn_off
+              target:
+                entity_id: switch.bigroom_curtains_close
+        - service: switch.turn_on
+          target:
+            entity_id: switch.bigroom_curtains_open
+      close_cover:
+        - if:
+            - alias: "If curtain in close state"
+              condition: state
+              entity_id: switch.bigroom_curtains_open
+              state: 'on'
+          then:
+            - alias: "Turn Off close state"
+              service: switch.turn_off
+              target:
+                entity_id: switch.bigroom_curtains_open
+        - service: switch.turn_on
+          target:
+            entity_id: switch.bigroom_curtains_close
+      icon_template: >-
+        {% if is_state('switch.bigroom_curtains_open', 'on') %}
+          mdi:curtains
+        {% else %}
+          mdi:curtains-closed
+        {% endif %}
+- platform: template
+  covers:
+    bigroom_curtain:
+      device_class: curtain
+      friendly_name: "Bigroom Tule"
+      position_template: >-
+        {% if is_state('switch.bigroom_tule_open', 'on') %}
+          99
+        {% else %}
+          0
+        {% endif %}
+      open_cover:
+        - if:
+            - alias: "If tule in close state"
+              condition: state
+              entity_id: switch.bigroom_tule_close
+              state: 'on'
+          then:
+            - alias: "Turn Off close state"
+              service: switch.turn_off
+              target:
+                entity_id: switch.bigroom_tule_close
+        - service: switch.turn_on
+          target:
+            entity_id: switch.bigroom_tule_open
+      close_cover:
+        - if:
+            - alias: "If tule in close state"
+              condition: state
+              entity_id: switch.bigroom_tule_open
+              state: 'on'
+          then:
+            - alias: "Turn Off close state"
+              service: switch.turn_off
+              target:
+                entity_id: switch.bigroom_tule_open
+        - service: switch.turn_on
+          target:
+            entity_id: switch.bigroom_tule_close
+      icon_template: >-
+        {% if is_state('switch.bigroom_tule_open', 'on') %}
+          mdi:curtains
+        {% else %}
+          mdi:curtains-closed
+        {% endif %}

@@ -1,7 +1,7 @@
 # BigRoom Heater
 - platform: ELKO_telnet
   switches:
-    bigroom_heater:
+    bigroom_heater: &settings
       resource: "192.168.88.246"
       port: 1111
       command_on: "0"
@@ -15,6 +15,31 @@
       timeout: 0.1
       name: BigRoom Heater
       device_id: "0x01020008"
+- platform: ELKO_telnet
+  switches:
+    bigroom_curtains_open:
+      <<: *settings
+      name: Bigroom Curtains Open
+      device_id: "0x01020073"
+- platform: ELKO_telnet
+  switches:
+    bigroom_curtains_close:
+      <<: *settings
+      name: Bigroom Curtains Close
+      device_id: "0x01020072"
+- platform: ELKO_telnet
+  switches:
+    bigroom_tule_open:
+      <<: *settings
+      name: Bigroom Tule Open
+      device_id: "0x01020074"
+- platform: ELKO_telnet
+  switches:
+    bigroom_tule_close:
+      <<: *settings
+      name: Bigroom Tule Close
+      device_id: "0x01020075"
+
 # Templates
 # BigRoom Heater Template
 - platform: template

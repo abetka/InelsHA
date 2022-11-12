@@ -23,6 +23,31 @@
       command_off: "1"
       name: Kitchen Heater
       device_id: "0x01020013"
+- platform: ELKO_telnet
+  switches:
+    kitchen_curtains_open:
+      <<: *settings
+      name: Kitchen Curtains Open
+      device_id: "0x01020076"
+- platform: ELKO_telnet
+  switches:
+    kitchen_curtains_close:
+      <<: *settings
+      name: Kitchen Curtains Close
+      device_id: "0x01020077"
+- platform: ELKO_telnet
+  switches:
+    kitchen_tule_open:
+      <<: *settings
+      name: Kitchen Tule Open
+      device_id: "0x01020079"
+- platform: ELKO_telnet
+  switches:
+    kitchen_tule_close:
+      <<: *settings
+      name: Kitchen Tule Close
+      device_id: "0x01020078"
+
 # Templates
 # Kitchen Floor Heater Template
 - platform: template
