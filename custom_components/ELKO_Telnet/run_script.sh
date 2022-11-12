@@ -4,6 +4,6 @@ if [ ${dupe_script} -gt 0 ]; then
     echo "The listener.py script was already running!"
     exit 0
 else
-    python3 listener.py > listener_stdout.log &
+    python3 custom_components/ELKO_telnet/listener.py > listener_stdout.log &
     echo "The listener.py script restarted!"
 fi
