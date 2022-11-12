@@ -7,7 +7,7 @@
       command_on: "1"
       command_off: "0"
       value_template: >-
-        {% if value == '1' %}
+        {% if value', 'on') %}
           True
         {% else %}
           False
@@ -100,7 +100,7 @@
 - platform: template
   switches:
     wc_mirror_tmp:
-      value_template: "{{ sensor.wc_mirror == '1' }}"
+      value_template: "{{ is_state('switch.wc_mirror', 'on') }}"
       turn_on:
         service: switch.turn_on
         target:
@@ -110,7 +110,7 @@
         target:
           entity_id: switch.wc_mirror
       icon_template: >-
-        {% if sensor.wc_mirror == '1' %}
+        {% if is_state('switch.wc_mirror', 'on') %}
           mdi:globe-light
         {% else %}
           mdi:globe-light-outline
@@ -118,7 +118,7 @@
 - platform: template
   switches:
     wc_backlight_tmp:
-      value_template: "{{ sensor.wc_backlight == '1' }}"
+      value_template: "{{ is_state('switch.wc_backlight', 'on') }}"
       turn_on:
         service: switch.turn_on
         target:
@@ -128,7 +128,7 @@
         target:
           entity_id: switch.wc_backlightr
       icon_template: >-
-        {% if sensor.wc_backlight == '1' %}
+        {% if is_state('switch.wc_backlight', 'on') %}
           mdi:wall-sconce-flat
         {% else %}
           mdi:wall-sconce-flat-outline
@@ -136,7 +136,7 @@
 - platform: template
   switches:
     wc_fan_tmp:
-      value_template: "{{ sensor.wc_fan == '1' }}"
+      value_template: "{{ is_state('switch.wc_fan', 'on') }}"
       turn_on:
         service: switch.turn_on
         target:
@@ -146,7 +146,7 @@
         target:
           entity_id: switch.wc_fan
       icon_template: >-
-        {% if sensor.wc_fan == '1' %}
+        {% if is_state('switch.wc_fan', 'on') %}
           mdi:fan
         {% else %}
           mdi:fan-off
@@ -154,7 +154,7 @@
 - platform: template
   switches:
     wc_pointslights_tmp:
-      value_template: "{{ sensor.wc_pointslights == '1' }}"
+      value_template: "{{ is_state('switch.wc_pointslights', 'on') }}"
       turn_on:
         service: switch.turn_on
         target:
@@ -164,7 +164,7 @@
         target:
           entity_id: switch.wc_pointslights
       icon_template: >-
-        {% if sensor.wc_pointslights == '1' %}
+        {% if is_state('switch.wc_pointslights', 'on') %}
           mdi:ceiling-light
         {% else %}
           mdi:ceiling-light-outline
