@@ -1,0 +1,211 @@
+- id: 'bathroom_switch_1_up_2'
+  alias: Bathroom Switch 1 Up 2
+  description: 'Bathroom Switch 1 Up 2'
+  trigger:
+  - platform: webhook
+    webhook_id: '0x01010011'
+  condition:
+  - condition: template
+    value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.bathroom_pointslights', 'off') }}"
+      sequence:
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.bathroom_pointslights
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.bathroom_fan
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.bathroom_switch_1_green_2
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.bathroom_switch_1_red_2
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.bathroom_pointslights', 'on') }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.bathroom_pointslights
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.bathroom_switch_1_green_2
+      - choose:
+        - conditions:
+          - condition: template
+            value_template: "{{ is_state('switch.bathroom_pointslights', 'off') }}"
+          sequence:
+          - service: switch.turn_off
+            data: {}
+            target:
+              entity_id: switch.bathroom_fan
+          - service: switch.turn_off
+            data: {}
+            target:
+              entity_id: switch.bathroom_switch_1_red_2
+  mode: single
+- id: 'bathroom_switch_1_down_2'
+  alias: Bathroom Switch 1 Down 2
+  description: 'Bathroom Switch 1 Down 2'
+  trigger:
+  - platform: webhook
+    webhook_id: '0x01010012'
+  condition:
+  - condition: template
+    value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.bathroom_fan', 'off') }}"
+      sequence:
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.bathroom_fan
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.bathroom_switch_1_red_2
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.bathroom_fan', 'on') }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.bathroom_fan
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.bathroom_switch_1_red_2
+  mode: single
+- id: 'Bathroom_switch_1_up_1'
+  alias: Bathroom Switch 1 Up 1
+  description: 'bathroom Switch 1 Up 1'
+  trigger:
+  - platform: webhook
+    webhook_id: '0x0101000f'
+  - platform: webhook
+    webhook_id: '0x01010015'
+  condition:
+  - condition: template
+    value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.bathroom_mirror', 'off') }}"
+      sequence:
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.bathroom_mirror
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.bathroom_switch_1_green_1
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.bathroom_switch_1_green_3
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.bathroom_mirror', 'on') }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.bathroom_mirror
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.bathroom_switch_1_green_1
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.bathroom_switch_1_green_3
+  mode: single
+- id: 'Bathroom_switch_1_down_1'
+  alias: Bathroom Switch 1 Down 1
+  description: 'bathroom Switch 1 Down 1'
+  trigger:
+  - platform: webhook
+    webhook_id: '0x01010010'
+  - platform: webhook
+    webhook_id: '0x01010016'
+  condition:
+  - condition: template
+    value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.bathroom_backlight', 'off') }}"
+      sequence:
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.bathroom_backlight
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.bathroom_switch_1_red_1
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.bathroom_switch_1_red_3
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.bathroom_backlight', 'on') }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.bathroom_backlight
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.bathroom_switch_1_red_1
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.bathroom_switch_1_red_3
+  mode: single
+
+
+# switchTools = {
+#     'backlight':'0x01020001',
+#     'backlightNiche':'0x01020012',
+#     'pointsLights':'0x0102000b',
+#     'fan':'0x01020024',
+#     'humidity': '0x01050006',
+# }
+# switchSensor = {
+#     'Up1': '0x0101000f',
+#     'Down1': '0x01010010',
+#     'Up2': '0x01010011',
+#     'Down2': '0x01010012',
+#     'Up3': '0x01010015',
+#     'Down3': '0x01010016',
+#     'Green1': '0x01020017',
+#     'Red1': '0x01020018',
+#     'Green2': '0x01020015',
+#     'Red2': '0x01020016',
+#     'Green3': '0x0102001B',
+#     'Red3': '0x0102001C',
+#     'Humidity': '0x01050006',
+#     'Therm': '0x01050004',
+#     'Therm_Inter': '0x01050004',
+# }

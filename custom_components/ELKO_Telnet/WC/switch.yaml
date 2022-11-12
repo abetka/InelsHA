@@ -126,7 +126,7 @@
       turn_off:
         service: switch.turn_off
         target:
-          entity_id: switch.wc_backlightr
+          entity_id: switch.wc_backlight
       icon_template: >-
         {% if is_state('switch.wc_backlight', 'on') %}
           mdi:wall-sconce-flat

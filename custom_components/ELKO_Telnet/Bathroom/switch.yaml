@@ -1,7 +1,7 @@
 # Bathroom Floor Heater
 - platform: ELKO_telnet
   switches:
-    bathroom_floor_heater:
+    bathroom_floor_heater: &settings
       resource: "192.168.88.246"
       port: 1111
       command_on: "1"
@@ -15,6 +15,67 @@
       timeout: 0.1
       name: Bathroom Floor Heater
       device_id: "0x01020043"
+- platform: ELKO_telnet
+  switches:
+    bathroom_mirror:
+      <<: *settings
+      name: Bathroom Mirror Backlight
+      device_id: "0x01020001"
+- platform: ELKO_telnet
+  switches:
+    bathroom_backlight:
+      <<: *settings
+      name: Bathroom Wall Backlight
+      device_id: "0x01020012"
+- platform: ELKO_telnet
+  switches:
+    bathroom_fan:
+      <<: *settings
+      name: Bathroom Fan
+      device_id: "0x01020024"
+- platform: ELKO_telnet
+  switches:
+    bathroom_pointslights:
+      <<: *settings
+      name: Bathroom Points Light
+      device_id: "0x0102000b"
+- platform: ELKO_telnet
+  switches:
+    bathroom_switch_1_green_1:
+      <<: *settings
+      name: Bathroom Switch 1 Green 1
+      device_id: "0x01020017"
+- platform: ELKO_telnet
+  switches:
+    bathroom_switch_1_green_2:
+      <<: *settings
+      name: Bathroom Switch 1 Green 2
+      device_id: "0x01020015"
+- platform: ELKO_telnet
+  switches:
+    bathroom_switch_1_green_3:
+      <<: *settings
+      name: Bathroom Switch 1 Green 3
+      device_id: "0x0102001b"
+- platform: ELKO_telnet
+  switches:
+    bathroom_switch_1_red_1:
+      <<: *settings
+      name: Bathroom Switch 1 Red 1
+      device_id: "0x01020018"
+- platform: ELKO_telnet
+  switches:
+    bathroom_switch_1_red_2:
+      <<: *settings
+      name: Bathroom Switch 1 Red 2
+      device_id: "0x01020016"
+- platform: ELKO_telnet
+  switches:
+    bathroom_switch_1_red_3:
+      <<: *settings
+      name: Bathroom Switch 1 Red 3
+      device_id: "0x0102001c"
+
 # Bathroom Floor Heater Template
 - platform: template
   switches:
@@ -33,4 +94,76 @@
           mdi:radiator
         {% else %}
           mdi:radiator-disabled
+        {% endif %}
+- platform: template
+  switches:
+    bathroom_mirror_tmp:
+      value_template: "{{ is_state('switch.bathroom_mirror', 'on') }}"
+      turn_on:
+        service: switch.turn_on
+        target:
+          entity_id: switch.bathroom_mirror
+      turn_off:
+        service: switch.turn_off
+        target:
+          entity_id: switch.bathroom_mirror
+      icon_template: >-
+        {% if is_state('switch.bathroom_mirror', 'on') %}
+          mdi:globe-light
+        {% else %}
+          mdi:globe-light-outline
+        {% endif %}
+- platform: template
+  switches:
+    bathroom_backlight_tmp:
+      value_template: "{{ is_state('switch.bathroom_backlight', 'on') }}"
+      turn_on:
+        service: switch.turn_on
+        target:
+          entity_id: switch.bathroom_backlight
+      turn_off:
+        service: switch.turn_off
+        target:
+          entity_id: switch.bathroom_backlight
+      icon_template: >-
+        {% if is_state('switch.bathroom_backlight', 'on') %}
+          mdi:wall-sconce-flat
+        {% else %}
+          mdi:wall-sconce-flat-outline
+        {% endif %}
+- platform: template
+  switches:
+    bathroom_fan_tmp:
+      value_template: "{{ is_state('switch.bathroom_fan', 'on') }}"
+      turn_on:
+        service: switch.turn_on
+        target:
+          entity_id: switch.bathroom_fan
+      turn_off:
+        service: switch.turn_off
+        target:
+          entity_id: switch.bathroom_fan
+      icon_template: >-
+        {% if is_state('switch.bathroom_fan', 'on') %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+- platform: template
+  switches:
+    bathroom_pointslights_tmp:
+      value_template: "{{ is_state('switch.bathroom_pointslights', 'on') }}"
+      turn_on:
+        service: switch.turn_on
+        target:
+          entity_id: switch.bathroom_pointslights
+      turn_off:
+        service: switch.turn_off
+        target:
+          entity_id: switch.bathroom_pointslights
+      icon_template: >-
+        {% if is_state('switch.bathroom_pointslights', 'on') %}
+          mdi:ceiling-light
+        {% else %}
+          mdi:ceiling-light-outline
         {% endif %}

@@ -41,7 +41,6 @@
         data: {}
         target:
           entity_id: switch.wc_switch_1_green_1
-      - delay: 15
       - choose:
         - conditions:
           - condition: template
@@ -184,20 +183,3 @@
         target:
           entity_id: switch.wc_switch_1_red_3
   mode: single
-
-
-    # 'Up1': '0x01010047',
-    # 'Down1': '0x01010048',
-    # 'Up2': '0x01010049',
-    # 'Down2': '0x0101004a',
-    # 'Up3': '0x01010019',
-    # 'Down3': '0x0101001a',
-    # 'Green1': '0x01020053',
-    # 'Red1': '0x01020054',
-    # 'Green2': '0x01020055',
-    # 'Red2': '0x01020056',
-    # 'Green3': '0x0102001d',
-    # 'Red3': ' 0x0102001e',
-    # 'Humidity': '0x01050006',
-    # 'Therm': '0x01050008',
-    # 'Therm_Inter': '0x01050007',

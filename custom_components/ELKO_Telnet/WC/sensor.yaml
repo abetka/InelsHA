@@ -2,7 +2,7 @@
 - platform: command_line
   unique_id: wc_temperature
   name: WC Temperature
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0105000d"
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01050007"
   unit_of_measurement: "°C"
   value_template: "{{ value | multiply(0.01) | round(1) }}"
 - platform: command_line
@@ -18,14 +18,8 @@
 - platform: command_line
   unique_id: wc_switch_temperature
   name: WC Switch Temperature
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01050007"
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0105001c"
   unit_of_measurement: "°C"
-  value_template: "{{ value | multiply(0.01) | round(1) }}"
-- platform: command_line
-  unique_id: wc_switch_humidity
-  name: WC Switch Humidity
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01050006"
-  unit_of_measurement: "%"
   value_template: "{{ value | multiply(0.01) | round(1) }}"
 - platform: command_line
   unique_id: wc_mirror
