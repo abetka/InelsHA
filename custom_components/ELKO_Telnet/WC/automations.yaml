@@ -4,12 +4,13 @@
   trigger:
   - platform: webhook
     webhook_id: '0x01010047'
-  condition: []
+  condition: template
+  value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
   action:
   - choose:
     - conditions:
       - condition: template
-        value_template: "{{ trigger.json.event_id == '05' }}"
+        value_template: "{{ is_state('switch.wc_pointslights', 'off') }}"
       sequence:
       - service: switch.turn_on
         data: {}
@@ -25,7 +26,7 @@
           entity_id: switch.wc_switch_1_red_1
     - conditions:
       - condition: template
-        value_template: "{{ trigger.json.event_id == '06' }}"
+        value_template: "{{ is_state('switch.wc_pointslights', 'on') }}"
       sequence:
       - service: switch.turn_off
         data: {}
@@ -34,7 +35,7 @@
       - choose:
         - conditions:
           - condition: template
-            value_template: "{{ sensor.wc_fan == '0' }}"
+            value_template: "{{ is_state('switch.wc_fan', 'off') }}"
           sequence:
           - service: switch.turn_off
             data: {}
