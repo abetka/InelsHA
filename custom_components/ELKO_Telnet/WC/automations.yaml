@@ -21,7 +21,7 @@
         data: {}
         target:
           entity_id: switch.wc_fan
-      - service: switch.turn_off
+      - service: switch.turn_on
         data: {}
         target:
           entity_id: switch.wc_switch_1_green_1
@@ -37,6 +37,10 @@
         data: {}
         target:
           entity_id: switch.wc_pointslights
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.wc_switch_1_green_1
       - delay: 5
       - choose:
         - conditions:
@@ -51,10 +55,6 @@
             data: {}
             target:
               entity_id: switch.wc_switch_1_red_1
-          - service: switch.turn_on
-            data: {}
-            target:
-              entity_id: switch.wc_switch_1_green_1
   mode: single
 - id: 'wc_switch_1_down_1'
   alias: WC Switch 1 Down 1
@@ -75,10 +75,6 @@
         data: {}
         target:
           entity_id: switch.wc_fan
-      - service: switch.turn_off
-        data: {}
-        target:
-          entity_id: switch.wc_switch_1_green_1
       - service: switch.turn_on
         data: {}
         target:
@@ -91,19 +87,10 @@
         data: {}
         target:
           entity_id: switch.wc_fan
-      - choose:
-        - conditions:
-          - condition: template
-            value_template: "{{ is_state('switch.wc_pointslights', 'off') }}"
-          sequence:
-          - service: switch.turn_off
-            data: {}
-            target:
-              entity_id: switch.wc_switch_1_red_1
-          - service: switch.turn_on
-            data: {}
-            target:
-              entity_id: switch.wc_switch_1_green_1
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.wc_switch_1_red_1
   mode: single
 - id: 'wc_switch_1_up_2'
   alias: WC Switch 1 Up 2
@@ -126,22 +113,14 @@
         data: {}
         target:
           entity_id: switch.wc_mirror
-      - service: switch.turn_off
+      - service: switch.turn_on
         data: {}
         target:
           entity_id: switch.wc_switch_1_green_2
       - service: switch.turn_on
         data: {}
         target:
-          entity_id: switch.wc_switch_1_red_2
-      - service: switch.turn_off
-        data: {}
-        target:
           entity_id: switch.wc_switch_1_green_3
-      - service: switch.turn_on
-        data: {}
-        target:
-          entity_id: switch.wc_switch_1_red_3
     - conditions:
       - condition: template
         value_template: "{{ is_state('switch.wc_mirror', 'on') }}"
@@ -150,27 +129,14 @@
         data: {}
         target:
           entity_id: switch.wc_mirror
-      - choose:
-        - conditions:
-          - condition: template
-            value_template: "{{ is_state('switch.wc_backlight', 'off') }}"
-          sequence:
-          - service: switch.turn_off
-            data: {}
-            target:
-              entity_id: switch.wc_switch_1_red_2
-          - service: switch.turn_on
-            data: {}
-            target:
-              entity_id: switch.wc_switch_1_green_2
-          - service: switch.turn_off
-            data: {}
-            target:
-              entity_id: switch.wc_switch_1_red_3
-          - service: switch.turn_on
-            data: {}
-            target:
-              entity_id: switch.wc_switch_1_green_3
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.wc_switch_1_green_2
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.wc_switch_1_green_3
   mode: single
 - id: 'wc_switch_1_down_2'
   alias: WC Switch 1 Down 2
@@ -193,18 +159,10 @@
         data: {}
         target:
           entity_id: switch.wc_backlight
-      - service: switch.turn_off
-        data: {}
-        target:
-          entity_id: switch.wc_switch_1_green_2
       - service: switch.turn_on
         data: {}
         target:
           entity_id: switch.wc_switch_1_red_2
-      - service: switch.turn_off
-        data: {}
-        target:
-          entity_id: switch.wc_switch_1_green_3
       - service: switch.turn_on
         data: {}
         target:
@@ -217,27 +175,14 @@
         data: {}
         target:
           entity_id: switch.wc_backlight
-      - choose:
-        - conditions:
-          - condition: template
-            value_template: "{{ is_state('switch.wc_mirror', 'off') }}"
-          sequence:
-          - service: switch.turn_off
-            data: {}
-            target:
-              entity_id: switch.wc_switch_1_red_2
-          - service: switch.turn_on
-            data: {}
-            target:
-              entity_id: switch.wc_switch_1_green_2
-          - service: switch.turn_off
-            data: {}
-            target:
-              entity_id: switch.wc_switch_1_red_3
-          - service: switch.turn_on
-            data: {}
-            target:
-              entity_id: switch.wc_switch_1_green_3
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.wc_switch_1_red_2
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.wc_switch_1_red_3
   mode: single
 
 
