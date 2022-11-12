@@ -45,7 +45,7 @@
         {% endif %}
 - platform: template
   covers:
-    kitchen_curtain:
+    kitchen_tule:
       device_class: curtain
       friendly_name: "Kitchen Tule"
       position_template: >-

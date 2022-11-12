@@ -45,7 +45,7 @@
         {% endif %}
 - platform: template
   covers:
-    smallroom_curtain:
+    smallroom_tule:
       device_class: curtain
       friendly_name: "Smallroom Tule"
       position_template: >-

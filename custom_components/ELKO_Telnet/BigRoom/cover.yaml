@@ -45,7 +45,7 @@
         {% endif %}
 - platform: template
   covers:
-    bigroom_curtain:
+    bigroom_tule:
       device_class: curtain
       friendly_name: "Bigroom Tule"
       position_template: >-
