@@ -7,7 +7,7 @@
       command_on: "1"
       command_off: "0"
       value_template: >-
-        {% if value', 'on') %}
+        {% if value == '1' %}
           True
         {% else %}
           False
