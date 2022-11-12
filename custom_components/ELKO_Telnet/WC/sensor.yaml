@@ -5,3 +5,41 @@
   command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0105000d"
   unit_of_measurement: "°C"
   value_template: "{{ value | multiply(0.01) | round(1) }}"
+- platform: command_line
+  unique_id: wc_humidity
+  name: WC Humidity
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01050009"
+  unit_of_measurement: "%"
+  value_template: "{{ value | multiply(0.01) | round(1) }}"
+- platform: command_line
+  unique_id: wc_waterleak
+  name: WC Waterleak
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020027"
+- platform: command_line
+  unique_id: wc_switch_temperature
+  name: WC Switch Temperature
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01050007"
+  unit_of_measurement: "°C"
+  value_template: "{{ value | multiply(0.01) | round(1) }}"
+- platform: command_line
+  unique_id: wc_switch_humidity
+  name: WC Switch Humidity
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01050006"
+  unit_of_measurement: "%"
+  value_template: "{{ value | multiply(0.01) | round(1) }}"
+- platform: command_line
+  unique_id: wc_mirror
+  name: WC Mirror Backlight
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020003"
+- platform: command_line
+  unique_id: wc_backlight
+  name: WC Wall Backlight
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020014"
+- platform: command_line
+  unique_id: wc_fan
+  name: WC Fan
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020025"
+- platform: command_line
+  unique_id: wc_pointsLights
+  name: WC Points Light
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0102002e"

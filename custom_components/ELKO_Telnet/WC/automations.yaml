@@ -1,0 +1,67 @@
+- id: 'wc_switch_1_up_1'
+  alias: WC Switch 1 Up 1
+  description: 'WC Switch 1 Up 1'
+  trigger:
+  - platform: webhook
+    webhook_id: '0x01010047'
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: "{{ trigger.json.event_id == '05' }}"
+      sequence:
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.wc_pointsLights
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.wc_fan
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.wc_switch_1_red_1
+    - conditions:
+      - condition: template
+        value_template: "{{ trigger.json.event_id == '06' }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.wc_pointsLights
+      - choose:
+        - conditions:
+          - condition: template
+            value_template: "{{ sensor.wc_fan == '0' }}"
+          sequence:
+          - service: switch.turn_off
+            data: {}
+            target:
+              entity_id: switch.wc_switch_1_red_1
+          - service: switch.turn_on
+            data: {}
+            target:
+              entity_id: switch.wc_switch_1_green_1
+  mode: single
+
+
+
+
+
+    # 'Up1': '0x01010047',
+    # 'Down1': '0x01010048',
+    # 'Up2': '0x01010049',
+    # 'Down2': '0x0101004a',
+    # 'Up3': '0x01010019',
+    # 'Down3': '0x0101001a',
+    # 'Green1': '0x01020053',
+    # 'Red1': '0x01020054',
+    # 'Green2': '0x01020055',
+    # 'Red2': '0x01020056',
+    # 'Green3': '0x0102001d',
+    # 'Red3': ' 0x0102001e',
+    # 'Humidity': '0x01050006',
+    # 'Therm': '0x01050008',
+    # 'Therm_Inter': '0x01050007',

@@ -1,7 +1,7 @@
 # WC Floor Heater
 - platform: ELKO_telnet
   switches:
-    wc_floor_heater:
+    wc_floor_heater: &settings
       resource: "192.168.88.246"
       port: 1111
       command_on: "1"
@@ -15,6 +15,68 @@
       timeout: 0.1
       name: WC Floor Heater
       device_id: "0x01020023"
+- platform: ELKO_telnet
+  switches:
+    wc_mirror:
+      <<: *settings
+      name: WC Mirror Backlight
+      device_id: "0x01020003"
+- platform: ELKO_telnet
+  switches:
+    wc_backlight:
+      <<: *settings
+      name: WC Wall Backlight
+      device_id: "0x01020014"
+- platform: ELKO_telnet
+  switches:
+    wc_fan:
+      <<: *settings
+      name: WC Fan
+      device_id: "0x01020025"
+- platform: ELKO_telnet
+  switches:
+    wc_pointsLights:
+      <<: *settings
+      name: WC Points Light
+      device_id: "0x0102002e"
+- platform: ELKO_telnet
+  switches:
+    wc_switch_1_grean_1:
+      <<: *settings
+      name: WC Switch 1 Green 1
+      device_id: "0x01020053"
+- platform: ELKO_telnet
+  switches:
+    wc_switch_1_grean_2:
+      <<: *settings
+      name: WC Switch 1 Green 2
+      device_id: "0x01020055"
+- platform: ELKO_telnet
+  switches:
+    wc_switch_1_grean_3:
+      <<: *settings
+      name: WC Switch 1 Green 3
+      device_id: "0x0102001d"
+- platform: ELKO_telnet
+  switches:
+    wc_switch_1_red_1:
+      <<: *settings
+      name: WC Switch 1 Red 1
+      device_id: "0x01020054"
+- platform: ELKO_telnet
+  switches:
+    wc_switch_1_red_2:
+      <<: *settings
+      name: WC Switch 1 Red 2
+      device_id: "0x01020056"
+- platform: ELKO_telnet
+  switches:
+    wc_switch_1_red_3:
+      <<: *settings
+      name: WC Switch 1 Red 3
+      device_id: "0x0102001e"
+
+
 # Templates
 # WC Floor Heater Template
 - platform: template
@@ -34,4 +96,76 @@
           mdi:radiator
         {% else %}
           mdi:radiator-disabled
+        {% endif %}
+- platform: template
+  switches:
+    wc_mirror_tmp:
+      value_template: "{{ sensor.wc_mirror == '1' }}"
+      turn_on:
+        service: switch.turn_on
+        target:
+          entity_id: switch.wc_mirror
+      turn_off:
+        service: switch.turn_off
+        target:
+          entity_id: switch.wc_mirror
+      icon_template: >-
+        {% if sensor.wc_mirror == '1' %}
+          mdi:globe-light
+        {% else %}
+          mdi:globe-light-outline
+        {% endif %}
+- platform: template
+  switches:
+    wc_backlight_tmp:
+      value_template: "{{ sensor.wc_backlight == '1' }}"
+      turn_on:
+        service: switch.turn_on
+        target:
+          entity_id: switch.wc_backlight
+      turn_off:
+        service: switch.turn_off
+        target:
+          entity_id: switch.wc_backlightr
+      icon_template: >-
+        {% if sensor.wc_backlight == '1' %}
+          mdi:wall-sconce-flat
+        {% else %}
+          mdi:wall-sconce-flat-outline
+        {% endif %}
+- platform: template
+  switches:
+    wc_fan_tmp:
+      value_template: "{{ sensor.wc_fan == '1' }}"
+      turn_on:
+        service: switch.turn_on
+        target:
+          entity_id: switch.wc_fan
+      turn_off:
+        service: switch.turn_off
+        target:
+          entity_id: switch.wc_fan
+      icon_template: >-
+        {% if sensor.wc_fan == '1') %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+- platform: template
+  switches:
+    wc_pointsLights_tmp:
+      value_template: "{{ sensor.wc_pointsLights == '1' }}"
+      turn_on:
+        service: switch.turn_on
+        target:
+          entity_id: switch.wc_pointsLights
+      turn_off:
+        service: switch.turn_off
+        target:
+          entity_id: switch.wc_pointsLights
+      icon_template: >-
+        {% if sensor.wc_pointsLights == '1' %}
+          mdi:ceiling-light
+        {% else %}
+          mdi:ceiling-light-outline
         {% endif %}
