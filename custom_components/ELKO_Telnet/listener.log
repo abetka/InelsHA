@@ -1,0 +1,736 @@
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;05;0x01020011;1\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020011 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;06;0x01020011;0\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020011 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;05;0x01020029;1\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020029 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;05;0x01020011;1\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020011 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;06;0x01020011;0\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020011 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;05;0x01020011;1\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020011 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;06;0x01020029;0\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020029 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;06;0x01020011;0\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020011 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;05;0x01020029;1\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020029 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;05;0x01020011;1\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020011 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;06;0x01020029;0\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020029 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;06;0x01020011;0\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020011 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;05;0x01020029;1\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020029 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;05;0x01020011;1\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020011 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;06;0x01020011;0\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020011 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;05;0x01020011;1\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020011 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;06;0x01020011;0\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020011 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;05;0x01020011;1\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020011 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;06;0x01020011;0\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020011 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;05;0x01020011;1\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020011 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;06;0x01020011;0\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020011 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;05;0x01020011;1\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020011 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;06;0x01020011;0\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020011 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;06;0x01020029;0\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020029 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;1500\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;1500\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;1500\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;1500\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:The application was closed
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;1500\r\n'
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;1500\r\n'
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;05;0x01020011;1\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/050x01020011 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;700\r\n'
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;700\r\n'
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;700\r\n'
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;700\r\n'
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;06;0x01020011;0\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/060x01020011 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;05;0x01020011;1\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/050x01020011 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;05;0x01020029;1\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/050x01020029 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;06;0x01020011;0\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/060x01020011 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;700\r\n'
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;700\r\n'
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;700\r\n'
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;700\r\n'
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;700\r\n'
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;700\r\n'
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;700\r\n'
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;700\r\n'
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;700\r\n'
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;700\r\n'
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;700\r\n'
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;700\r\n'
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;700\r\n'
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;700\r\n'
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;700\r\n'
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;700\r\n'
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;1500\r\n'
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;1500\r\n'
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;700\r\n'
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;700\r\n'
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;1500\r\n'
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;1500\r\n'
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;700\r\n'
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;700\r\n'
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;700\r\n'
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;700\r\n'
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;700\r\n'
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;700\r\n'
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:The application was closed
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;06;0x01020011;0\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020011 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;05;0x01020011;1\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020011 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;1500\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;1500\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;06;0x01020011;0\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020011 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;05;0x01020011;1\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020011 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;06;0x01020011;0\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020011 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;05;0x01020011;1\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020011 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;1500\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;1500\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;1500\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;1500\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;10;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;0d;0x01080002;700\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01080002 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;05;0x01020039;1\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020039 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;06;0x01020039;0\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020039 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;06;0x01020011;0\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020011 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;05;0x01020011;1\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020011 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;05;0x01020039;1\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020039 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;06;0x01020011;0\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020011 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;06;0x01020039;0\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020039 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;05;0x01020011;1\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020011 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;05;0x01020039;1\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020039 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;06;0x01020011;0\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020011 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;06;0x01020039;0\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020039 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;05;0x01020011;1\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020011 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;05;0x01020039;1\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020039 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;06;0x01020011;0\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020011 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:b'EVENT;06;0x01020039;0\r\n'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.88.247:8123
+DEBUG:urllib3.connectionpool:http://192.168.88.247:8123 "POST /api/webhook/0x01020039 HTTP/1.1" 200 0
+DEBUG:root:Used Current Telnet Session
+DEBUG:root:The application was closed

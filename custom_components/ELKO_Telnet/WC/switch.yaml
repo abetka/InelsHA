@@ -41,19 +41,19 @@
       device_id: "0x0102002e"
 - platform: ELKO_telnet
   switches:
-    wc_switch_1_grean_1:
+    wc_switch_1_green_1:
       <<: *settings
       name: WC Switch 1 Green 1
       device_id: "0x01020053"
 - platform: ELKO_telnet
   switches:
-    wc_switch_1_grean_2:
+    wc_switch_1_green_2:
       <<: *settings
       name: WC Switch 1 Green 2
       device_id: "0x01020055"
 - platform: ELKO_telnet
   switches:
-    wc_switch_1_grean_3:
+    wc_switch_1_green_3:
       <<: *settings
       name: WC Switch 1 Green 3
       device_id: "0x0102001d"

@@ -41,7 +41,7 @@
         data: {}
         target:
           entity_id: switch.wc_switch_1_green_1
-      - delay: 5
+      - delay: 15
       - choose:
         - conditions:
           - condition: template
