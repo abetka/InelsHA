@@ -35,7 +35,7 @@
       device_id: "0x01020025"
 - platform: ELKO_telnet
   switches:
-    wc_pointsLights:
+    wc_pointslights:
       <<: *settings
       name: WC Points Light
       device_id: "0x0102002e"
@@ -153,18 +153,18 @@
         {% endif %}
 - platform: template
   switches:
-    wc_pointsLights_tmp:
-      value_template: "{{ sensor.wc_pointsLights == '1' }}"
+    wc_pointslights_tmp:
+      value_template: "{{ sensor.wc_pointslights == '1' }}"
       turn_on:
         service: switch.turn_on
         target:
-          entity_id: switch.wc_pointsLights
+          entity_id: switch.wc_pointslights
       turn_off:
         service: switch.turn_off
         target:
-          entity_id: switch.wc_pointsLights
+          entity_id: switch.wc_pointslights
       icon_template: >-
-        {% if sensor.wc_pointsLights == '1' %}
+        {% if sensor.wc_pointslights == '1' %}
           mdi:ceiling-light
         {% else %}
           mdi:ceiling-light-outline

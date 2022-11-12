@@ -14,7 +14,7 @@
       - service: switch.turn_on
         data: {}
         target:
-          entity_id: switch.wc_pointsLights
+          entity_id: switch.wc_pointslights
       - service: switch.turn_on
         data: {}
         target:
@@ -30,7 +30,7 @@
       - service: switch.turn_off
         data: {}
         target:
-          entity_id: switch.wc_pointsLights
+          entity_id: switch.wc_pointslights
       - choose:
         - conditions:
           - condition: template
