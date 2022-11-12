@@ -146,7 +146,7 @@
         target:
           entity_id: switch.wc_fan
       icon_template: >-
-        {% if sensor.wc_fan == '1') %}
+        {% if sensor.wc_fan == '1' %}
           mdi:fan
         {% else %}
           mdi:fan-off
