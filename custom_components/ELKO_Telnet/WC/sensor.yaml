@@ -37,3 +37,5 @@
   unique_id: wc_pointslights
   name: WC Points Light
   command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0102002e"
+
+

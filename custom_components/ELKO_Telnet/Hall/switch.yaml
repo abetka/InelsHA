@@ -1,7 +1,7 @@
 # Hall Floor Heater
 - platform: ELKO_telnet
   switches:
-    hall_floor_heater:
+    hall_floor_heater: &settings
       name: Hall Floor Heater
       resource: "192.168.88.246"
       device_id: "0x0102003b"
@@ -15,6 +15,37 @@
           False
         {% endif %}
       timeout: 0.1
+- platform: ELKO_telnet
+  switches:
+    hall_move_lights:
+      <<: *settings
+      name: Hall Move Lights
+      device_id: "0x01020002"
+- platform: ELKO_telnet
+  switches:
+    hall_wardrobe:
+      <<: *settings
+      name: Hall Wardrobe
+      device_id: "0x0102000f"
+- platform: ELKO_telnet
+  switches:
+    hall_points_lights:
+      <<: *settings
+      name: Hall Points Lights
+      device_id: "0x01020010"
+- platform: ELKO_telnet
+  switches:
+    hall_lights:
+      <<: *settings
+      name: Hall Lights
+      device_id: "0x0102002c"
+- platform: ELKO_telnet
+  switches:
+    hall_backlight:
+      <<: *settings
+      name: Hall Backlight
+      device_id: "0x0102002d"
+
 # Templates
 # Hall Floor Heater Template
 - platform: template
@@ -34,4 +65,94 @@
           mdi:radiator
         {% else %}
           mdi:radiator-disabled
+        {% endif %}
+- platform: template
+  switches:
+    hall_backlight_tmp:
+      value_template: "{{ is_state('switch.hall_backlight', 'on') }}"
+      turn_on:
+        service: switch.turn_on
+        target:
+          entity_id: switch.hall_backlight
+      turn_off:
+        service: switch.turn_off
+        target:
+          entity_id: switch.hall_backlight
+      icon_template: >-
+        {% if is_state('switch.hall_backlight', 'on') %}
+          mdi:wall-sconce-flat
+        {% else %}
+          mdi:wall-sconce-flat-outline
+        {% endif %}
+- platform: template
+  switches:
+    hall_move_lights_tmp:
+      value_template: "{{ is_state('switch.hall_move_lights', 'on') }}"
+      turn_on:
+        service: switch.turn_on
+        target:
+          entity_id: switch.hall_move_lights
+      turn_off:
+        service: switch.turn_off
+        target:
+          entity_id: switch.hall_move_lights
+      icon_template: >-
+        {% if is_state('switch.hall_move_lights', 'on') %}
+          mdi:wall-sconce-flat
+        {% else %}
+          mdi:wall-sconce-flat-outline
+        {% endif %}
+- platform: template
+  switches:
+    hall_wardrobe_tmp:
+      value_template: "{{ is_state('switch.hall_wardrobe', 'on') }}"
+      turn_on:
+        service: switch.turn_on
+        target:
+          entity_id: switch.hall_wardrobe
+      turn_off:
+        service: switch.turn_off
+        target:
+          entity_id: switch.hall_wardrobe
+      icon_template: >-
+        {% if is_state('switch.hall_wardrobe', 'on') %}
+          mdi:lightbulb-group
+        {% else %}
+          mdi:lightbulb-group-off
+        {% endif %}
+- platform: template
+  switches:
+    hall_points_lights_tmp:
+      value_template: "{{ is_state('switch.hall_points_lights', 'on') }}"
+      turn_on:
+        service: switch.turn_on
+        target:
+          entity_id: switch.hall_points_lights
+      turn_off:
+        service: switch.turn_off
+        target:
+          entity_id: switch.hall_points_lights
+      icon_template: >-
+        {% if is_state('switch.hall_points_lights', 'on') %}
+          mdi:lightbulb-group
+        {% else %}
+          mdi:lightbulb-group-off
+        {% endif %}
+- platform: template
+  switches:
+    hall_lights_tmp:
+      value_template: "{{ is_state('switch.hall_lights', 'on') }}"
+      turn_on:
+        service: switch.turn_on
+        target:
+          entity_id: switch.hall_lights
+      turn_off:
+        service: switch.turn_off
+        target:
+          entity_id: switch.hall_lights
+      icon_template: >-
+        {% if is_state('switch.hall_lights', 'on') %}
+          mdi:lightbulb-group
+        {% else %}
+          mdi:lightbulb-group-off
         {% endif %}

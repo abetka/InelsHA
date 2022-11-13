@@ -39,6 +39,37 @@
       <<: *settings
       name: Bigroom Tule Close
       device_id: "0x01020074"
+- platform: ELKO_telnet
+  switches:
+    bigroom_chandelier:
+      <<: *settings
+      name: Bigroom Chandelier
+      device_id: "0x01020005"
+- platform: ELKO_telnet
+  switches:
+    bigroom_backlight_window:
+      <<: *settings
+      name: Bigroom Backlight Window
+      device_id: "0x01020009"
+- platform: ELKO_telnet
+  switches:
+    bigroom_backlight_door:
+      <<: *settings
+      name: Bigroom Backlight Door
+      device_id: "0x0102002a"
+- platform: ELKO_telnet
+  switches:
+    bigroom_mirror:
+      <<: *settings
+      name: Bigroom Mirror
+      device_id: "0x0102000a"
+- platform: ELKO_telnet
+  switches:
+    bigroom_point_light:
+      <<: *settings
+      name: Bigroom Point Light
+      device_id: "0x0102002b"
+
 # Templates
 # BigRoom Heater Template
 - platform: template
@@ -58,4 +89,95 @@
           mdi:radiator
         {% else %}
           mdi:radiator-disabled
+        {% endif %}
+ - platform: template
+  switches:
+    bigroom_mirror_tmp:
+      value_template: "{{ is_state('switch.bigroom_mirror', 'on') }}"
+      turn_on:
+        service: switch.turn_on
+        target:
+          entity_id: switch.bigroom_mirror
+      turn_off:
+        service: switch.turn_off
+        target:
+          entity_id: switch.bigroom_mirror
+      icon_template: >-
+        {% if is_state('switch.bigroom_mirror', 'on') %}
+          mdi:wall-sconce-flat
+        {% else %}
+          mdi:wall-sconce-flat-outline
+        {% endif %}
+
+- platform: template
+  switches:
+    bigroom_point_light_tmp:
+      value_template: "{{ is_state('switch.bigroom_point_light', 'on') }}"
+      turn_on:
+        service: switch.turn_on
+        target:
+          entity_id: switch.bigroom_point_light
+      turn_off:
+        service: switch.turn_off
+        target:
+          entity_id: switch.bigroom_point_light
+      icon_template: >-
+        {% if is_state('switch.bigroom_point_light', 'on') %}
+          mdi:lightbulb-group
+        {% else %}
+          mdi:lightbulb-group-off
+        {% endif %}
+- platform: template
+  switches:
+    bigroom_chandelier_tmp:
+      value_template: "{{ is_state('switch.bigroom_chandelier', 'on') }}"
+      turn_on:
+        service: switch.turn_on
+        target:
+          entity_id: switch.bigroom_chandelier
+      turn_off:
+        service: switch.turn_off
+        target:
+          entity_id: switch.bigroom_chandelier
+      icon_template: >-
+        {% if is_state('switch.bigroom_chandelier', 'on') %}
+          mdi:ceiling-light
+        {% else %}
+          mdi:ceiling-light-outline
+        {% endif %}
+- platform: template
+  switches:
+    bigroom_backlight_window_tmp:
+      value_template: "{{ is_state('switch.bigroom_backlight_window', 'on') }}"
+      turn_on:
+        service: switch.turn_on
+        target:
+          entity_id: switch.bigroom_backlight_window
+      turn_off:
+        service: switch.turn_off
+        target:
+          entity_id: switch.bigroom_backlight_window
+      icon_template: >-
+        {% if is_state('switch.bigroom_backlight_window', 'on') %}
+          mdi:lamps
+        {% else %}
+          mdi:lamps-outline
+        {% endif %}
+- platform: template
+  switches:
+    bigroom_backlight_door_tmp:
+      value_template: "{{ is_state('switch.bigroom_backlight_door', 'on') }}"
+      turn_on:
+        service: switch.turn_on
+        target:
+          entity_id: switch.bigroom_backlight_door
+      turn_off:
+        service: switch.turn_off
+        target:
+          entity_id: switch.bigroom_backlight_door
+      icon_template: >-
+        {% if is_state('switch.bigroom_backlight_door', 'on') %}
+          mdi:lamps
+        {% else %}
+          mdi:lamps-outline
         {% endif %}

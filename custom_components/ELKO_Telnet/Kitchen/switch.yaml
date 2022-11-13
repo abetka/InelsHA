@@ -47,6 +47,43 @@
       <<: *settings
       name: Kitchen Tule Close
       device_id: "0x01020078"
+- platform: ELKO_telnet
+  switches:
+    kitchen_chandelier:
+      <<: *settings
+      name: Kitchen Chandelier
+      device_id: "0x01020006"
+- platform: ELKO_telnet
+  switches:
+    kitchen_backlight_table:
+      <<: *settings
+      name: Kitchen Backlight Table
+      device_id: "0x01020007"
+- platform: ELKO_telnet
+  switches:
+    kitchen_backlight_wall:
+      <<: *settings
+      name: Kitchen Backlight Wall
+      device_id: "0x0102000e"
+- platform: ELKO_telnet
+  switches:
+    kitchen_backlight:
+      <<: *settings
+      name: Kitchen Backlight
+      device_id: "0x01020011"
+- platform: ELKO_telnet
+  switches:
+    kitchen_point_lights_window:
+      <<: *settings
+      name: Kitchen Point Lights Window
+      device_id: "0x01020037"
+- platform: ELKO_telnet
+  switches:
+    kitchen_point_lights:
+      <<: *settings
+      name: Kitchen Point Lights
+      device_id: "0x01020038"
+
 
 # Templates
 # Kitchen Floor Heater Template
@@ -85,4 +122,112 @@
           mdi:radiator
         {% else %}
           mdi:radiator-disabled
+        {% endif %}
+- platform: template
+  switches:
+    kitchen_backlight_table_tmp:
+      value_template: "{{ is_state('switch.kitchen_backlight_table', 'on') }}"
+      turn_on:
+        service: switch.turn_on
+        target:
+          entity_id: switch.kitchen_backlight_table
+      turn_off:
+        service: switch.turn_off
+        target:
+          entity_id: switch.kitchen_backlight_table
+      icon_template: >-
+        {% if is_state('switch.kitchen_backlight_table', 'on') %}
+          mdi:globe-light
+        {% else %}
+          mdi:globe-light-outline
+        {% endif %}
+- platform: template
+  switches:
+    kitchen_chandelier_tmp:
+      value_template: "{{ is_state('switch.kitchen_chandelier', 'on') }}"
+      turn_on:
+        service: switch.turn_on
+        target:
+          entity_id: switch.kitchen_chandelier
+      turn_off:
+        service: switch.turn_off
+        target:
+          entity_id: switch.kitchen_chandelier
+      icon_template: >-
+        {% if is_state('switch.kitchen_chandelier', 'on') %}
+          mdi:ceiling-light
+        {% else %}
+          mdi:ceiling-light-outline
+        {% endif %}
+- platform: template
+  switches:
+    kitchen_backlight_tmp:
+      value_template: "{{ is_state('switch.kitchen_backlight', 'on') }}"
+      turn_on:
+        service: switch.turn_on
+        target:
+          entity_id: switch.kitchen_backlight
+      turn_off:
+        service: switch.turn_off
+        target:
+          entity_id: switch.kitchen_backlight
+      icon_template: >-
+        {% if is_state('switch.kitchen_backlight', 'on') %}
+          mdi:wall-sconce-flat
+        {% else %}
+          mdi:wall-sconce-flat-outline
+        {% endif %}
+- platform: template
+  switches:
+    kitchen_backlight_wall_tmp:
+      value_template: "{{ is_state('switch.kitchen_backlight_wall', 'on') }}"
+      turn_on:
+        service: switch.turn_on
+        target:
+          entity_id: switch.kitchen_backlight_wall
+      turn_off:
+        service: switch.turn_off
+        target:
+          entity_id: switch.kitchen_backlight_wall
+      icon_template: >-
+        {% if is_state('switch.kitchen_backlight_wall', 'on') %}
+          mdi:wall-sconce-flat
+        {% else %}
+          mdi:wall-sconce-flat-outline
+        {% endif %}
+- platform: template
+  switches:
+    kitchen_point_lights_window_tmp:
+      value_template: "{{ is_state('switch.kitchen_point_lights_window', 'on') }}"
+      turn_on:
+        service: switch.turn_on
+        target:
+          entity_id: switch.kitchen_point_lights_window
+      turn_off:
+        service: switch.turn_off
+        target:
+          entity_id: switch.kitchen_point_lights_window
+      icon_template: >-
+        {% if is_state('switch.kitchen_point_lights_window', 'on') %}
+          mdi:lightbulb-group
+        {% else %}
+          mdi:lightbulb-group-off
+        {% endif %}
+- platform: template
+  switches:
+    kitchen_point_lights_tmp:
+      value_template: "{{ is_state('switch.kitchen_point_lights', 'on') }}"
+      turn_on:
+        service: switch.turn_on
+        target:
+          entity_id: switch.kitchen_point_lights
+      turn_off:
+        service: switch.turn_off
+        target:
+          entity_id: switch.kitchen_point_lights
+      icon_template: >-
+        {% if is_state('switch.kitchen_point_lights', 'on') %}
+          mdi:lightbulb-group
+        {% else %}
+          mdi:lightbulb-group-off
         {% endif %}

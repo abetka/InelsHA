@@ -5,3 +5,21 @@
   command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01050010"
   unit_of_measurement: "°C"
   value_template: "{{ value | multiply(0.01) | round(1) }}"
+- platform: command_line
+  unique_id: hall_door_temperature
+  name: Hall Door Temperature
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0105001e"
+  unit_of_measurement: "°C"
+  value_template: "{{ value | multiply(0.01) | round(1) }}"
+- platform: command_line
+  unique_id: hall_inside_temperature
+  name: Hall Inside Temperature
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01050020"
+  unit_of_measurement: "°C"
+  value_template: "{{ value | multiply(0.01) | round(1) }}"
+- platform: command_line
+  unique_id: hall_humidity
+  name: Hall Humidity
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01050022"
+  unit_of_measurement: "°C"
+  value_template: "{{ value | multiply(0.01) | round(1) }}"
