@@ -39,6 +39,24 @@
       <<: *settings
       name: Cabinet Curtains Close
       device_id: "0x01020026"
+- platform: ELKO_telnet
+  switches:
+    cabinet_rgb_red: &rgb
+      name: Cabinet RGB Red
+      resource: "192.168.88.246"
+      device_id: "0x01040005"
+      port: 1111
+      command_on: "100"
+      command_off: "0"
+      value_template: >-
+        {% if value > 0 %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+
+
 
 - platform: template
   switches:

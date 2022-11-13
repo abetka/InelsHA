@@ -1,0 +1,17 @@
+light:
+  - platform: template
+    lights:
+      cabinet_rgb:
+        friendly_name: "Cabinet RGB"
+        turn_on:
+          service: switch.turn_on
+          target:
+            entity_id: switch.cabinet_rgb_red
+          data:
+            command_on: "5"
+        turn_off:
+          service: switch.turn_off
+          target:
+            entity_id: switch.cabinet_rgb_red
+          data:
+            command_off: "100"
