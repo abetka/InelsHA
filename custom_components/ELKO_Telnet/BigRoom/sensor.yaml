@@ -5,3 +5,21 @@
   command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01050019"
   unit_of_measurement: "°C"
   value_template: "{{ value | multiply(0.01) | round(1) }}"
+- platform: command_line
+  unique_id: bigroom_second_temperature
+  name: BigRoom Second Temperature
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01050014"
+  unit_of_measurement: "°C"
+  value_template: "{{ value | multiply(0.01) | round(1) }}"
+- platform: command_line
+  unique_id: bigroom_humidity
+  name: BigRoom Humidity
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01050016"
+  unit_of_measurement: "°C"
+  value_template: "{{ value | multiply(0.01) | round(1) }}"
+- platform: command_line
+  unique_id: bigroom_second_humidity
+  name: BigRoom Second Humidity
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0105001b"
+  unit_of_measurement: "°C"
+  value_template: "{{ value | multiply(0.01) | round(1) }}"
