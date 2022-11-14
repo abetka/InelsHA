@@ -11,15 +11,3 @@
   target_temp: 20
   away_temp: 2
   target_sensor: sensor.wc_temperature
-- platform: generic_thermostat
-  unique_id: wc_fan
-  name: WC Fan
-  heater: switch.wc_fan_tmp
-  ac_mode: false
-  min_temp: 0
-  max_temp: 100
-  hot_tolerance: 0.5
-  cold_tolerance: 0.5
-  target_temp: 45
-  away_temp: 2
-  target_sensor: sensor.wc_humidity
