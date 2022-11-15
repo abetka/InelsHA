@@ -20,15 +20,7 @@
       - service: switch.turn_on
         data: {}
         target:
-          entity_id: switch.bathroom_fan
-      - service: switch.turn_on
-        data: {}
-        target:
           entity_id: switch.bathroom_switch_1_green_2
-      - service: switch.turn_on
-        data: {}
-        target:
-          entity_id: switch.bathroom_switch_1_red_2
     - conditions:
       - condition: template
         value_template: "{{ is_state('switch.bathroom_pointslights', 'on') }}"
@@ -41,19 +33,6 @@
         data: {}
         target:
           entity_id: switch.bathroom_switch_1_green_2
-      - choose:
-        - conditions:
-          - condition: template
-            value_template: "{{ is_state('switch.bathroom_pointslights', 'off') }}"
-          sequence:
-          - service: switch.turn_off
-            data: {}
-            target:
-              entity_id: switch.bathroom_fan
-          - service: switch.turn_off
-            data: {}
-            target:
-              entity_id: switch.bathroom_switch_1_red_2
   mode: single
 - id: 'bathroom_switch_1_down_2'
   alias: Bathroom Switch 1 Down 2
