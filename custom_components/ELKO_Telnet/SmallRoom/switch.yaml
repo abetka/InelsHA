@@ -1,7 +1,7 @@
 # SmallRoom Heater
 - platform: ELKO_telnet
   switches:
-    smallroom_heater: &settings
+    smallroom_chandelier: &settings
       resource: "192.168.88.246"
       port: 1111
       command_on: "1"
@@ -49,8 +49,10 @@
       device_id: "0x01020071"
 - platform: ELKO_telnet
   switches:
-    smallroom_chandelier:
+    smallroom_heater:
       <<: *settings
+      command_on: "0"
+      command_off: "1"
       name: Smallroom Chandelier
       device_id: "0x0102000d"
 - platform: ELKO_telnet
