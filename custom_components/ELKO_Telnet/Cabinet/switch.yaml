@@ -61,7 +61,7 @@
 - platform: template
   switches:
     cabinet_light_table_tmp:
-      value_template: "{{ is_state('sensor.cabinet_light_table', 'on') }}"
+      value_template: "{{ is_state('switch.cabinet_light_table', 'on') }}"
       turn_on:
         service: switch.turn_on
         target:
