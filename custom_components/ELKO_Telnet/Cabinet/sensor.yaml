@@ -2,7 +2,7 @@
 - platform: command_line
   unique_id: event_listener
   name: Event Listener
-  command: "custom_components/ELKO_telnet/run_script.sh"
+  command: "python3 custom_components/ELKO_telnet/if_run.py"
   value_template: ""
 - platform: command_line
   unique_id: cabinet_temperature
