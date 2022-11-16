@@ -51,8 +51,6 @@
   switches:
     smallroom_heater:
       <<: *settings
-      command_on: "0"
-      command_off: "1"
       name: SmallRoom Heater
       device_id: "0x01020004"
 - platform: ELKO_telnet

@@ -4,8 +4,8 @@
     bigroom_heater: &settings
       resource: "192.168.88.246"
       port: 1111
-      command_on: "0"
-      command_off: "1"
+      command_on: "1"
+      command_off: "0"
       value_template: >-
         {% if value == '1' %}
           True
@@ -19,64 +19,62 @@
   switches:
     bigroom_curtains_open:
       <<: *settings
+      command_on: "0"
+      command_off: "1"
       name: Bigroom Curtains Open
       device_id: "0x01020072"
 - platform: ELKO_telnet
   switches:
     bigroom_curtains_close:
       <<: *settings
+      command_on: "0"
+      command_off: "1"
       name: Bigroom Curtains Close
       device_id: "0x01020073"
 - platform: ELKO_telnet
   switches:
     bigroom_tule_open:
       <<: *settings
+      command_on: "0"
+      command_off: "1"
       name: Bigroom Tule Open
       device_id: "0x01020075"
 - platform: ELKO_telnet
   switches:
     bigroom_tule_close:
       <<: *settings
+      command_on: "0"
+      command_off: "1"
       name: Bigroom Tule Close
       device_id: "0x01020074"
 - platform: ELKO_telnet
   switches:
     bigroom_chandelier:
       <<: *settings
-      command_on: "1"
-      command_off: "0"
       name: Bigroom Chandelier
       device_id: "0x01020005"
 - platform: ELKO_telnet
   switches:
     bigroom_backlight_window:
       <<: *settings
-      command_on: "1"
-      command_off: "0"
       name: Bigroom Backlight Window
       device_id: "0x01020009"
 - platform: ELKO_telnet
   switches:
     bigroom_backlight_door:
       <<: *settings
-      command_on: "1"
-      command_off: "0"
       name: Bigroom Backlight Door
       device_id: "0x0102002a"
 - platform: ELKO_telnet
   switches:
     bigroom_mirror:
       <<: *settings
-      command_on: "1"
-      command_off: "0"
       name: Bigroom Mirror
       device_id: "0x0102000a"
 - platform: ELKO_telnet
   switches:
     bigroom_point_light:
       <<: *settings
-      command_on: "1"
-      command_off: "0"
       name: Bigroom Point Light
       device_id: "0x0102002b"
 

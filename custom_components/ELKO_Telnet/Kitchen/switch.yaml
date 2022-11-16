@@ -19,8 +19,6 @@
   switches:
     kitchen_heater:
       <<: *settings
-      command_on: "0"
-      command_off: "1"
       name: Kitchen Heater
       device_id: "0x01020013"
 - platform: ELKO_telnet
