@@ -10,3 +10,53 @@
   command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01050017"
   unit_of_measurement: "°C"
   value_template: "{{ value | multiply(0.01) | round(1) }}"
+- platform: command_line
+  unique_id: cabinet_light_table
+  name: Cabinet Light Table state
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020029"
+  value_template: >-
+    {% if value == '1' %}
+      on
+    {% else %}
+      off
+    {% endif %}
+- platform: command_line
+  unique_id: cabinet_light_wall
+  name: Cabinet Light Wall state
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020011"
+  value_template: >-
+    {% if value == '1' %}
+      on
+    {% else %}
+      off
+    {% endif %}
+- platform: command_line
+  unique_id: cabinet_chandelier
+  name: Cabinet Chandelier state
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020039"
+  value_template: >-
+    {% if value == '1' %}
+      on
+    {% else %}
+      off
+    {% endif %}
+- platform: command_line
+  unique_id: cabinet_curtains_open
+  name: Cabinet Curtains Open state
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0102002f"
+  value_template: >-
+    {% if value == '1' %}
+      on
+    {% else %}
+      off
+    {% endif %}
+- platform: command_line
+  unique_id: cabinet_curtains_close
+  name: Cabinet Curtains Close state
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020026"
+  value_template: >-
+    {% if value == '1' %}
+      on
+    {% else %}
+      off
+    {% endif %}
