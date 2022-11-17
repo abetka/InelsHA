@@ -2,8 +2,11 @@
   alias: Cabinet Light Table
   description: ''
   trigger:
-  - platform: time_pattern
-    minutes: /1
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.cabinet_light_table
   condition: []
   action:
   - condition: template
@@ -17,8 +20,11 @@
   alias: Cabinet Light Wall
   description: ''
   trigger:
-  - platform: time_pattern
-    minutes: /1
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.cabinet_light_wall
   condition: []
   action:
   - condition: template
@@ -32,8 +38,11 @@
   alias: Cabinet Chandelier
   description: ''
   trigger:
-  - platform: time_pattern
-    minutes: /1
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.cabinet_chandelier
   condition: []
   action:
   - condition: template
@@ -47,8 +56,12 @@
   alias: Cabinet Curtains
   description: ''
   trigger:
-  - platform: time_pattern
-    minutes: /1
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.cabinet_curtains_open
+    - sensor.cabinet_curtains_close
   condition: []
   action:
   - condition: template
