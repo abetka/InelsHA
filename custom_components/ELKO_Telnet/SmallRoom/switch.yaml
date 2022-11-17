@@ -19,34 +19,26 @@
   switches:
     smallroom_curtains_open:
       <<: *settings
-      command_on: "0"
-      command_off: "1"
       name: Smallroom Curtains Open
-      device_id: "0x0102006f"
+      device_id: "0x0102006e"
 - platform: ELKO_telnet
   switches:
     smallroom_curtains_close:
       <<: *settings
-      command_on: "0"
-      command_off: "1"
       name: Smallroom Curtains Close
-      device_id: "0x0102006e"
+      device_id: "0x0102006f"
 - platform: ELKO_telnet
   switches:
     smallroom_tule_open:
       <<: *settings
-      command_on: "0"
-      command_off: "1"
       name: Smallroom Tule Open
-      device_id: "0x01020070"
+      device_id: "0x01020071"
 - platform: ELKO_telnet
   switches:
     smallroom_tule_close:
       <<: *settings
-      command_on: "0"
-      command_off: "1"
       name: Smallroom Tule Close
-      device_id: "0x01020071"
+      device_id: "0x01020070"
 - platform: ELKO_telnet
   switches:
     smallroom_heater:
