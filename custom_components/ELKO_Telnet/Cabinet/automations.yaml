@@ -43,7 +43,7 @@
   description: ''
   trigger:
   - platform: template
-    value_template: "{{ states('switch.cabinet_chandelier_tmp') != states('sensor.cabinet_chandelierl') }}"
+    value_template: "{{ states('switch.cabinet_chandelier_tmp') != states('sensor.cabinet_chandelier') }}"
   condition: []
   action:
   - delay:
