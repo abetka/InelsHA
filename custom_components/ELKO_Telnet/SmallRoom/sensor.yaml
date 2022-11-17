@@ -18,7 +18,7 @@
 - platform: command_line
   unique_id: smallroom_curtains_open
   name: SmallRoom Curtains Open
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0102006f"
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0102006e"
   value_template: >-
     {% if value == '1' %}
       open
@@ -28,7 +28,7 @@
 - platform: command_line
   unique_id: smallroom_curtains_close
   name: SmallRoom Curtains Close
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0102006e"
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0102006f"
   value_template: >-
     {% if value == '1' %}
       closed
@@ -38,7 +38,7 @@
 - platform: command_line
   unique_id: smallroom_tule_open
   name: SmallRoom Tule Open
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020070"
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020071"
   value_template: >-
     {% if value == '1' %}
       open
@@ -48,7 +48,7 @@
 - platform: command_line
   unique_id: smallroom_tule_close
   name: SmallRoom Tule Close
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020071"
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020070"
   value_template: >-
     {% if value == '1' %}
       closed
