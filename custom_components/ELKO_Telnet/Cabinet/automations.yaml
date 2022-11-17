@@ -65,7 +65,7 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('switch.cabinet_curtain') != states('sensor.cabinet_curtains_open') }}"
+    value_template: "{{ states('cover.cabinet_curtain') != states('sensor.cabinet_curtains_open') }}"
   - service: cover.{{ states('sensor.cabinet_curtains_open') | replace("closed", "close") }}_cover
     data: {}
     target:
