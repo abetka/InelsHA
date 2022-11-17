@@ -15,6 +15,12 @@
   unique_id: wc_waterleak
   name: WC Waterleak
   command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020027"
+  value_template: >-
+    {% if value == '1' %}
+      on
+    {% else %}
+      off
+    {% endif %}
 - platform: command_line
   unique_id: wc_switch_temperature
   name: WC Switch Temperature
@@ -25,17 +31,49 @@
   unique_id: wc_mirror
   name: WC Mirror Backlight
   command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020003"
+  value_template: >-
+    {% if value == '1' %}
+      on
+    {% else %}
+      off
+    {% endif %}
 - platform: command_line
   unique_id: wc_backlight
   name: WC Wall Backlight
   command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020014"
+  value_template: >-
+    {% if value == '1' %}
+      on
+    {% else %}
+      off
+    {% endif %}
 - platform: command_line
   unique_id: wc_fan
   name: WC Fan
   command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020025"
+  value_template: >-
+    {% if value == '1' %}
+      on
+    {% else %}
+      off
+    {% endif %}
 - platform: command_line
   unique_id: wc_pointslights
   name: WC Points Light
   command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0102002e"
-
-
+  value_template: >-
+    {% if value == '1' %}
+      on
+    {% else %}
+      off
+    {% endif %}
+- platform: command_line
+  unique_id: wc_floor_heater
+  name: WC Floor Heater
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020023"
+  value_template: >-
+    {% if value == '1' %}
+      on
+    {% else %}
+      off
+    {% endif %}

@@ -1,0 +1,164 @@
+- id: kitchen_point_lights
+  alias: kitchen Points Light
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.kitchen_point_lights
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('switch.kitchen_point_lights_tmp') != states('sensor.kitchen_point_lights') }}"
+  - service: switch.turn_{{states('sensor.kitchen_point_lights')}}
+    data: {}
+    target:
+      entity_id: switch.kitchen_point_lights_tmp
+  mode: single
+- id: kitchen_point_lights_window
+  alias: Kitchen Point Lights Window
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.kitchen_point_lights_window
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('switch.kitchen_point_lights_window_tmp') != states('sensor.kitchen_point_lights_window') }}"
+  - service: switch.turn_{{states('sensor.kitchen_point_lights_window')}}
+    data: {}
+    target:
+      entity_id: switch.kitchen_point_lights_window_tmp
+  mode: single
+- id: kitchen_backlight_wall
+  alias: Kitchen Backlight Wall
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.kitchen_backlight_wall
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('switch.kitchen_backlight_wall_tmp') != states('sensor.kitchen_backlight_wall') }}"
+  - service: switch.turn_{{states('sensor.kitchen_backlight_wall')}}
+    data: {}
+    target:
+      entity_id: switch.kitchen_backlight_wall_tmp
+  mode: single
+- id: kitchen_backlight_table
+  alias: Kitchen Backlight Table
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.kitchen_backlight_table
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('switch.kitchen_backlight_table_tmp') != states('sensor.kitchen_backlight_table') }}"
+  - service: switch.turn_{{states('sensor.kitchen_backlight_table')}}
+    data: {}
+    target:
+      entity_id: switch.kitchen_backlight_table_tmp
+  mode: single
+- id: kitchen_chandelier
+  alias: Kitchen Chandelier
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.kitchen_chandelier
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('switch.kitchen_chandelier_tmp') != states('sensor.kitchen_chandelier') }}"
+  - service: switch.turn_{{states('sensor.kitchen_chandelier')}}
+    data: {}
+    target:
+      entity_id: switch.kitchen_chandelier_tmp
+  mode: single
+- id: kitchen_curtain
+  alias: Kitchen Curtains
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.kitchen_curtains_open
+    - sensor.kitchen_curtains_close
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('cover.kitchen_curtain') != states('sensor.kitchen_curtains_open') }}"
+  - service: cover.{{ states('sensor.kitchen_curtains_open') | replace("closed", "close") }}_cover
+    data: {}
+    target:
+      entity_id: cover.kitchen_curtain
+  mode: single
+- id: kitchen_tule
+  alias: Kitchen Tule
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.kitchen_tule_open
+    - sensor.kitchen_tule_close
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('cover.kitchen_tule') != states('sensor.kitchen_tule_open') }}"
+  - service: cover.{{ states('sensor.kitchen_tule_open') | replace("closed", "close") }}_cover
+    data: {}
+    target:
+      entity_id: cover.kitchen_tule
+  mode: single
+- id: kitchen_heater
+  alias: Kitchen Heater
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.kitchen_heater
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('climate.kitchen_heater') != states('sensor.kitchen_heater') }}"
+  - service: climate.turn_{{states('sensor.kitchen_heater')}}
+    data: {}
+    target:
+      entity_id: climate.kitchen_heater
+  mode: single
+- id: kitchen_floor_heater
+  alias: Kitchen Floor Heater
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.kitchen_floor_heater
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('climate.kitchen_floor_heater') != states('sensor.kitchen_floor_heater') }}"
+  - service: climate.turn_{{states('sensor.kitchen_floor_heater')}}
+    data: {}
+    target:
+      entity_id: climate.kitchen_floor_heater
+  mode: single

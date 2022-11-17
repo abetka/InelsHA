@@ -23,3 +23,63 @@
   command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01050022"
   unit_of_measurement: "°C"
   value_template: "{{ value | multiply(0.01) | round(1) }}"
+- platform: command_line
+  unique_id: hall_floor_heater
+  name: Hall Floor Heater
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0102003b"
+  value_template: >-
+    {% if value == '1' %}
+      on
+    {% else %}
+      off
+    {% endif %}
+- platform: command_line
+  unique_id: hall_move_lights
+  name: Hall Move Lights
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020002"
+  value_template: >-
+    {% if value == '1' %}
+      on
+    {% else %}
+      off
+    {% endif %}
+- platform: command_line
+  unique_id: hall_wardrobe
+  name: Hall Wardrobe
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0102000f"
+  value_template: >-
+    {% if value == '1' %}
+      on
+    {% else %}
+      off
+    {% endif %}
+- platform: command_line
+  unique_id: hall_points_lights
+  name: Hall Points Lights
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020010"
+  value_template: >-
+    {% if value == '1' %}
+      on
+    {% else %}
+      off
+    {% endif %}
+- platform: command_line
+  unique_id: hall_lights
+  name: Hall Lights
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0102002c"
+  value_template: >-
+    {% if value == '1' %}
+      on
+    {% else %}
+      off
+    {% endif %}
+- platform: command_line
+  unique_id: hall_backlight
+  name: Hall Backlight
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0102002d"
+  value_template: >-
+    {% if value == '1' %}
+      on
+    {% else %}
+      off
+    {% endif %}

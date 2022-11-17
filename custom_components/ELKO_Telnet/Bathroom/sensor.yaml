@@ -17,4 +17,53 @@
   command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01050004"
   unit_of_measurement: "°C"
   value_template: "{{ value | multiply(0.01) | round(1) }}"
-
+- platform: command_line
+  unique_id: bathroom_mirror
+  name: Bathroom Mirror Backlight
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020001"
+  value_template: >-
+    {% if value == '1' %}
+      on
+    {% else %}
+      off
+    {% endif %}
+- platform: command_line
+  unique_id: bathroom_backlight
+  name: Bathroom Wall Backlight
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020012"
+  value_template: >-
+    {% if value == '1' %}
+      on
+    {% else %}
+      off
+    {% endif %}
+- platform: command_line
+  unique_id: bathroom_fan
+  name: Bathroom Fan
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020024"
+  value_template: >-
+    {% if value == '1' %}
+      on
+    {% else %}
+      off
+    {% endif %}
+- platform: command_line
+  unique_id: bathroom_pointslights
+  name: Bathroom Points Light
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0102000b"
+  value_template: >-
+    {% if value == '1' %}
+      on
+    {% else %}
+      off
+    {% endif %}
+- platform: command_line
+  unique_id: bathroom_floor_heater
+  name: Bathroom Floor Heater
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020043"
+  value_template: >-
+    {% if value == '1' %}
+      on
+    {% else %}
+      off
+    {% endif %}

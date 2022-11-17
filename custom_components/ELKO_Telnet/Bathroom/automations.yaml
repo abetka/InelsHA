@@ -162,6 +162,97 @@
         target:
           entity_id: switch.bathroom_switch_1_red_3
   mode: single
+- id: bathroom_mirror
+  alias: Bathroom Mirror Backlight
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.bathroom_mirror
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('switch.bathroom_mirror_tmp') != states('sensor.bathroom_mirror') }}"
+  - service: switch.turn_{{states('sensor.bathroom_mirror')}}
+    data: {}
+    target:
+      entity_id: switch.bathroom_mirror_tmp
+  mode: single
+- id: bathroom_backlight
+  alias: Bathroom Wall Backlight
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.bathroom_backlight
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('switch.bathroom_backlight_tmp') != states('sensor.bathroom_backlight') }}"
+  - service: switch.turn_{{states('sensor.bathroom_backlight')}}
+    data: {}
+    target:
+      entity_id: switch.bathroom_backlight_tmp
+  mode: single
+- id: bathroom_fan
+  alias: Bathroom Fan
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.bathroom_fan
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('switch.bathroom_fan_tmp') != states('sensor.bathroom_fan') }}"
+  - service: switch.turn_{{states('sensor.bathroom_fan')}}
+    data: {}
+    target:
+      entity_id: switch.bathroom_fan_tmp
+  mode: single
+- id: bathroom_pointslights
+  alias: Bathroom Points Light
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.bathroom_pointslights
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('switch.bathroom_pointslights_tmp') != states('sensor.bathroom_pointslights') }}"
+  - service: switch.turn_{{states('sensor.bathroom_pointslights')}}
+    data: {}
+    target:
+      entity_id: switch.bathroom_pointslights_tmp
+  mode: single
+- id: bathroom_floor_heater
+  alias: Bathroom Floor Heater
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.bathroom_floor_heater
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('climate.bathroom_floor_heater') != states('sensor.bathroom_floor_heater') }}"
+  - service: climate.turn_{{states('sensor.bathroom_floor_heater')}}
+    data: {}
+    target:
+      entity_id: climate.bathroom_floor_heater
+  mode: single
+
 
 
 # switchTools = {

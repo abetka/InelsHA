@@ -1,0 +1,146 @@
+- id: bigroom_point_light
+  alias: BigRoom Points Light
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.bigroom_point_light
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('switch.bigroom_point_light_tmp') != states('sensor.bigroom_point_light') }}"
+  - service: switch.turn_{{states('sensor.bigroom_point_light')}}
+    data: {}
+    target:
+      entity_id: switch.bigroom_point_light_tmp
+  mode: single
+- id: bigroom_mirror
+  alias: BigRoom Mirror
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.bigroom_mirror
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('switch.bigroom_mirror_tmp') != states('sensor.bigroom_mirror') }}"
+  - service: switch.turn_{{states('sensor.bigroom_mirror')}}
+    data: {}
+    target:
+      entity_id: switch.bigroom_mirror_tmp
+  mode: single
+- id: bigroom_backlight_door
+  alias: BigRoom Backlight Door
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.bigroom_backlight_door
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('switch.bigroom_backlight_door_tmp') != states('sensor.bigroom_backlight_door') }}"
+  - service: switch.turn_{{states('sensor.bigroom_backlight_door')}}
+    data: {}
+    target:
+      entity_id: switch.bigroom_backlight_door_tmp
+  mode: single
+- id: bigroom_backlight_window
+  alias: BigRoom Backlight Window
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.bigroom_backlight_window
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('switch.bigroom_backlight_window_tmp') != states('sensor.bigroom_backlight_window') }}"
+  - service: switch.turn_{{states('sensor.bigroom_backlight_window')}}
+    data: {}
+    target:
+      entity_id: switch.bigroom_backlight_window_tmp
+  mode: single
+- id: bigroom_chandelier
+  alias: BigRoom Chandelier
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.bigroom_chandelier
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('switch.bigroom_chandelier_tmp') != states('sensor.bigroom_chandelier') }}"
+  - service: switch.turn_{{states('sensor.bigroom_chandelier')}}
+    data: {}
+    target:
+      entity_id: switch.bigroom_chandelier_tmp
+  mode: single
+- id: bigroom_curtain
+  alias: BigRoom Curtains
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.bigroom_curtains_open
+    - sensor.bigroom_curtains_close
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('cover.bigroom_curtain') != states('sensor.bigroom_curtains_open') }}"
+  - service: cover.{{ states('sensor.bigroom_curtains_open') | replace("closed", "close") }}_cover
+    data: {}
+    target:
+      entity_id: cover.bigroom_curtain
+  mode: single
+- id: bigroom_tule
+  alias: BigRoom Tule
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.bigroom_tule_open
+    - sensor.bigroom_tule_close
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('cover.bigroom_tule') != states('sensor.bigroom_tule_open') }}"
+  - service: cover.{{ states('sensor.bigroom_tule_open') | replace("closed", "close") }}_cover
+    data: {}
+    target:
+      entity_id: cover.bigroom_tule
+  mode: single
+- id: bigroom_heater
+  alias: BigRoom Heater
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.bigroom_heater
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('climate.bigroom_heater') != states('sensor.bigroom_heater') }}"
+  - service: climate.turn_{{states('sensor.bigroom_heater')}}
+    data: {}
+    target:
+      entity_id: climate.bigroom_heater
+  mode: single

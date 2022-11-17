@@ -162,3 +162,111 @@
         target:
           entity_id: switch.wc_switch_1_red_3
   mode: single
+- id: wc_mirror
+  alias: WC Mirror Backlight
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.wc_mirror
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('switch.wc_mirror_tmp') != states('sensor.wc_mirror') }}"
+  - service: switch.turn_{{states('sensor.wc_mirror')}}
+    data: {}
+    target:
+      entity_id: switch.wc_mirror_tmp
+  mode: single
+- id: wc_backlight
+  alias: WC Wall Backlight
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.wc_backlight
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('switch.wc_backlight_tmp') != states('sensor.wc_backlight') }}"
+  - service: switch.turn_{{states('sensor.wc_backlight')}}
+    data: {}
+    target:
+      entity_id: switch.wc_backlight_tmp
+  mode: single
+- id: wc_fan
+  alias: WC Fan
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.wc_fan
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('switch.wc_fan_tmp') != states('sensor.wc_fan') }}"
+  - service: switch.turn_{{states('sensor.wc_fan')}}
+    data: {}
+    target:
+      entity_id: switch.wc_fan_tmp
+  mode: single
+- id: wc_waterleak
+  alias: WC WaterLeak
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.wc_waterleak
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('switch.wc_waterleak_tmp') != states('sensor.wc_waterleak') }}"
+  - service: switch.turn_{{states('sensor.wc_waterleak')}}
+    data: {}
+    target:
+      entity_id: switch.wc_waterleak_tmp
+  mode: single
+- id: wc_pointslights
+  alias: WC Points Light
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.wc_pointslights
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('switch.wc_pointslights_tmp') != states('sensor.wc_pointslights') }}"
+  - service: switch.turn_{{states('sensor.wc_pointslights')}}
+    data: {}
+    target:
+      entity_id: switch.wc_pointslights_tmp
+  mode: single
+- id: wc_floor_heater
+  alias: WC Floor Heater
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.wc_floor_heater
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('climate.wc_floor_heater') != states('sensor.wc_floor_heater') }}"
+  - service: climate.turn_{{states('sensor.wc_floor_heater')}}
+    data: {}
+    target:
+      entity_id: climate.wc_floor_heater
+  mode: single

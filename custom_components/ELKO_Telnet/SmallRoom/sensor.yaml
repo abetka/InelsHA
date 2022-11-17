@@ -5,4 +5,83 @@
   command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01050011"
   unit_of_measurement: "°C"
   value_template: "{{ value | multiply(0.01) | round(1) }}"
-
+- platform: command_line
+  unique_id: smallroom_heater
+  name: SmallRoom Heater
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020004"
+  value_template: >-
+    {% if value == '1' %}
+      on
+    {% else %}
+      off
+    {% endif %}
+- platform: command_line
+  unique_id: smallroom_curtains_open
+  name: SmallRoom Curtains Open
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0102006f"
+  value_template: >-
+    {% if value == '1' %}
+      open
+    {% else %}
+      closed
+    {% endif %}
+- platform: command_line
+  unique_id: smallroom_curtains_close
+  name: SmallRoom Curtains Close
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0102006e"
+  value_template: >-
+    {% if value == '1' %}
+      closed
+    {% else %}
+      open
+    {% endif %}
+- platform: command_line
+  unique_id: smallroom_tule_open
+  name: SmallRoom Tule Open
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020070"
+  value_template: >-
+    {% if value == '1' %}
+      open
+    {% else %}
+      closed
+    {% endif %}
+- platform: command_line
+  unique_id: smallroom_tule_close
+  name: SmallRoom Tule Close
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020071"
+  value_template: >-
+    {% if value == '1' %}
+      closed
+    {% else %}
+      open
+    {% endif %}
+- platform: command_line
+  unique_id: smallroom_chandelier
+  name: SmallRoom Chandelier
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0102000d"
+  value_template: >-
+    {% if value == '1' %}
+      on
+    {% else %}
+      off
+    {% endif %}
+- platform: command_line
+  unique_id: smallroom_points_lights
+  name: Smallroom Points Lights
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020028"
+  value_template: >-
+    {% if value == '1' %}
+      on
+    {% else %}
+      off
+    {% endif %}
+- platform: command_line
+  unique_id: smallroom_backlight_wall
+  name: Smallroom Backlight Wall
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0102003a"
+  value_template: >-
+    {% if value == '1' %}
+      on
+    {% else %}
+      off
+    {% endif %}

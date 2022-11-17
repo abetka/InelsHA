@@ -1,0 +1,110 @@
+- id: smallroom_point_lights
+  alias: SmallRoom Points Lights
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.smallroom_point_lights
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('switch.smallroom_point_lights_tmp') != states('sensor.smallroom_point_lights') }}"
+  - service: switch.turn_{{states('sensor.smallroom_point_lights')}}
+    data: {}
+    target:
+      entity_id: switch.smallroom_point_lights_tmp
+  mode: single
+- id: smallroom_backlight_wall
+  alias: SmallRoom Backlight Wall
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.smallroom_backlight_wall
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('switch.smallroom_backlight_wall_tmp') != states('sensor.smallroom_backlight_wall') }}"
+  - service: switch.turn_{{states('sensor.smallroom_backlight_wall')}}
+    data: {}
+    target:
+      entity_id: switch.smallroom_backlight_wall_tmp
+  mode: single
+- id: smallroom_chandelier
+  alias: SmallRoom Chandelier
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.smallroom_chandelier
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('switch.smallroom_chandelier_tmp') != states('sensor.smallroom_chandelier') }}"
+  - service: switch.turn_{{states('sensor.smallroom_chandelier')}}
+    data: {}
+    target:
+      entity_id: switch.smallroom_chandelier_tmp
+  mode: single
+- id: smallroom_curtain
+  alias: SmallRoom Curtains
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.smallroom_curtains_open
+    - sensor.smallroom_curtains_close
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('cover.smallroom_curtain') != states('sensor.smallroom_curtains_open') }}"
+  - service: cover.{{ states('sensor.smallroom_curtains_open') | replace("closed", "close") }}_cover
+    data: {}
+    target:
+      entity_id: cover.smallroom_curtain
+  mode: single
+- id: smallroom_tule
+  alias: SmallRoom Tule
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.smallroom_tule_open
+    - sensor.smallroom_tule_close
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('cover.smallroom_tule') != states('sensor.smallroom_tule_open') }}"
+  - service: cover.{{ states('sensor.smallroom_tule_open') | replace("closed", "close") }}_cover
+    data: {}
+    target:
+      entity_id: cover.smallroom_tule
+  mode: single
+- id: smallroom_heater
+  alias: SmallRoom Heater
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.smallroom_heater
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('climate.smallroom_heater') != states('sensor.smallroom_heater') }}"
+  - service: climate.turn_{{states('sensor.smallroom_heater')}}
+    data: {}
+    target:
+      entity_id: climate.smallroom_heater
+  mode: single

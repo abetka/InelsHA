@@ -23,3 +23,113 @@
   command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0105000c"
   unit_of_measurement: "%"
   value_template: "{{ value | multiply(0.01) | round(1) }}"
+- platform: command_line
+  unique_id: kitchen_floor_heater
+  name: Kitchen Floor Heater
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0102001a"
+  value_template: >-
+    {% if value == '1' %}
+      on
+    {% else %}
+      off
+    {% endif %}
+- platform: command_line
+  unique_id: kitchen_heater
+  name: Kitchen Heater
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020013"
+  value_template: >-
+    {% if value == '1' %}
+      on
+    {% else %}
+      off
+    {% endif %}
+- platform: command_line
+  unique_id: kitchen_curtains_open
+  name: Kitchen Curtains Open
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020076"
+  value_template: >-
+    {% if value == '1' %}
+      open
+    {% else %}
+      closed
+    {% endif %}
+- platform: command_line
+  unique_id: kitchen_curtains_close
+  name: Kitchen Curtains Close
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020077"
+  value_template: >-
+    {% if value == '1' %}
+      closed
+    {% else %}
+      open
+    {% endif %}
+- platform: command_line
+  unique_id: kitchen_tule_open
+  name: Kitchen Tule Open
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020079"
+  value_template: >-
+    {% if value == '1' %}
+      open
+    {% else %}
+      closed
+    {% endif %}
+- platform: command_line
+  unique_id: kitchen_tule_close
+  name: Kitchen Tule Close
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020078"
+  value_template: >-
+    {% if value == '1' %}
+      closed
+    {% else %}
+      open
+    {% endif %}
+- platform: command_line
+  unique_id: kitchen_chandelier
+  name: Kitchen Chandelier
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020006"
+  value_template: >-
+    {% if value == '1' %}
+      on
+    {% else %}
+      off
+    {% endif %}
+- platform: command_line
+  unique_id: kitchen_backlight_table
+  name: Kitchen Backlight Table
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020007"
+  value_template: >-
+    {% if value == '1' %}
+      on
+    {% else %}
+      off
+    {% endif %}
+- platform: command_line
+  unique_id: kitchen_backlight_wall
+  name: Kitchen Backlight Wall
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0102000e"
+  value_template: >-
+    {% if value == '1' %}
+      on
+    {% else %}
+      off
+    {% endif %}
+- platform: command_line
+  unique_id: kitchen_point_lights_window
+  name: Kitchen Point Lights Window
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020037"
+  value_template: >-
+    {% if value == '1' %}
+      on
+    {% else %}
+      off
+    {% endif %}
+- platform: command_line
+  unique_id: kitchen_point_lights
+  name: Kitchen Point Lights
+  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020038"
+  value_template: >-
+    {% if value == '1' %}
+      on
+    {% else %}
+      off
+    {% endif %}

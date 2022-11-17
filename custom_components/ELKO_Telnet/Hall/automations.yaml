@@ -1,0 +1,108 @@
+- id: hall_backlight
+  alias: Hall Backlight
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.hall_backlight
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('switch.hall_backlight_tmp') != states('sensor.hall_backlight') }}"
+  - service: switch.turn_{{states('sensor.hall_backlight')}}
+    data: {}
+    target:
+      entity_id: switch.hall_backlight_tmp
+  mode: single
+- id: hall_lights
+  alias: Hall Lights
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.hall_lights
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('switch.hall_lights_tmp') != states('sensor.hall_lights') }}"
+  - service: switch.turn_{{states('sensor.hall_lights')}}
+    data: {}
+    target:
+      entity_id: switch.hall_lights_tmp
+  mode: single
+- id: hall_points_lights
+  alias: Hall Points Lights
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.hall_points_lights
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('switch.hall_points_lights_tmp') != states('sensor.hall_points_lights') }}"
+  - service: switch.turn_{{states('sensor.hall_points_lights')}}
+    data: {}
+    target:
+      entity_id: switch.hall_points_lights_tmp
+  mode: single
+- id: hall_wardrobe
+  alias: Hall Wardrobe
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.hall_wardrobe
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('switch.hall_wardrobe_tmp') != states('sensor.hall_wardrobe') }}"
+  - service: switch.turn_{{states('sensor.hall_wardrobe')}}
+    data: {}
+    target:
+      entity_id: switch.hall_wardrobe_tmp
+  mode: single
+- id: hall_move_lights
+  alias: Hall Move Lights
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.hall_move_lights
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('switch.hall_move_lights_tmp') != states('sensor.hall_move_lights') }}"
+  - service: switch.turn_{{states('sensor.hall_move_lights')}}
+    data: {}
+    target:
+      entity_id: switch.hall_move_lights_tmp
+  mode: single
+- id: hall_floor_heater
+  alias: Hall Floor Heater
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id:
+    - sensor.hall_floor_heater
+  condition: []
+  action:
+  - condition: template
+    value_template: "{{ states('climate.hall_floor_heater') != states('sensor.hall_floor_heater') }}"
+  - service: climate.turn_{{states('sensor.hall_floor_heater')}}
+    data: {}
+    target:
+      entity_id: climate.hall_floor_heater
+  mode: single
