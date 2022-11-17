@@ -8,8 +8,8 @@
   action:
   - delay:
       hours: 0
-      minutes: 1
-      seconds: 0
+      minutes: 0
+      seconds: 20
       milliseconds: 0
   - condition: template
     value_template: "{{ states('switch.cabinet_light_table_tmp') != states('sensor.cabinet_light_table') }}"
@@ -28,8 +28,8 @@
   action:
   - delay:
       hours: 0
-      minutes: 1
-      seconds: 0
+      minutes: 0
+      seconds: 20
       milliseconds: 0
   - condition: template
     value_template: "{{ states('switch.cabinet_light_wall_tmp') != states('sensor.cabinet_light_wall') }}"
@@ -48,8 +48,8 @@
   action:
   - delay:
       hours: 0
-      minutes: 1
-      seconds: 0
+      minutes: 0
+      seconds: 20
       milliseconds: 0
   - condition: template
     value_template: "{{ states('switch.cabinet_chandelier_tmp') != states('sensor.cabinet_chandelier') }}"
@@ -68,8 +68,8 @@
   action:
   - delay:
       hours: 0
-      minutes: 1
-      seconds: 0
+      minutes: 0
+      seconds: 20
       milliseconds: 0
   - condition: template
     value_template: "{{ states('switch.cabinet_curtain') != states('sensor.cabinet_curtains_open') }}"
