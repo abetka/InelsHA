@@ -1,0 +1,80 @@
+- id: cabinet_light_table
+  alias: Cabinet Light Table
+  description: ''
+  trigger:
+  - platform: template
+    value_template: "{{ states('switch.cabinet_light_table_tmp') != states('sensor.cabinet_light_table') }}"
+  condition: []
+  action:
+  - delay:
+      hours: 0
+      minutes: 1
+      seconds: 0
+      milliseconds: 0
+  - condition: template
+    value_template: "{{ states('switch.cabinet_light_table_tmp') != states('sensor.cabinet_light_table') }}"
+  - service: switch.turn_{{states('sensor.cabinet_light_table')}}
+    data: {}
+    target:
+      entity_id: switch.cabinet_light_table_tmp
+  mode: single
+- id: cabinet_light_wall
+  alias: Cabinet Light Wall
+  description: ''
+  trigger:
+  - platform: template
+    value_template: "{{ states('switch.cabinet_light_wall_tmp') != states('sensor.cabinet_light_wall') }}"
+  condition: []
+  action:
+  - delay:
+      hours: 0
+      minutes: 1
+      seconds: 0
+      milliseconds: 0
+  - condition: template
+    value_template: "{{ states('switch.cabinet_light_wall_tmp') != states('sensor.cabinet_light_wall') }}"
+  - service: switch.turn_{{states('sensor.cabinet_light_wall')}}
+    data: {}
+    target:
+      entity_id: switch.cabinet_light_wall_tmp
+  mode: single
+- id: cabinet_chandelier
+  alias: Cabinet Chandelier
+  description: ''
+  trigger:
+  - platform: template
+    value_template: "{{ states('switch.cabinet_chandelier_tmp') != states('sensor.cabinet_chandelierl') }}"
+  condition: []
+  action:
+  - delay:
+      hours: 0
+      minutes: 1
+      seconds: 0
+      milliseconds: 0
+  - condition: template
+    value_template: "{{ states('switch.cabinet_chandelier_tmp') != states('sensor.cabinet_chandelier') }}"
+  - service: switch.turn_{{states('sensor.cabinet_chandelier')}}
+    data: {}
+    target:
+      entity_id: switch.cabinet_chandelier_tmp
+  mode: single
+- id: cabinet_curtain
+  alias: Cabinet Curtains
+  description: ''
+  trigger:
+  - platform: template
+    value_template: "{{ states('cover.cabinet_curtain') != states('sensor.cabinet_curtains_open') }}"
+  condition: []
+  action:
+  - delay:
+      hours: 0
+      minutes: 1
+      seconds: 0
+      milliseconds: 0
+  - condition: template
+    value_template: "{{ states('switch.cabinet_curtain') != states('sensor.cabinet_curtains_open') }}"
+  - service: cover.{{ states('sensor.cabinet_curtains_open') | replace("closed", "close") }}_cover
+    data: {}
+    target:
+      entity_id: cover.cabinet_curtain
+  mode: single

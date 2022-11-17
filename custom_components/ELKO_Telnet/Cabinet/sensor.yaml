@@ -46,9 +46,9 @@
   command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0102002f"
   value_template: >-
     {% if value == '1' %}
-      on
+      open
     {% else %}
-      off
+      closed
     {% endif %}
 - platform: command_line
   unique_id: cabinet_curtains_close
@@ -56,7 +56,7 @@
   command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020026"
   value_template: >-
     {% if value == '1' %}
-      on
+      closed
     {% else %}
-      off
+      open
     {% endif %}
