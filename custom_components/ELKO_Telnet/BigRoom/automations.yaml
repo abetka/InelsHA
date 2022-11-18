@@ -97,7 +97,6 @@
   - platform: state
     entity_id:
     - sensor.bigroom_curtains_open
-    - sensor.bigroom_curtains_close
   condition: []
   action:
   - condition: template
@@ -116,7 +115,6 @@
   - platform: state
     entity_id:
     - sensor.bigroom_tule_open
-    - sensor.bigroom_tule_close
   condition: []
   action:
   - condition: template

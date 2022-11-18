@@ -61,7 +61,6 @@
   - platform: state
     entity_id:
     - sensor.smallroom_curtains_open
-    - sensor.smallroom_curtains_close
   condition: []
   action:
   - condition: template
@@ -80,7 +79,6 @@
   - platform: state
     entity_id:
     - sensor.smallroom_tule_open
-    - sensor.smallroom_tule_close
   condition: []
   action:
   - condition: template

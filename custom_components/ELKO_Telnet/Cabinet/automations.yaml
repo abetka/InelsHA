@@ -61,7 +61,6 @@
   - platform: state
     entity_id:
     - sensor.cabinet_curtains_open
-    - sensor.cabinet_curtains_close
   condition: []
   action:
   - condition: template

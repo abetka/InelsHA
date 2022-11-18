@@ -97,7 +97,6 @@
   - platform: state
     entity_id:
     - sensor.kitchen_curtains_open
-    - sensor.kitchen_curtains_close
   condition: []
   action:
   - condition: template
@@ -116,7 +115,6 @@
   - platform: state
     entity_id:
     - sensor.kitchen_tule_open
-    - sensor.kitchen_tule_close
   condition: []
   action:
   - condition: template
