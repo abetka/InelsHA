@@ -13,8 +13,36 @@
         data:
           state: 'off'
           device_id: '0x01040005'
-
-
+- platform: template
+  lights:
+    cabinet_green:
+      friendly_name: "Cabinet Green"
+      turn_on:
+        service: python_script.light
+        data:
+          state: 'on'
+          device_id: '0x01040006'
+          brightnes: "{{ brightnes }}"
+      turn_off:
+        service: python_script.light
+        data:
+          state: 'off'
+          device_id: '0x01040006'
+- platform: template
+  lights:
+    cabinet_blue:
+      friendly_name: "Cabinet Blue"
+      turn_on:
+        service: python_script.light
+        data:
+          state: 'on'
+          device_id: '0x01040007'
+          brightnes: "{{ brightnes }}"
+      turn_off:
+        service: python_script.light
+        data:
+          state: 'off'
+          device_id: '0x01040007'
 
 # Example configuration.yaml entry
 # light:
