@@ -30,7 +30,7 @@ def turn_on() -> None:
 
 def turn_off() -> None:
     """Turn the device off."""
-    command = b"SET" + delimiter.encode('ascii') + device_id.encode('ascii')+ delimiter.encode('ascii')+ command_off.encode('ascii') + b"\r\n"
+    command = b"SET" + delimiter.encode('ascii') + device_id.encode('ascii')+ delimiter.encode('ascii') + b"0\r\n"
     logger.debug("Turn Off: %s", command)
     telnet_command(command)
     # if self.assumed_state:

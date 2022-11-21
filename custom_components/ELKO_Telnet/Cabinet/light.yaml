@@ -1,38 +1,18 @@
 - platform: template
   lights:
-    cabinet_rgb:
-      friendly_name: "Cabinet RGB"
-      color_template: "({{states('input_number.r_input') | int}}, {{states('input_number.g_input') | int}}, , {{states('input_number.b_input') | int}})"
+    cabinet_red:
+      friendly_name: "Cabinet Red"
       turn_on:
         service: python_script.light
         data:
           state: 'on'
+          device_id: '0x01040005'
+          brightnes: "{{ brightnes }}"
       turn_off:
         service: python_script.light
         data:
           state: 'off'
-      set_color:
-        - service: input_number.set_value
-          data:
-            value: "{{ r }}"
-            entity_id: input_number.r_input
-        - service: input_number.set_value
-          data:
-            value: "{{ g }}"
-            entity_id: input_number.g_input
-        - service: input_number.set_value
-          data:
-            value: "{{ b }}"
-            entity_id: input_number.b_input
-        - service: python_script.light
-          data_template:
-            entity_id:
-              - python_script.light
-            transition: "{{ transition | float }}"
-            rgb_color:
-                - "{{ rgb[0] }}"
-                - "{{ rgb[1] }}"
-                - "{{ rgb[2] }}"
+          device_id: '0x01040005'
 
 
 
