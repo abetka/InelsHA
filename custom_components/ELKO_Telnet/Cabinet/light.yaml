@@ -7,7 +7,9 @@
         data:
           state: 'on'
           device_id: '0x01040005'
-          brightnes: "{{ brightnes }}"
+          brightnes: "{{ brightness }}"
+          transition: "{{ transition }}"
+          rgb_color: "{{ rgb_color }}"
       turn_off:
         service: python_script.light
         data:
@@ -22,7 +24,9 @@
         data:
           state: 'on'
           device_id: '0x01040006'
-          brightnes: "{{ brightnes }}"
+          brightnes: "{{ brightness }}"
+          transition: "{{ transition }}"
+          rgb_color: "{{ rgb_color }}"
       turn_off:
         service: python_script.light
         data:
@@ -37,7 +41,9 @@
         data:
           state: 'on'
           device_id: '0x01040007'
-          brightnes: "{{ brightnes }}"
+          brightnes: "{{ brightness }}"
+          transition: "{{ transition }}"
+          rgb_color: "{{ rgb_color }}"
       turn_off:
         service: python_script.light
         data:
