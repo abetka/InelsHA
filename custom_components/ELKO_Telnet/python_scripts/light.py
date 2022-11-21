@@ -2,7 +2,9 @@ host = '192.168.88.246'
 port = 1111
 delimiter = ';'
 device_id = data.get("device_id")
-brightnes = data.get("brightnes","100")
+brightness = data.get("brightness","100")
+transition = data.get("transition","1")
+rgb_color = data.get("rgb_color")
 
 def telnet_command(command) -> str | None:
     try:
@@ -21,7 +23,7 @@ def telnet_command(command) -> str | None:
 
 def turn_on() -> None:
     """Turn the device on."""
-    command = b"SET" + delimiter.encode('ascii') + device_id.encode('ascii')+ delimiter.encode('ascii')+ brightnes.encode('ascii') + b"\r\n"
+    command = b"SET" + delimiter.encode('ascii') + device_id.encode('ascii')+ delimiter.encode('ascii')+ brightness.encode('ascii') + b"\r\n"
     logger.debug("Turn On: %s", command)
     telnet_command(command)
     # if self.assumed_state:
