@@ -87,11 +87,14 @@ class ElkoLightBase(ElkoEntity, LightEntity):
         self._coordinator = coordinator
         self._state = False
         self._delimiter = ';'
+        self.host = '192.168.88.246'
+        self.port = 1111
+        self.device_id = ''
 
     def _telnet_command(self, command) -> str | None:
         try:
-            _LOGGER.debug("Telnet connect to: %s with port: %s", self._resource, self._port)
-            telnet = telnetlib.Telnet(self._resource, self._port)
+            _LOGGER.debug("Telnet connect to: %s with port: %s", self._host, self._port)
+            telnet = telnetlib.Telnet(self._host, self._port)
             telnet.write(command)
             response = telnet.read_until(b"\r\n").decode('ascii').split(self._delimiter)[2].rstrip("\r").rstrip("\n")
             telnet.close()
