@@ -3,52 +3,44 @@
     cabinet_red:
       friendly_name: "Cabinet Red"
       turn_on:
-        service: python_script.light
+        service: shell_command.set_command
         data:
-          state: 'on'
           device_id: '0x01040005'
-          brightnes: "{{ brightness }}"
-          transition: "{{ transition }}"
-          rgb_color: "{{ rgb_color }}"
+          command: '256'
       turn_off:
-        service: python_script.light
+        service: shell_command.set_command
         data:
-          state: 'off'
           device_id: '0x01040005'
+          command: '0'
 - platform: template
   lights:
     cabinet_green:
       friendly_name: "Cabinet Green"
       turn_on:
-        service: python_script.light
+        service: shell_command.set_command
         data:
-          state: 'on'
           device_id: '0x01040006'
-          brightnes: "{{ brightness }}"
-          transition: "{{ transition }}"
-          rgb_color: "{{ rgb_color }}"
+          command: '256'
       turn_off:
-        service: python_script.light
+        service: shell_command.set_command
         data:
-          state: 'off'
           device_id: '0x01040006'
+          command: '0'
 - platform: template
   lights:
     cabinet_blue:
       friendly_name: "Cabinet Blue"
       turn_on:
-        service: python_script.light
+        service: shell_command.set_command
         data:
-          state: 'on'
           device_id: '0x01040007'
-          brightnes: "{{ brightness }}"
-          transition: "{{ transition }}"
-          rgb_color: "{{ rgb_color }}"
+          command: '256'
       turn_off:
-        service: python_script.light
+        service: shell_command.set_command
         data:
-          state: 'off'
           device_id: '0x01040007'
+          command: '0'
+
 
 # Example configuration.yaml entry
 # light:
