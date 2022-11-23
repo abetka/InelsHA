@@ -8,7 +8,7 @@
   max_temp: 30
   hot_tolerance: 0.5
   cold_tolerance: 0.5
-  target_temp: 22
+  target_temp: 24
   away_temp: 2
   target_sensor: sensor.kitchen_temperature
 # Kitchen Heater
@@ -21,6 +21,6 @@
   max_temp: 30
   hot_tolerance: 0.5
   cold_tolerance: 0.5
-  target_temp: 22
+  target_temp: 24
   away_temp: 2
   target_sensor: sensor.kitchen_window_temperature

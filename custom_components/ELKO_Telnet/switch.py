@@ -33,7 +33,7 @@ from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
 
 _LOGGER = logging.getLogger(__name__)
 
-DEFAULT_PORT = 23
+DEFAULT_PORT = 1111
 DEFAULT_TIMEOUT = 0.2
 
 SWITCH_SCHEMA = vol.Schema(

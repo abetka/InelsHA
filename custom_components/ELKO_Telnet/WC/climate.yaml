@@ -8,6 +8,6 @@
   max_temp: 25
   hot_tolerance: 0.5
   cold_tolerance: 0.5
-  target_temp: 20
+  target_temp: 24
   away_temp: 2
   target_sensor: sensor.wc_temperature

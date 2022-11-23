@@ -1,95 +1,127 @@
-"""Light platform for ELKO_telnet."""
+"""Platform for light integration."""
+from __future__ import annotations
+
 import logging
 
-from pyinels.device.pyLight import pyLight
-from pyinels.const import RANGE_BRIGHTNESS
-
-from homeassistant.components.light import LightEntity
-from homeassistant.components.light import ATTR_BRIGHTNESS, SUPPORT_BRIGHTNESS, PLATFORM_SCHEMA
-
-from custom_components.ELKO_Telnet.entity import ElkoEntity
-from custom_components.ELKO_Telnet.const import DOMAIN, DOMAIN_DATA, ICON_LIGHT, PLATFORM_LIGHT
-from homeassistant.const import (
-    CONF_NAME,
-    CONF_PORT,
-    CONF_HOST,
-    CONF_DEVICE_ID,
-    CONF_LIGHTS,
-    CONF_TIMEOUT,
-)
+import awesomelights
 import voluptuous as vol
+
+# Import the device class from the component that you want to support
+import homeassistant.helpers.config_validation as cv
+from homeassistant.components.light import (ATTR_BRIGHTNESS, PLATFORM_SCHEMA,
+                                            LightEntity)
+from homeassistant.const import CONF_HOST, CONF_PORT, CONF_DEVICE_ID, CONF_LIGHTS, CONF_VALUE_TEMPLATE
+from homeassistant.core import HomeAssistant
+from homeassistant.helpers.entity_platform import AddEntitiesCallback
+from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
 
 _LOGGER = logging.getLogger(__name__)
 
-MIN_BRIGHTNESS = RANGE_BRIGHTNESS[0]
-MAX_BRIGHTNESS = RANGE_BRIGHTNESS[1]
+DEFAULT_PORT = 1111
 
-LIGHT_SCHEMA = vol.Schema(
-    {
-        vol.Required(CONF_PORT): cv.string,
-        vol.Required(CONF_HOST): cv.string,
-        vol.Required(CONF_DEVICE_ID): cv.string
-        vol.Optional(CONF_NAME): cv.string,
-        vol.Optional(CONF_TIMEOUT, default=DEFAULT_TIMEOUT): vol.Coerce(float),
-    }
-)
-
-PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
-    {vol.Required(CONF_LIGHTS): cv.schema_with_slug_keys(LIGHT_SCHEMA)}
-)
+# Validation of the user's configuration
+PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
+    vol.Required(CONF_HOST): cv.string,
+    vol.Required(CONF_PORT, default=DEFAULT_PORT): cv.port,
+    vol.Required(CONF_DEVICE_ID): cv.string,
+})
 
 
+def setup_platform(
+    hass: HomeAssistant,
+    config: ConfigType,
+    add_entities: AddEntitiesCallback,
+    discovery_info: DiscoveryInfoType | None = None
+) -> None:
+    """Set up the Telnet Light platform."""
+    devices: dict[str, Any] = config[CONF_LIGHTS]
+    lights = []
 
-async def async_setup_entry(hass, entry, async_add_devices):
-    """Setup light platform."""
+    for object_id, device_config in devices.items():
+        value_template: Template | None = device_config.get(CONF_VALUE_TEMPLATE)
 
-    _LOGGER.info("Setting up lights")
+        if value_template is not None:
+            value_template.hass = hass
 
-    devices = hass.data[DOMAIN][DOMAIN_DATA]
-    coordinator = hass.data[DOMAIN][entry.entry_id]
-
-    dimmable_lights = []
-    usual_lights = []
-
-    lights = [
-        await hass.async_add_executor_job(pyLight, dev)
-        for dev in devices
-        if dev.type == PLATFORM_LIGHT
-    ]
-
-    for light in lights:
-        if light.has_brightness is True:
-            dimmable_lights.append(light)
-        else:
-            usual_lights.append(light)
-
-    await coordinator.async_refresh()
-
-    if len(usual_lights) > 0:
-        async_add_devices(
-            [ElkoLight(coordinator, light) for light in usual_lights], True
+        lights.append(
+            ELKOLight(
+                object_id,
+                device_config[CONF_HOST],
+                device_config[CONF_DEVICE_ID],
+                device_config[CONF_PORT],
+                value_template,
+            )
         )
 
-    if len(dimmable_lights) > 0:
-        async_add_devices(
-            [ElkoLightDimmable(coordinator, light) for light in dimmable_lights], True
-        )
+    if not lights:
+        _LOGGER.error("No lights added")
+        return
 
+    add_entities(lights)
 
-class ElkoLightBase(ElkoEntity, LightEntity):
-    """Inels base light class."""
+class ELKOLight(LightEntity):
+    """Representation of an ELKO Light."""
 
-    def __init__(self, coordinator, light):
-        """Initialize of the InelsLight."""
-        super().__init__(coordinator, light)
-
+    def __init__(
+        self,
+        light,
+        host: str,
+        device_id: str,
+        port: int
+        ) -> None:
+        """Initialize an AwesomeLight."""
         self._light = light
-        self._coordinator = coordinator
-        self._state = False
+        self._name = light.name
+        self._host = host
+        self._port = port
+        self._device_id = device_id
         self._delimiter = ';'
-        self.host = '192.168.88.246'
-        self.port = 1111
-        self.device_id = ''
+        self._state = None
+        self._brightness = None
+
+    @property
+    def name(self) -> str:
+        """Return the display name of this light."""
+        return self._name
+
+    @property
+    def brightness(self):
+        """Return the brightness of the light.
+        This method is optional. Removing it indicates to Home Assistant
+        that brightness is not supported for this light.
+        """
+        return self._brightness
+
+    @property
+    def is_on(self) -> bool | None:
+        """Return true if light is on."""
+        return self._state
+
+    def turn_on(self, **kwargs: Any) -> None:
+        """Instruct the light to turn on.
+        You can skip the brightness part if your light does not support
+        brightness control.
+        """
+        self._light.brightness = kwargs.get(ATTR_BRIGHTNESS, 255)
+        command = b"SET" + self._delimiter.encode('ascii') + self._device_id.encode('ascii')+ self._delimiter.encode('ascii')+ self._light.brightness.encode('ascii') + b"\r\n"
+        _LOGGER.debug("Turn On: %s", command)
+        self._telnet_command(command)
+        self._light.turn_on()
+
+    def turn_off(self, **kwargs: Any) -> None:
+        """Instruct the light to turn off."""
+        command = b"SET" + self._delimiter.encode('ascii') + self._device_id.encode('ascii')+ self._delimiter.encode('ascii') + b"0\r\n"
+        _LOGGER.debug("Turn Off: %s", command)
+        self._telnet_command(command)
+        self._light.turn_off()
+
+    def update(self) -> None:
+        """Fetch new state data for this light.
+        This is the only method that should fetch new data for Home Assistant.
+        """
+        self._light.update()
+        self._state = self._light.is_on()
+        self._brightness = self._light.brightness
 
     def _telnet_command(self, command) -> str | None:
         try:
@@ -105,99 +137,3 @@ class ElkoLightBase(ElkoEntity, LightEntity):
             return None
         _LOGGER.debug("Telnet response: %s", response)
         return response
-
-    async def async_turn_on(self, **kwargs):  # pylint: disable=unused-argument
-        """Turn on the light."""
-        command = b"SET" + self._delimiter.encode('ascii') + self._device_id.encode('ascii')+ self._delimiter.encode('ascii')+ self._command_on.encode('ascii') + b"\r\n"
-        _LOGGER.debug("Turn On: %s", command)
-        # await self.hass.async_add_executor_job(self._light.turn_on)
-        self._state = True
-
-        await self._coordinator.async_request_refresh()
-
-    async def async_turn_off(self, **kwargs):  # pylint: disable=unused-argument
-        """Turn off the light."""
-        command = b"SET" + self._delimiter.encode('ascii') + self._device_id.encode('ascii')+ self._delimiter.encode('ascii')+ self._command_off.encode('ascii') + b"\r\n"
-        _LOGGER.debug("Turn Off: %s", command)
-        # await self.hass.async_add_executor_job(self._light.turn_off)
-        self._state = False
-
-        await self._coordinator.async_request_refresh()
-
-    @property
-    def name(self):
-        """Return the name of the light."""
-        return self._light.name
-
-    @property
-    def icon(self):
-        """Return the icon of this light."""
-        return ICON_LIGHT
-
-    @property
-    def is_on(self):
-        """Return true if the light is on."""
-        return self._light.state
-
-    def update(self):
-        """Update the data from the device."""
-        return self.update()
-
-
-class ElkoLight(ElkoLightBase, LightEntity):
-    """Inels light class."""
-
-    def __init__(self, coordinator, light):
-        """Initialize of the InelsLight."""
-        super().__init__(coordinator, light)
-
-
-class ElkoLightDimmable(ElkoLightBase, LightEntity):
-    """Inels dimmable light class."""
-
-    def __init__(self, coordinator, light):
-        """Initialize of the InelsLightDimmable."""
-        super().__init__(coordinator, light)
-
-        self._brightness = None
-        self._features = 0
-        self._light = light
-        self._coordinator = coordinator
-        self._has_brightness = True
-        self._state = False
-
-        if self._has_brightness is True:
-            self._features = SUPPORT_BRIGHTNESS
-
-    @property
-    def supported_features(self):
-        """Supported feature of the light. We support brightnes.
-        In future maybee i RGB and temperature."""
-        return self._features
-
-    @property
-    def brightness(self):
-        """Return the brightness of the light."""
-        if self._has_brightness is True:
-            self._brightness = self._light.brightness()
-
-            return int(self._brightness * 2.55)
-        return None
-
-    async def async_turn_on(self, **kwargs):  # pylint: disable=unused-argument
-        """Turn on the light."""
-        brightness = 0
-
-        if ATTR_BRIGHTNESS in kwargs:
-            brightness = int(kwargs[ATTR_BRIGHTNESS] / 2.55)
-            self._brightness = brightness
-            await self.hass.async_add_executor_job(
-                self._light.set_brightness, float(brightness)
-            )
-            self._state = self._light.state
-        else:
-            await self.hass.async_add_executor_job(self._light.turn_on)
-            self._brightness = MAX_BRIGHTNESS
-            self._state = True
-
-        await self._coordinator.async_request_refresh()
