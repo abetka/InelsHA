@@ -1,7 +1,5 @@
 - platform: ELKO_telnet
-  lights:
-    cabinet_red:
-      name: "Cabinet Red"
-      host: "192.168.88.246"
-      port: 1111
-      device_id: "0x01040005"
+  name: "Cabinet Red"
+  host: "192.168.88.246"
+  port: 1111
+  device_id: "0x01040005"
