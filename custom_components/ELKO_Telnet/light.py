@@ -9,7 +9,7 @@ import voluptuous as vol
 import homeassistant.helpers.config_validation as cv
 from homeassistant.components.light import (ATTR_BRIGHTNESS, PLATFORM_SCHEMA,
                                             LightEntity)
-from homeassistant.const import CONF_HOST, CONF_PORT, CONF_DEVICE_ID, CONF_LIGHTS, CONF_VALUE_TEMPLATE
+from homeassistant.const import CONF_NAME, CONF_HOST, CONF_PORT, CONF_DEVICE_ID, CONF_LIGHTS, CONF_VALUE_TEMPLATE
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
@@ -20,6 +20,7 @@ DEFAULT_PORT = 1111
 
 # Validation of the user's configuration
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
+    vol.Required(CONF_NAME): cv.string,
     vol.Required(CONF_HOST): cv.string,
     vol.Required(CONF_PORT, default=DEFAULT_PORT): cv.port,
     vol.Required(CONF_DEVICE_ID): cv.string,
@@ -45,6 +46,7 @@ def setup_platform(
         lights.append(
             ELKOLight(
                 object_id,
+                device_config[CONF_NAME],
                 device_config[CONF_HOST],
                 device_config[CONF_DEVICE_ID],
                 device_config[CONF_PORT],
