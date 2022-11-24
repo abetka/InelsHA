@@ -85,6 +85,13 @@ class ELKOLight(LightEntity):
         self._delimiter = ';'
         self._state = None
         self._brightness = None
+        _LOGGER.debug("light: %s", light)
+        _LOGGER.debug("object_id: %s", object_id)
+        _LOGGER.debug("name: %s", name)
+        _LOGGER.debug("host: %s", host)
+        _LOGGER.debug("device_id: %s", device_id)
+        _LOGGER.debug("port: %s", port)
+        _LOGGER.debug("self: %s", self)
 
     @property
     def name(self) -> str:
