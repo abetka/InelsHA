@@ -115,8 +115,8 @@ class ELKOLight(LightEntity):
         You can skip the brightness part if your light does not support
         brightness control.
         """
-        self._brightness = kwargs.get(ATTR_BRIGHTNESS, 255)
-        command = b"SET" + self._delimiter.encode('ascii') + self._device_id.encode('ascii')+ self._delimiter.encode('ascii')+ self._brightness + b"\r\n"
+        self._brightness = str(kwargs.get(ATTR_BRIGHTNESS, 255))
+        command = b"SET" + self._delimiter.encode('ascii') + self._device_id.encode('ascii')+ self._delimiter.encode('ascii')+ self._brightness.encode('ascii') + b"\r\n"
         _LOGGER.debug("Turn On: %s", command)
         self._telnet_command(command)
 
