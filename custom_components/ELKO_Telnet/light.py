@@ -39,7 +39,6 @@ def setup_platform(
     discovery_info: DiscoveryInfoType | None = None
 ) -> None:
     """Set up the Telnet Light platform."""
-    _LOGGER.info(config)
     devices: dict[str, Any] = config[CONF_LIGHTS]
     lights = []
 
@@ -128,7 +127,6 @@ class ELKOLight(LightEntity):
         """Fetch new state data for this light.
         This is the only method that should fetch new data for Home Assistant.
         """
-        self._light.update()
         self._state = self._light.is_on()
         self._brightness = self._light.brightness
 
