@@ -85,7 +85,6 @@ class ELKOLight(LightEntity):
         self._delimiter = ';'
         self._state = None
         self._brightness = None
-        _LOGGER.debug("light: %s", light)
         _LOGGER.debug("object_id: %s", object_id)
         _LOGGER.debug("name: %s", name)
         _LOGGER.debug("host: %s", host)
@@ -120,21 +119,17 @@ class ELKOLight(LightEntity):
         command = b"SET" + self._delimiter.encode('ascii') + self._device_id.encode('ascii')+ self._delimiter.encode('ascii')+ self._light.brightness.encode('ascii') + b"\r\n"
         _LOGGER.debug("Turn On: %s", command)
         self._telnet_command(command)
-        # self._light.turn_on()
 
     def turn_off(self, **kwargs: Any) -> None:
         """Instruct the light to turn off."""
         command = b"SET" + self._delimiter.encode('ascii') + self._device_id.encode('ascii')+ self._delimiter.encode('ascii') + b"0\r\n"
         _LOGGER.debug("Turn Off: %s", command)
         self._telnet_command(command)
-        # self._light.turn_off()
 
     def update(self) -> None:
         """Fetch new state data for this light.
         This is the only method that should fetch new data for Home Assistant.
         """
-        # self._state = self._light.is_on()
-        # self._brightness = self._light.brightness
 
     def _telnet_command(self, command) -> str | None:
         try:
