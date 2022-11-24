@@ -69,12 +69,12 @@ class ELKOLight(LightEntity):
     """Representation of an ELKO Light."""
     def __init__(
         self,
-        light,
         object_id: str,
         name: str,
         host: str,
         device_id: str,
-        port: int
+        port: int,
+        value_template: Template | None,
         ) -> None:
         """Initialize an AwesomeLight."""
         self._object_id = object_id
