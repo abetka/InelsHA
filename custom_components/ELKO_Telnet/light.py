@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import logging
+import telnetlib
 
 import voluptuous as vol
 
@@ -18,14 +19,18 @@ _LOGGER = logging.getLogger(__name__)
 
 DEFAULT_PORT = 1111
 
-# Validation of the user's configuration
-PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
-    vol.Required(CONF_NAME): cv.string,
-    vol.Required(CONF_HOST): cv.string,
-    vol.Required(CONF_PORT, default=DEFAULT_PORT): cv.port,
-    vol.Required(CONF_DEVICE_ID): cv.string,
-})
+LIGHT_SCHEMA = vol.Schema(
+    {
+        vol.Required(CONF_NAME): cv.string,
+        vol.Required(CONF_HOST): cv.string,
+        vol.Required(CONF_PORT, default=DEFAULT_PORT): cv.port,
+        vol.Required(CONF_DEVICE_ID): cv.string,
+    }
+)
 
+PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
+    {vol.Required(CONF_LIGHTS): cv.schema_with_slug_keys(LIGHT_SCHEMA)}
+)
 
 def setup_platform(
     hass: HomeAssistant,
