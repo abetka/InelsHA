@@ -68,17 +68,19 @@ def setup_platform(
 
 class ELKOLight(LightEntity):
     """Representation of an ELKO Light."""
-
     def __init__(
         self,
         light,
+        object_id: str,
+        name: str,
         host: str,
         device_id: str,
         port: int
         ) -> None:
         """Initialize an AwesomeLight."""
         self._light = light
-        self._name = light.name
+        self._object_id = object_id
+        self._name = name
         self._host = host
         self._port = port
         self._device_id = device_id
