@@ -39,6 +39,7 @@ def setup_platform(
     discovery_info: DiscoveryInfoType | None = None
 ) -> None:
     """Set up the Telnet Light platform."""
+    _LOGGER.info(config)
     devices: dict[str, Any] = config[CONF_LIGHTS]
     lights = []
 
