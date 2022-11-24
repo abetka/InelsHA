@@ -85,12 +85,6 @@ class ELKOLight(LightEntity):
         self._delimiter = ';'
         self._state = None
         self._brightness = None
-        _LOGGER.debug("object_id: %s", object_id)
-        _LOGGER.debug("name: %s", name)
-        _LOGGER.debug("host: %s", host)
-        _LOGGER.debug("device_id: %s", device_id)
-        _LOGGER.debug("port: %s", port)
-        _LOGGER.debug("self: %s", self)
 
     @property
     def name(self) -> str:
@@ -116,9 +110,10 @@ class ELKOLight(LightEntity):
         brightness control.
         """
         self._brightness = str(kwargs.get(ATTR_BRIGHTNESS, 255))
+        _LOGGER.debug("Brightness: %s", kwargs)
         command = b"SET" + self._delimiter.encode('ascii') + self._device_id.encode('ascii')+ self._delimiter.encode('ascii')+ self._brightness.encode('ascii') + b"\r\n"
         _LOGGER.debug("Turn On: %s", command)
-        self._telnet_command(command)
+        # self._telnet_command(command)
 
     def turn_off(self, **kwargs: Any) -> None:
         """Instruct the light to turn off."""
