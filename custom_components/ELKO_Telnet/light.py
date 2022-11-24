@@ -69,7 +69,6 @@ class ELKOLight(LightEntity):
     """Representation of an ELKO Light."""
     def __init__(
         self,
-        light,
         object_id: str,
         name: str,
         host: str,
@@ -77,7 +76,6 @@ class ELKOLight(LightEntity):
         port: int
         ) -> None:
         """Initialize an AwesomeLight."""
-        self._light = light
         self._object_id = object_id
         self._name = name
         self._host = host
@@ -114,21 +112,21 @@ class ELKOLight(LightEntity):
         command = b"SET" + self._delimiter.encode('ascii') + self._device_id.encode('ascii')+ self._delimiter.encode('ascii')+ self._light.brightness.encode('ascii') + b"\r\n"
         _LOGGER.debug("Turn On: %s", command)
         self._telnet_command(command)
-        self._light.turn_on()
+        # self._light.turn_on()
 
     def turn_off(self, **kwargs: Any) -> None:
         """Instruct the light to turn off."""
         command = b"SET" + self._delimiter.encode('ascii') + self._device_id.encode('ascii')+ self._delimiter.encode('ascii') + b"0\r\n"
         _LOGGER.debug("Turn Off: %s", command)
         self._telnet_command(command)
-        self._light.turn_off()
+        # self._light.turn_off()
 
     def update(self) -> None:
         """Fetch new state data for this light.
         This is the only method that should fetch new data for Home Assistant.
         """
-        self._state = self._light.is_on()
-        self._brightness = self._light.brightness
+        # self._state = self._light.is_on()
+        # self._brightness = self._light.brightness
 
     def _telnet_command(self, command) -> str | None:
         try:
