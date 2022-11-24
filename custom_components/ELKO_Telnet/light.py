@@ -69,6 +69,7 @@ class ELKOLight(LightEntity):
     """Representation of an ELKO Light."""
     def __init__(
         self,
+        light,
         object_id: str,
         name: str,
         host: str,
