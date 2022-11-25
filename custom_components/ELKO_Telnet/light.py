@@ -19,7 +19,6 @@ from homeassistant.components.light import (
 from homeassistant.const import (
     CONF_PORT,
     CONF_HOST,
-    CONF_NAME,
     CONF_DEVICE_ID,
     CONF_FRIENDLY_NAME,
     CONF_LIGHTS,
@@ -79,15 +78,13 @@ async def _async_create_entities(hass, config):
     """Create the Template Lights."""
     lights = []
 
-    for object_id, device_config in devices.items():
-        unique_id = device_config.get(CONF_UNIQUE_ID)
-        name = device_config.get(CONF_NAME, object_id),
+    for object_id, entity_config in config[CONF_LIGHTS].items():
+        unique_id = entity_config.get(CONF_UNIQUE_ID)
         lights.append(
             ELKOLight(
                 hass,
                 object_id,
-                name,
-                device_config,
+                entity_config,
                 unique_id,
             )
         )
@@ -114,7 +111,6 @@ class ELKOLight(LightEntity):
         self,
         hass,
         object_id,
-        name,
         config,
         unique_id,
     ):
@@ -142,6 +138,8 @@ class ELKOLight(LightEntity):
         self._blue_device_id = config.get(CONF_BLUE_DEVICE_ID)
         self._host = config.get(CONF_HOST)
         self._port = config.get(CONF_PORT)
+
+        self._attr_name = config.get(CONF_FRIENDLY_NAME)
 
         color_modes = {ColorMode.ONOFF}
         color_modes.add(ColorMode.RGB)
