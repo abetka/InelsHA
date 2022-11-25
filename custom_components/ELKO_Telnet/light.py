@@ -53,7 +53,6 @@ LIGHT_SCHEMA = vol.All(
             vol.Optional(CONF_COLOR_ACTION): cv.SCRIPT_SCHEMA,
             vol.Optional(CONF_COLOR_TEMPLATE): cv.template,
             vol.Optional(CONF_FRIENDLY_NAME): cv.string,
-            vol.Optional(CONF_NAME): cv.string,
             vol.Optional(CONF_DEVICE_ID): cv.string,
             vol.Optional(CONF_RED_DEVICE_ID): cv.string,
             vol.Optional(CONF_GREEN_DEVICE_ID): cv.string,
@@ -115,7 +114,6 @@ class ELKOLight(LightEntity):
         unique_id,
     ):
         """Initialize the light."""
-        self._name = name
         self._friendly_name = config.get(CONF_FRIENDLY_NAME)
         self._template = config.get(CONF_VALUE_TEMPLATE)
 
