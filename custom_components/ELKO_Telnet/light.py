@@ -219,16 +219,16 @@ class ELKOLight(LightEntity):
 
         common_params = {}
         _LOGGER.debug("kwargs: %s", kwargs.keys())
-        if ATTR_BRIGHTNESS in kwargs:
+        if ATTR_BRIGHTNESS in kwargs and self._device_id:
             common_params["brightness"] = int( kwargs[ATTR_BRIGHTNESS] * 0.39 )
             command = b"SET" + self._delimiter.encode('ascii') + self._device_id.encode('ascii')+ self._delimiter.encode('ascii') + str(common_params["brightness"]).encode('ascii') + b"\r\n"
             _LOGGER.debug("Turn On: %s", command)
             self._telnet_command(command)
 
-        if ATTR_TRANSITION in kwargs and self._supports_transition is True:
-            common_params["transition"] = kwargs[ATTR_TRANSITION]
+        # if ATTR_TRANSITION in kwargs and self._supports_transition is True:
+        #     common_params["transition"] = kwargs[ATTR_TRANSITION]
 
-        elif ATTR_RGB_COLOR in kwargs and self._color_script:
+        if ATTR_RGB_COLOR in kwargs and self._red_device_id and self._green_device_id and self._blue_device_id:
             rgb_value = kwargs[ATTR_RGB_COLOR]
             common_params["r"] = int( rgb_value[0] * 0.39 )
             common_params["g"] = int( rgb_value[1] * 0.39 )
