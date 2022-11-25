@@ -3,5 +3,7 @@
     cabinet_red:
       friendly_name: "Cabinet Red"
       host: "192.168.88.246"
-      device_id: "0x01040005"
+      red_device_id: "0x01040005"
+      green_device_id: "0x01040006"
+      blue_device_id: "0x01040007"
       port: 1111
