@@ -207,7 +207,7 @@ class ELKOLight(LightEntity):
         #     optimistic_set = True
 
         common_params = {}
-
+        _LOGGER.debug("kwargs: %s", kwargs.keys())
         if ATTR_BRIGHTNESS_PCT in kwargs:
             common_params["brightness_pct"] = kwargs[ATTR_BRIGHTNESS_PCT]
 
@@ -228,7 +228,6 @@ class ELKOLight(LightEntity):
             # await self.async_run_script(
             #     self._on_script, run_variables=common_params, context=self._context
             # )
-        _LOGGER.debug("Turn On: %s", common_params)
         command = b"SET" + self._delimiter.encode('ascii') + self._device_id.encode('ascii')+ self._delimiter.encode('ascii')+ b"100\r\n"
         _LOGGER.debug("Turn On: %s", command)
         self._telnet_command(command)
