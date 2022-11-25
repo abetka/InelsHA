@@ -1,0 +1,9 @@
+- platform: ELKO_telnet
+  lights:
+    kitchen_rgb:
+      friendly_name: "Kitchen RGB"
+      host: "192.168.88.246"
+      red_device_id: "0x01040009"
+      green_device_id: "0x0104000a"
+      blue_device_id: "0x0104000b"
+      port: 1111

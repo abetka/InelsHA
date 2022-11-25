@@ -1,0 +1,9 @@
+- platform: ELKO_telnet
+  lights:
+    bigroom_rgb:
+      friendly_name: "BigRoom RGB"
+      host: "192.168.88.246"
+      red_device_id: "0x01040001"
+      green_device_id: "0x01040002"
+      blue_device_id: "0x01040003"
+      port: 1111

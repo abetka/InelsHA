@@ -1,0 +1,9 @@
+- platform: ELKO_telnet
+  lights:
+    smallroom_rgb:
+      friendly_name: "SmallRoom RGB"
+      host: "192.168.88.246"
+      red_device_id: "0x0104000d"
+      green_device_id: "0x0104000e"
+      blue_device_id: "0x0104000f"
+      port: 1111
