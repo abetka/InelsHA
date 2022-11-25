@@ -75,10 +75,12 @@ async def _async_create_entities(hass, config):
     for object_id, entity_config in config[CONF_LIGHTS].items():
         unique_id = entity_config.get(CONF_UNIQUE_ID)
         lights.append(
-            hass,
-            object_id,
-            entity_config,
-            unique_id,
+            ELKOLight(
+                hass,
+                object_id,
+                entity_config,
+                unique_id,
+            )
         )
 
     return lights
