@@ -36,7 +36,6 @@ from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.script import Script
 from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
 
-from .const import DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
 _VALID_STATES = [STATE_ON, STATE_OFF, "true", "false"]
@@ -120,7 +119,7 @@ class ELKOLight(LightEntity):
 
         self._color_script = None
         if (color_action := config.get(CONF_COLOR_ACTION)) is not None:
-            self._color_script = Script(hass, color_action, friendly_name, DOMAIN)
+            self._color_script = Script(hass, color_action, friendly_name, "ELKO_telnet")
         self._color_template = config.get(CONF_COLOR_TEMPLATE)
         self._supports_transition_template = config.get(CONF_SUPPORTS_TRANSITION)
 
