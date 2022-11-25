@@ -109,9 +109,6 @@ class ELKOLight(LightEntity):
         unique_id,
     ):
         """Initialize the light."""
-        super().__init__(
-            hass, config=config, fallback_name=object_id, unique_id=unique_id
-        )
         friendly_name = self._attr_name
         self._template = config.get(CONF_VALUE_TEMPLATE)
 
