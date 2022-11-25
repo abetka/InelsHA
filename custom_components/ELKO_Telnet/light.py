@@ -208,7 +208,7 @@ class ELKOLight(LightEntity):
 
         common_params = {}
         _LOGGER.debug("kwargs: %s", kwargs.keys())
-        if ATTR_brightness in kwargs:
+        if ATTR_BRIGHTNESS in kwargs:
             common_params["brightness"] = kwargs[ATTR_BRIGHTNESS]
 
         if ATTR_TRANSITION in kwargs and self._supports_transition is True:
