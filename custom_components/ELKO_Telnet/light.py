@@ -8,7 +8,7 @@ from typing import Any
 import voluptuous as vol
 
 from homeassistant.components.light import (
-    ATTR_BRIGHTNESS_PCT,
+    ATTR_BRIGHTNESS,
     ATTR_RGB_COLOR,
     ATTR_TRANSITION,
     ColorMode,
@@ -122,7 +122,7 @@ class ELKOLight(LightEntity):
         self._supports_transition_template = config.get(CONF_SUPPORTS_TRANSITION)
 
         self._state = False
-        self._brightness_pct = None
+        self._brightness = None
         self._color = None
         self._fixed_color_mode = None
         self._supports_transition = False
@@ -139,9 +139,9 @@ class ELKOLight(LightEntity):
             self._fixed_color_mode = next(iter(self._supported_color_modes))
 
     @property
-    def brightness_pct(self) -> int | None:
+    def brightness(self) -> int | None:
         """Return the brightness of the light."""
-        return self._brightness_pct
+        return self._brightness
 
     @property
     def color_mode(self):
@@ -208,8 +208,8 @@ class ELKOLight(LightEntity):
 
         common_params = {}
         _LOGGER.debug("kwargs: %s", kwargs.keys())
-        if ATTR_BRIGHTNESS_PCT in kwargs:
-            common_params["brightness_pct"] = kwargs[ATTR_BRIGHTNESS_PCT]
+        if ATTR_brightness in kwargs:
+            common_params["brightness"] = kwargs[ATTR_BRIGHTNESS]
 
         if ATTR_TRANSITION in kwargs and self._supports_transition is True:
             common_params["transition"] = kwargs[ATTR_TRANSITION]
@@ -228,7 +228,7 @@ class ELKOLight(LightEntity):
             # await self.async_run_script(
             #     self._on_script, run_variables=common_params, context=self._context
             # )
-        command = b"SET" + self._delimiter.encode('ascii') + self._device_id.encode('ascii')+ self._delimiter.encode('ascii')+ b"100\r\n"
+        command = b"SET" + self._delimiter.encode('ascii') + self._device_id.encode('ascii')+ self._delimiter.encode('ascii') + str(common_params["brightness"]).encode('ascii') + b"\r\n"
         _LOGGER.debug("Turn On: %s", command)
         self._telnet_command(command)
         if optimistic_set:
@@ -252,27 +252,27 @@ class ELKOLight(LightEntity):
             self.async_write_ha_state()
 
     @callback
-    def _update_brightness_pct(self, brightness):
+    def _update_brightness(self, brightness):
         """Update the brightness from the template."""
         try:
-            if brightness_pct in (None, "None", ""):
-                self._brightness_pct = None
+            if brightness in (None, "None", ""):
+                self._brightness = None
                 return
-            if 0 <= int(brightness_pct) <= 100:
-                self._brightness_pct = int(brightness_pct)
+            if 0 <= int(brightness) <= 100:
+                self._brightness = int(brightness)
             else:
                 _LOGGER.error(
                     "Received invalid brightness : %s for entity %s. Expected: 0-100",
-                    brightness_pct,
+                    brightness,
                     self.entity_id,
                 )
-                self._brightness_pct = None
+                self._brightness = None
         except ValueError:
             _LOGGER.error(
                 "Template must supply an integer brightness from 0-100, or 'None'",
                 exc_info=True,
             )
-            self._brightness_pct = None
+            self._brightness = None
 
     @callback
     def _update_state(self, result):
