@@ -19,6 +19,7 @@ from homeassistant.components.light import (
 from homeassistant.const import (
     CONF_PORT,
     CONF_HOST,
+    CONF_NAME,
     CONF_DEVICE_ID,
     CONF_FRIENDLY_NAME,
     CONF_LIGHTS,
@@ -51,6 +52,7 @@ LIGHT_SCHEMA = vol.All(
             vol.Optional(CONF_COLOR_ACTION): cv.SCRIPT_SCHEMA,
             vol.Optional(CONF_COLOR_TEMPLATE): cv.template,
             vol.Optional(CONF_FRIENDLY_NAME): cv.string,
+            vol.Optional(CONF_NAME): cv.string,
             vol.Required(CONF_DEVICE_ID): cv.string,
             vol.Required(CONF_HOST): cv.string,
             vol.Required(CONF_PORT): cv.port,
@@ -109,6 +111,7 @@ class ELKOLight(LightEntity):
         unique_id,
     ):
         """Initialize the light."""
+        self._name = config.get(CONF_NAME)
         self._friendly_name = config.get(CONF_FRIENDLY_NAME)
         self._template = config.get(CONF_VALUE_TEMPLATE)
 
@@ -125,6 +128,9 @@ class ELKOLight(LightEntity):
         self._supports_transition = False
 
         self._delimiter = ';'
+        self._device_id = config.get(CONF_DEVICE_ID)
+        self._host = config.get(CONF_HOST)
+        self._port = config.get(CONF_PORT)
 
         color_modes = {ColorMode.ONOFF}
         color_modes.add(ColorMode.RGB)
@@ -151,6 +157,7 @@ class ELKOLight(LightEntity):
     def supported_color_modes(self):
         """Flag supported color modes."""
         return self._supported_color_modes
+
 
     @property
     def is_on(self) -> bool | None:
@@ -345,8 +352,8 @@ class ELKOLight(LightEntity):
 
     def _telnet_command(self, command) -> str | None:
         try:
-            _LOGGER.debug("Telnet connect to: %s with port: %s", self._resource, self._port)
-            telnet = telnetlib.Telnet(self._resource, self._port)
+            _LOGGER.debug("Telnet connect to: %s with port: %s", self._host, self._port)
+            telnet = telnetlib.Telnet(self._host, self._port)
             telnet.write(command)
             response = telnet.read_until(b"\r\n").decode('ascii').split(self._delimiter)[2].rstrip("\r").rstrip("\n")
             telnet.close()
