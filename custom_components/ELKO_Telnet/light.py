@@ -79,15 +79,15 @@ async def _async_create_entities(hass, config):
     """Create the Template Lights."""
     lights = []
 
-    for object_id, entity_config in config[CONF_LIGHTS].items():
-        unique_id = entity_config.get(CONF_UNIQUE_ID)
-        name = entity_config.get(CONF_NAME, object_id),
+    for object_id, device_config in devices.items():
+        unique_id = device_config.get(CONF_UNIQUE_ID)
+        name = device_config.get(CONF_NAME, object_id),
         lights.append(
             ELKOLight(
                 hass,
                 object_id,
                 name,
-                entity_config,
+                device_config,
                 unique_id,
             )
         )
