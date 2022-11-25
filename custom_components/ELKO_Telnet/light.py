@@ -109,12 +109,12 @@ class ELKOLight(LightEntity):
         unique_id,
     ):
         """Initialize the light."""
-        friendly_name = self._attr_name
+        self._friendly_name = config.get(CONF_FRIENDLY_NAME)
         self._template = config.get(CONF_VALUE_TEMPLATE)
 
         self._color_script = None
         if (color_action := config.get(CONF_COLOR_ACTION)) is not None:
-            self._color_script = Script(hass, color_action, friendly_name, "ELKO_telnet")
+            self._color_script = Script(hass, color_action, self._friendly_name, "ELKO_telnet")
         self._color_template = config.get(CONF_COLOR_TEMPLATE)
         self._supports_transition_template = config.get(CONF_SUPPORTS_TRANSITION)
 
