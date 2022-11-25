@@ -44,7 +44,9 @@ _VALID_STATES = [STATE_ON, STATE_OFF, "true", "false"]
 CONF_COLOR_ACTION = "set_color"
 CONF_COLOR_TEMPLATE = "color_template"
 CONF_SUPPORTS_TRANSITION = "supports_transition_template"
-
+CONF_RED_DEVICE_ID = "red_device_id"
+CONF_GREEN_DEVICE_ID = "green_device_id"
+CONF_BLUE_DEVICE_ID = "blue_device_id"
 
 LIGHT_SCHEMA = vol.All(
     vol.Schema(
@@ -53,7 +55,10 @@ LIGHT_SCHEMA = vol.All(
             vol.Optional(CONF_COLOR_TEMPLATE): cv.template,
             vol.Optional(CONF_FRIENDLY_NAME): cv.string,
             vol.Optional(CONF_NAME): cv.string,
-            vol.Required(CONF_DEVICE_ID): cv.string,
+            vol.Optional(CONF_DEVICE_ID): cv.string,
+            vol.Optional(CONF_RED_DEVICE_ID): cv.string,
+            vol.Optional(CONF_GREEN_DEVICE_ID): cv.string,
+            vol.Optional(CONF_BLUE_DEVICE_ID): cv.string,
             vol.Required(CONF_HOST): cv.string,
             vol.Required(CONF_PORT): cv.port,
             vol.Optional(CONF_SUPPORTS_TRANSITION): cv.template,
@@ -76,10 +81,12 @@ async def _async_create_entities(hass, config):
 
     for object_id, entity_config in config[CONF_LIGHTS].items():
         unique_id = entity_config.get(CONF_UNIQUE_ID)
+        name = entity_config.get(CONF_NAME, object_id),
         lights.append(
             ELKOLight(
                 hass,
                 object_id,
+                name,
                 entity_config,
                 unique_id,
             )
@@ -107,11 +114,12 @@ class ELKOLight(LightEntity):
         self,
         hass,
         object_id,
+        name,
         config,
         unique_id,
     ):
         """Initialize the light."""
-        self._name = config.get(CONF_NAME)
+        self._name = name
         self._friendly_name = config.get(CONF_FRIENDLY_NAME)
         self._template = config.get(CONF_VALUE_TEMPLATE)
 
@@ -129,6 +137,9 @@ class ELKOLight(LightEntity):
 
         self._delimiter = ';'
         self._device_id = config.get(CONF_DEVICE_ID)
+        self._red_device_id = config.get(CONF_RED_DEVICE_ID)
+        self._green_device_id = config.get(CONF_GREEN_DEVICE_ID)
+        self._blue_device_id = config.get(CONF_BLUE_DEVICE_ID)
         self._host = config.get(CONF_HOST)
         self._port = config.get(CONF_PORT)
 
@@ -209,28 +220,30 @@ class ELKOLight(LightEntity):
         common_params = {}
         _LOGGER.debug("kwargs: %s", kwargs.keys())
         if ATTR_BRIGHTNESS in kwargs:
-            common_params["brightness"] = kwargs[ATTR_BRIGHTNESS]
+            common_params["brightness"] = int( kwargs[ATTR_BRIGHTNESS] * 0.39 )
+            command = b"SET" + self._delimiter.encode('ascii') + self._device_id.encode('ascii')+ self._delimiter.encode('ascii') + str(common_params["brightness"]).encode('ascii') + b"\r\n"
+            _LOGGER.debug("Turn On: %s", command)
+            self._telnet_command(command)
 
         if ATTR_TRANSITION in kwargs and self._supports_transition is True:
             common_params["transition"] = kwargs[ATTR_TRANSITION]
 
         elif ATTR_RGB_COLOR in kwargs and self._color_script:
             rgb_value = kwargs[ATTR_RGB_COLOR]
-            common_params["r"] = int(rgb_value[0])
-            common_params["g"] = int(rgb_value[1])
-            common_params["b"] = int(rgb_value[2])
+            common_params["r"] = int( rgb_value[0] * 0.39 )
+            common_params["g"] = int( rgb_value[1] * 0.39 )
+            common_params["b"] = int( rgb_value[2] * 0.39 )
 
-            # await self.async_run_script(
-            #     self._color_script, run_variables=common_params, context=self._context
-            # )
-        #else:
+            command = b"SET" + self._delimiter.encode('ascii') + self._red_device_id.encode('ascii')+ self._delimiter.encode('ascii') + str(common_params["r"]).encode('ascii') + b"\r\n"
+            _LOGGER.debug("Turn On Red: %s", command)
+            self._telnet_command(command)
+            command = b"SET" + self._delimiter.encode('ascii') + self._green_device_id.encode('ascii')+ self._delimiter.encode('ascii') + str(common_params["g"]).encode('ascii') + b"\r\n"
+            _LOGGER.debug("Turn On Green: %s", command)
+            self._telnet_command(command)
+            command = b"SET" + self._delimiter.encode('ascii') + self._blue_device_id.encode('ascii')+ self._delimiter.encode('ascii') + str(common_params["b"]).encode('ascii') + b"\r\n"
+            _LOGGER.debug("Turn On Blue: %s", command)
+            self._telnet_command(command)
 
-            # await self.async_run_script(
-            #     self._on_script, run_variables=common_params, context=self._context
-            # )
-        command = b"SET" + self._delimiter.encode('ascii') + self._device_id.encode('ascii')+ self._delimiter.encode('ascii') + str(common_params["brightness"]).encode('ascii') + b"\r\n"
-        _LOGGER.debug("Turn On: %s", command)
-        self._telnet_command(command)
         if optimistic_set:
             self.async_write_ha_state()
 
@@ -244,9 +257,23 @@ class ELKOLight(LightEntity):
         #     )
         # else:
         #     await self.async_run_script(self._off_script, context=self._context)
-        command = b"SET" + self._delimiter.encode('ascii') + self._device_id.encode('ascii')+ self._delimiter.encode('ascii') + b"0\r\n"
-        _LOGGER.debug("Turn Off: %s", command)
-        self._telnet_command(command)
+        if self._red_device_id is not None:
+            command = b"SET" + self._delimiter.encode('ascii') + self._red_device_id.encode('ascii')+ self._delimiter.encode('ascii') + b"0\r\n"
+            _LOGGER.debug("Turn Off Red: %s", command)
+            self._telnet_command(command)
+        if self._green_device_id is not None:
+            command = b"SET" + self._delimiter.encode('ascii') + self._green_device_id.encode('ascii')+ self._delimiter.encode('ascii') + b"0\r\n"
+            _LOGGER.debug("Turn Off Green: %s", command)
+            self._telnet_command(command)
+        if self._blue_device_id is not None:
+            command = b"SET" + self._delimiter.encode('ascii') + self._blue_device_id.encode('ascii')+ self._delimiter.encode('ascii') + b"0\r\n"
+            _LOGGER.debug("Turn Off Blue: %s", command)
+            self._telnet_command(command)
+        if self._device_id is not None:
+            command = b"SET" + self._delimiter.encode('ascii') + self._device_id.encode('ascii')+ self._delimiter.encode('ascii') + b"0\r\n"
+            _LOGGER.debug("Turn Off: %s", command)
+            self._telnet_command(command)
+
         if self._template is None:
             self._state = False
             self.async_write_ha_state()
