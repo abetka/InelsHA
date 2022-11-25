@@ -153,14 +153,6 @@ class ELKOLight(LightEntity):
         return self._supported_color_modes
 
     @property
-    def supported_features(self) -> LightEntityFeature:
-        """Flag supported features."""
-        supported_features = LightEntityFeature(0)
-        if self._supports_transition is True:
-            supported_features |= LightEntityFeature.TRANSITION
-        return supported_features
-
-    @property
     def is_on(self) -> bool | None:
         """Return true if device is on."""
         return self._state
