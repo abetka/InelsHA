@@ -144,7 +144,7 @@ class ELKOSwitch(SwitchEntity):
         _LOGGER.debug("Status is: %s", response)
         if response == '1':
             self._attr_is_on = True
-        else
+        else:
             self._attr_is_on = False
 
     def turn_on(self, **kwargs: Any) -> None:
