@@ -355,7 +355,7 @@ class ELKOSensors(SensorEntity):
         """Fetch new state data for the sensor.
         This is the only method that should fetch new data for Home Assistant.
         """
-        response = telnet.getData(**self._cmd)
+        response = int(telnet.getData(**self._cmd))
         _LOGGER.debug("Device id %s Status is: %s Device class is: %s Measurement is: %s", self._cmd['device_id'], response, self._attr_device_class, self._attr_native_unit_of_measurement)
         if self._attr_device_class == 'binary':
             _LOGGER.debug("Device class binary")
@@ -392,4 +392,4 @@ class ELKOSensors(SensorEntity):
                     _LOGGER.debug("Status is closed")
                     self._attr_native_value = 'closed'
         else:
-            self._attr_native_value = int( int(response) * 0.01 )
+            self._attr_native_value = int( response * 0.01 )
