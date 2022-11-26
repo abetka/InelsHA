@@ -140,7 +140,7 @@ class ELKOSwitch(SwitchEntity):
         """Update device state."""
         if not self._command_state:
             return
-        response = telnet.getData(self._cmd)
+        response = telnet.getData(**self._cmd)
         _LOGGER.debug("Status is: %s", response)
         if response == '1':
             self._attr_is_on = True
@@ -152,7 +152,7 @@ class ELKOSwitch(SwitchEntity):
         self._cmd.update({
             'command': self._command_on,
         })
-        responce = telnet.setData(self._cmd)
+        responce = telnet.setData(**self._cmd)
         _LOGGER.debug("Status is: %s", response)
         if self.assumed_state:
             self._attr_is_on = True
@@ -163,7 +163,7 @@ class ELKOSwitch(SwitchEntity):
         self._cmd.update({
             'command': self._command_off,
         })
-        responce = telnet.setData(self._cmd)
+        responce = telnet.setData(**self._cmd)
         if self.assumed_state:
             self._attr_is_on = False
             self.schedule_update_ha_state()
