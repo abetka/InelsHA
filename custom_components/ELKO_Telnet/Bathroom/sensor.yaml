@@ -1,69 +1,56 @@
 # Bathroom Temperature
-- platform: command_line
-  unique_id: bathroom_temperature
-  name: Bathroom Temperature
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01050013"
-  unit_of_measurement: "°C"
-  value_template: "{{ value | multiply(0.01) | round(1) }}"
-- platform: command_line
-  unique_id: bathroom_humidity
-  name: Bathroom Humidity
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01050006"
-  unit_of_measurement: "%"
-  value_template: "{{ value | multiply(0.01) | round(1) }}"
-- platform: command_line
-  unique_id: bathroom_switch_temperature
-  name: Bathroom Switch Temperature
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01050004"
-  unit_of_measurement: "°C"
-  value_template: "{{ value | multiply(0.01) | round(1) }}"
-- platform: command_line
-  unique_id: bathroom_mirror
-  name: Bathroom Mirror Backlight
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020001"
-  value_template: >-
-    {% if value == '1' %}
-      on
-    {% else %}
-      off
-    {% endif %}
-- platform: command_line
-  unique_id: bathroom_backlight
-  name: Bathroom Wall Backlight
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020012"
-  value_template: >-
-    {% if value == '1' %}
-      on
-    {% else %}
-      off
-    {% endif %}
-- platform: command_line
-  unique_id: bathroom_fan
-  name: Bathroom Fan
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020024"
-  value_template: >-
-    {% if value == '1' %}
-      on
-    {% else %}
-      off
-    {% endif %}
-- platform: command_line
-  unique_id: bathroom_pointslights
-  name: Bathroom Points Light
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0102000b"
-  value_template: >-
-    {% if value == '1' %}
-      on
-    {% else %}
-      off
-    {% endif %}
-- platform: command_line
-  unique_id: bathroom_floor_heater
-  name: Bathroom Floor Heater
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020043"
-  value_template: >-
-    {% if value == '1' %}
-      on
-    {% else %}
-      off
-    {% endif %}
+- platform: ELKO_telnet
+  sensors:
+    bathroom_temperature: &sensors
+      friendly_name: "Bathroom Temperature"
+      host: "192.168.88.246"
+      device_id: "0x01050013"
+      port: 1111
+      device_class: 'temperature'
+      unit_of_measurement: "°C"
+- platform: ELKO_telnet
+  sensors:
+    bathroom_switch_temperature:
+      <<: *sensors
+      friendly_name: "Bathroom Switch Temperature"
+      device_id: "0x01050004"
+- platform: ELKO_telnet
+  sensors:
+    bathroom_humidity:
+      <<: *sensors
+      friendly_name: "Bathroom Humidity"
+      device_id: "0x01050006"
+      device_class: 'humidity'
+      unit_of_measurement: "%"
+- platform: ELKO_telnet
+  sensors:
+    bathroom_mirror: &sensors2
+      <<: *sensors
+      friendly_name: "Bathroom Mirror Backlight"
+      device_id: "0x01020001"
+      device_class: 'binary'
+      unit_of_measurement: "on/off"
+- platform: ELKO_telnet
+  sensors:
+    bathroom_backlight:
+      <<: *sensors2
+      friendly_name: "Bathroom Wall Backlight"
+      device_id: "0x01020012"
+- platform: ELKO_telnet
+  sensors:
+    bathroom_fan:
+      <<: *sensors2
+      friendly_name: "Bathroom Fan"
+      device_id: "0x01020024"
+- platform: ELKO_telnet
+  sensors:
+    bathroom_pointslights:
+      <<: *sensors2
+      friendly_name: "Bathroom Points Light"
+      device_id: "0x0102000b"
+- platform: ELKO_telnet
+  sensors:
+    bathroom_floor_heater:
+      <<: *sensors2
+      friendly_name: "Bathroom Floor Heater"
+      device_id: "0x01020043"
