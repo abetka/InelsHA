@@ -346,7 +346,7 @@ class ELKOSensors(SensorEntity):
             'device_id': config.get(CONF_DEVICE_ID),
         }
         self._attr_native_unit_of_measurement = config.get(CONF_UNIT_OF_MEASUREMENT)
-        self._attr_name = config.get(CONF_FRIENDLY_NAME)
+        self._attr_name = object_id
         self._attr_device_class = config.get(CONF_DEVICE_CLASS)
         self._attr_state_class = config.get(CONF_STATE_CLASS)
         self._attr_native_value = None
