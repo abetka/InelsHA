@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 import logging
-import telnetlib
+from telnet import telnet
 from typing import Any
 
 import voluptuous as vol
@@ -46,6 +46,8 @@ CONF_SUPPORTS_TRANSITION = "supports_transition_template"
 CONF_RED_DEVICE_ID = "red_device_id"
 CONF_GREEN_DEVICE_ID = "green_device_id"
 CONF_BLUE_DEVICE_ID = "blue_device_id"
+CONF_DELIMITER = 'delimiter'
+DEFAULT_DELIMITER = ';'
 
 LIGHT_SCHEMA = vol.All(
     vol.Schema(
@@ -57,6 +59,7 @@ LIGHT_SCHEMA = vol.All(
             vol.Optional(CONF_RED_DEVICE_ID): cv.string,
             vol.Optional(CONF_GREEN_DEVICE_ID): cv.string,
             vol.Optional(CONF_BLUE_DEVICE_ID): cv.string,
+            vol.Optional(CONF_DELIMITER, default=DEFAULT_DELIMITER): cv.string,
             vol.Required(CONF_HOST): cv.string,
             vol.Required(CONF_PORT): cv.port,
             vol.Optional(CONF_SUPPORTS_TRANSITION): cv.template,
@@ -129,13 +132,16 @@ class ELKOLight(LightEntity):
         self._fixed_color_mode = None
         self._supports_transition = False
 
-        self._delimiter = ';'
         self._device_id = config.get(CONF_DEVICE_ID)
         self._red_device_id = config.get(CONF_RED_DEVICE_ID)
         self._green_device_id = config.get(CONF_GREEN_DEVICE_ID)
         self._blue_device_id = config.get(CONF_BLUE_DEVICE_ID)
-        self._host = config.get(CONF_HOST)
-        self._port = config.get(CONF_PORT)
+
+        self._cmd = {
+            'host': config.get(CONF_HOST),
+            'port': config.get(CONF_PORT),
+            'delimiter': config.get(CONF_DELIMITER),
+        }
 
         self._attr_name = config.get(CONF_FRIENDLY_NAME)
 
@@ -203,42 +209,39 @@ class ELKOLight(LightEntity):
             self._state = True
             optimistic_set = True
 
-        # if self._color_template is None and ATTR_RGB_COLOR in kwargs:
-        #     _LOGGER.debug(
-        #         "Optimistically setting color to %s",
-        #         kwargs[ATTR_RGB_COLOR],
-        #     )
-        #     self._color = kwargs[ATTR_RGB_COLOR]
-        #     if self._temperature_template is None:
-        #         self._temperature = None
-        #     optimistic_set = True
-
         common_params = {}
         _LOGGER.debug("kwargs: %s", kwargs.keys())
         if ATTR_BRIGHTNESS in kwargs and self._device_id:
-            common_params["brightness"] = int( kwargs[ATTR_BRIGHTNESS] * 0.39 )
-            command = b"SET" + self._delimiter.encode('ascii') + self._device_id.encode('ascii')+ self._delimiter.encode('ascii') + str(common_params["brightness"]).encode('ascii') + b"\r\n"
-            _LOGGER.debug("Turn On: %s", command)
-            self._telnet_command(command)
+            self._cmd.append({
+                'device_id': self._device_id,
+                'command': str(int( kwargs[ATTR_BRIGHTNESS] * 0.39 )),
+            })
+            responce = telnet.setData(self._cmd)
+            _LOGGER.debug("Status is: %s", response)
 
         # if ATTR_TRANSITION in kwargs and self._supports_transition is True:
         #     common_params["transition"] = kwargs[ATTR_TRANSITION]
 
         if ATTR_RGB_COLOR in kwargs and self._red_device_id and self._green_device_id and self._blue_device_id:
             rgb_value = kwargs[ATTR_RGB_COLOR]
-            common_params["r"] = int( rgb_value[0] * 0.39 )
-            common_params["g"] = int( rgb_value[1] * 0.39 )
-            common_params["b"] = int( rgb_value[2] * 0.39 )
-
-            command = b"SET" + self._delimiter.encode('ascii') + self._red_device_id.encode('ascii')+ self._delimiter.encode('ascii') + str(common_params["r"]).encode('ascii') + b"\r\n"
-            _LOGGER.debug("Turn On Red: %s", command)
-            self._telnet_command(command)
-            command = b"SET" + self._delimiter.encode('ascii') + self._green_device_id.encode('ascii')+ self._delimiter.encode('ascii') + str(common_params["g"]).encode('ascii') + b"\r\n"
-            _LOGGER.debug("Turn On Green: %s", command)
-            self._telnet_command(command)
-            command = b"SET" + self._delimiter.encode('ascii') + self._blue_device_id.encode('ascii')+ self._delimiter.encode('ascii') + str(common_params["b"]).encode('ascii') + b"\r\n"
-            _LOGGER.debug("Turn On Blue: %s", command)
-            self._telnet_command(command)
+            self._cmd.append({
+                'device_id': self._red_device_id,
+                'command': str(int( rgb_value[0] * 0.39 )),
+            })
+            responce = telnet.setData(self._cmd)
+            _LOGGER.debug("Status is: %s", response)
+            self._cmd.append({
+                'device_id': self._green_device_id,
+                'command': str(int( rgb_value[1] * 0.39 )),
+            })
+            responce = telnet.setData(self._cmd)
+            _LOGGER.debug("Status is: %s", response)
+            self._cmd.append({
+                'device_id': self._blue_device_id,
+                'command': str(int( rgb_value[2] * 0.39 )),
+            })
+            responce = telnet.setData(self._cmd)
+            _LOGGER.debug("Status is: %s", response)
 
         if optimistic_set:
             self.async_write_ha_state()
@@ -254,21 +257,33 @@ class ELKOLight(LightEntity):
         # else:
         #     await self.async_run_script(self._off_script, context=self._context)
         if self._red_device_id is not None:
-            command = b"SET" + self._delimiter.encode('ascii') + self._red_device_id.encode('ascii')+ self._delimiter.encode('ascii') + b"0\r\n"
-            _LOGGER.debug("Turn Off Red: %s", command)
-            self._telnet_command(command)
+            self._cmd.append({
+                'device_id': self._red_device_id,
+                'command': '0',
+            })
+            responce = telnet.setData(self._cmd)
+            _LOGGER.debug("Status is: %s", response)
         if self._green_device_id is not None:
-            command = b"SET" + self._delimiter.encode('ascii') + self._green_device_id.encode('ascii')+ self._delimiter.encode('ascii') + b"0\r\n"
-            _LOGGER.debug("Turn Off Green: %s", command)
-            self._telnet_command(command)
+            self._cmd.append({
+                'device_id': self._green_device_id,
+                'command': '0',
+            })
+            responce = telnet.setData(self._cmd)
+            _LOGGER.debug("Status is: %s", response)
         if self._blue_device_id is not None:
-            command = b"SET" + self._delimiter.encode('ascii') + self._blue_device_id.encode('ascii')+ self._delimiter.encode('ascii') + b"0\r\n"
-            _LOGGER.debug("Turn Off Blue: %s", command)
-            self._telnet_command(command)
+            self._cmd.append({
+                'device_id': self._blue_device_id,
+                'command': '0',
+            })
+            responce = telnet.setData(self._cmd)
+            _LOGGER.debug("Status is: %s", response)
         if self._device_id is not None:
-            command = b"SET" + self._delimiter.encode('ascii') + self._device_id.encode('ascii')+ self._delimiter.encode('ascii') + b"0\r\n"
-            _LOGGER.debug("Turn Off: %s", command)
-            self._telnet_command(command)
+            self._cmd.append({
+                'device_id': self._device_id,
+                'command': '0',
+            })
+            responce = telnet.setData(self._cmd)
+            _LOGGER.debug("Status is: %s", response)
 
         if self._template is None:
             self._state = False
@@ -371,18 +386,3 @@ class ELKOLight(LightEntity):
             self._supports_transition = False
             return
         self._supports_transition = bool(render)
-
-    def _telnet_command(self, command) -> str | None:
-        try:
-            _LOGGER.debug("Telnet connect to: %s with port: %s", self._host, self._port)
-            telnet = telnetlib.Telnet(self._host, self._port)
-            telnet.write(command)
-            response = telnet.read_until(b"\r\n").decode('ascii').split(self._delimiter)[2].rstrip("\r").rstrip("\n")
-            telnet.close()
-        except OSError as error:
-            _LOGGER.error(
-                'Command "%s" failed with exception: %s', command, repr(error)
-            )
-            return None
-        _LOGGER.debug("Telnet response: %s", response)
-        return response

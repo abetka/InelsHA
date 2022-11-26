@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from datetime import timedelta
 import logging
-import telnetlib
+from telnet import telnet
 from typing import Any
 
 import voluptuous as vol
@@ -35,6 +35,8 @@ _LOGGER = logging.getLogger(__name__)
 
 DEFAULT_PORT = 1111
 DEFAULT_TIMEOUT = 0.2
+CONF_DELIMITER = 'delimiter'
+DEFAULT_DELIMITER = ';'
 
 SWITCH_SCHEMA = vol.Schema(
     {
@@ -42,6 +44,7 @@ SWITCH_SCHEMA = vol.Schema(
         vol.Required(CONF_COMMAND_ON): cv.string,
         vol.Required(CONF_RESOURCE): cv.string,
         vol.Required(CONF_DEVICE_ID): cv.string,
+        vol.Optional(CONF_DELIMITER, default=DEFAULT_DELIMITER): cv.string,
         vol.Optional(CONF_VALUE_TEMPLATE): cv.template,
         vol.Optional(CONF_COMMAND_STATE): cv.string,
         vol.Optional(CONF_NAME): cv.string,
@@ -85,6 +88,7 @@ def setup_platform(
                 device_config.get(CONF_COMMAND_STATE),
                 value_template,
                 device_config[CONF_TIMEOUT],
+                device_config[CONF_DELIMITER],
             )
         )
 
@@ -109,6 +113,7 @@ class ELKOSwitch(SwitchEntity):
         command_state: str | None,
         value_template: Template | None,
         timeout: float,
+        delimiter: str,
     ) -> None:
         """Initialize the switch."""
         self.entity_id = ENTITY_ID_FORMAT.format(object_id)
@@ -117,7 +122,6 @@ class ELKOSwitch(SwitchEntity):
         self._port = port
         self._attr_name = friendly_name
         self._attr_is_on = False
-        self._delimiter = ";"
         self._command_on = command_on
         self._command_off = command_off
         self._command_state = command_state
@@ -125,51 +129,41 @@ class ELKOSwitch(SwitchEntity):
         self._timeout = timeout
         self._attr_should_poll = bool(command_state)
         self._attr_assumed_state = bool(command_state is None)
-
-    def _telnet_command(self, command) -> str | None:
-        try:
-            _LOGGER.debug("Telnet connect to: %s with port: %s", self._resource, self._port)
-            telnet = telnetlib.Telnet(self._resource, self._port)
-            telnet.write(command)
-            response = telnet.read_until(b"\r\n").decode('ascii').split(self._delimiter)[2].rstrip("\r").rstrip("\n")
-            telnet.close()
-        except OSError as error:
-            _LOGGER.error(
-                'Command "%s" failed with exception: %s', command, repr(error)
-            )
-            return None
-        _LOGGER.debug("Telnet response: %s", response)
-        return response
+        self._cmd = {
+            'host': resource,
+            'port': port,
+            'delimiter': delimiter,
+            'device_id': device_id,
+        }
 
     def update(self) -> None:
         """Update device state."""
         if not self._command_state:
             return
-        command = b"GET" + self._delimiter.encode('ascii') + self._device_id.encode('ascii') + b"\r\n"
-        _LOGGER.debug("Get Status: %s", command)
-        response = self._telnet_command(command)
+        response = telnet.getData(self._cmd)
         _LOGGER.debug("Status is: %s", response)
-        if response and self._value_template:
-            rendered = self._value_template.render_with_possible_json_value(response)
-        else:
-            _LOGGER.warning("Empty response for command: %s", self._command_state)
-            return None
-        self._attr_is_on = rendered == "1"
+        if response == '1':
+            self._attr_is_on = True
+        else
+            self._attr_is_on = False
 
     def turn_on(self, **kwargs: Any) -> None:
         """Turn the device on."""
-        command = b"SET" + self._delimiter.encode('ascii') + self._device_id.encode('ascii')+ self._delimiter.encode('ascii')+ self._command_on.encode('ascii') + b"\r\n"
-        _LOGGER.debug("Turn On: %s", command)
-        self._telnet_command(command)
+        self._cmd.append({
+            'command': self._command_on,
+        })
+        responce = telnet.setData(self._cmd)
+        _LOGGER.debug("Status is: %s", response)
         if self.assumed_state:
             self._attr_is_on = True
             self.schedule_update_ha_state()
 
     def turn_off(self, **kwargs: Any) -> None:
         """Turn the device off."""
-        command = b"SET" + self._delimiter.encode('ascii') + self._device_id.encode('ascii')+ self._delimiter.encode('ascii')+ self._command_off.encode('ascii') + b"\r\n"
-        _LOGGER.debug("Turn Off: %s", command)
-        self._telnet_command(command)
+        self._cmd.append({
+            'command': self._command_off,
+        })
+        responce = telnet.setData(self._cmd)
         if self.assumed_state:
             self._attr_is_on = False
             self.schedule_update_ha_state()
