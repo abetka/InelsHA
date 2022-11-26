@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 import logging
-from telnet import telnet
+from . import telnet
 from typing import Any
 
 import voluptuous as vol

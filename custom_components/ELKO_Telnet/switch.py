@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from datetime import timedelta
 import logging
-from telnet import telnet
+from . import telnet
 from typing import Any
 
 import voluptuous as vol
