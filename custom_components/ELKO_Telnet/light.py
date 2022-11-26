@@ -216,7 +216,7 @@ class ELKOLight(LightEntity):
                 'device_id': self._device_id,
                 'command': str(int( kwargs[ATTR_BRIGHTNESS] * 0.39 )),
             })
-            responce = telnet.setData(**self._cmd)
+            response = telnet.setData(**self._cmd)
             _LOGGER.debug("Status is: %s", response)
 
         # if ATTR_TRANSITION in kwargs and self._supports_transition is True:
@@ -228,19 +228,19 @@ class ELKOLight(LightEntity):
                 'device_id': self._red_device_id,
                 'command': str(int( rgb_value[0] * 0.39 )),
             })
-            responce = telnet.setData(**self._cmd)
+            response = telnet.setData(**self._cmd)
             _LOGGER.debug("Status is: %s", response)
             self._cmd.update({
                 'device_id': self._green_device_id,
                 'command': str(int( rgb_value[1] * 0.39 )),
             })
-            responce = telnet.setData(**self._cmd)
+            response = telnet.setData(**self._cmd)
             _LOGGER.debug("Status is: %s", response)
             self._cmd.update({
                 'device_id': self._blue_device_id,
                 'command': str(int( rgb_value[2] * 0.39 )),
             })
-            responce = telnet.setData(**self._cmd)
+            response = telnet.setData(**self._cmd)
             _LOGGER.debug("Status is: %s", response)
 
         if optimistic_set:
@@ -261,28 +261,28 @@ class ELKOLight(LightEntity):
                 'device_id': self._red_device_id,
                 'command': '0',
             })
-            responce = telnet.setData(**self._cmd)
+            response = telnet.setData(**self._cmd)
             _LOGGER.debug("Status is: %s", response)
         if self._green_device_id is not None:
             self._cmd.update({
                 'device_id': self._green_device_id,
                 'command': '0',
             })
-            responce = telnet.setData(**self._cmd)
+            response = telnet.setData(**self._cmd)
             _LOGGER.debug("Status is: %s", response)
         if self._blue_device_id is not None:
             self._cmd.update({
                 'device_id': self._blue_device_id,
                 'command': '0',
             })
-            responce = telnet.setData(**self._cmd)
+            response = telnet.setData(**self._cmd)
             _LOGGER.debug("Status is: %s", response)
         if self._device_id is not None:
             self._cmd.update({
                 'device_id': self._device_id,
                 'command': '0',
             })
-            responce = telnet.setData(**self._cmd)
+            response = telnet.setData(**self._cmd)
             _LOGGER.debug("Status is: %s", response)
 
         if self._template is None:
