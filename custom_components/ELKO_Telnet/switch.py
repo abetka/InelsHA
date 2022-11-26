@@ -149,7 +149,7 @@ class ELKOSwitch(SwitchEntity):
 
     def turn_on(self, **kwargs: Any) -> None:
         """Turn the device on."""
-        self._cmd.append({
+        self._cmd.update({
             'command': self._command_on,
         })
         responce = telnet.setData(self._cmd)
@@ -160,7 +160,7 @@ class ELKOSwitch(SwitchEntity):
 
     def turn_off(self, **kwargs: Any) -> None:
         """Turn the device off."""
-        self._cmd.append({
+        self._cmd.update({
             'command': self._command_off,
         })
         responce = telnet.setData(self._cmd)
