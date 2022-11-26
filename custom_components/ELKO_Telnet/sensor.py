@@ -361,7 +361,7 @@ class ELKOSensors(SensorEntity):
             _LOGGER.debug("Device class binary")
             if self._attr_native_unit_of_measurement == 'on/off':
                 _LOGGER.debug("Measurement on/off")
-                if response == '1':
+                if response == 1:
                     _LOGGER.debug("Status is on")
                     self._attr_native_value = 'on'
                 else:
@@ -369,7 +369,7 @@ class ELKOSensors(SensorEntity):
                     self._attr_native_value = 'off'
             if self._attr_native_unit_of_measurement == 'off/on':
                 _LOGGER.debug("Measurement off/on")
-                if response == '0':
+                if response == 0:
                     _LOGGER.debug("Status is on")
                     self._attr_native_value = 'on'
                 else:
@@ -377,7 +377,7 @@ class ELKOSensors(SensorEntity):
                     self._attr_native_value = 'off'
             if self._attr_native_unit_of_measurement == 'open/closed':
                 _LOGGER.debug("Measurement open/closed")
-                if response == '1':
+                if response == 1:
                     _LOGGER.debug("Status is open")
                     self._attr_native_value = 'open'
                 else:
@@ -385,7 +385,7 @@ class ELKOSensors(SensorEntity):
                     self._attr_native_value = 'closed'
             if self._attr_native_unit_of_measurement == 'closed/open':
                 _LOGGER.debug("Measurement closed/open")
-                if response == '0':
+                if response == 0:
                     _LOGGER.debug("Status is open")
                     self._attr_native_value = 'open'
                 else:
