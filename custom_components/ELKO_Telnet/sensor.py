@@ -356,7 +356,7 @@ class ELKOSensors(SensorEntity):
         This is the only method that should fetch new data for Home Assistant.
         """
         response = telnet.getData(**self._cmd)
-        _LOGGER.debug("Status is: %s", response)
+        _LOGGER.debug("Device id %s Status is: %s Device class is: %s Measurement is: %s", self._cmd['device_id'], response, self._attr_device_class, self._attr_native_unit_of_measurement)
         if self._attr_device_class == 'binary':
             if self._attr_native_unit_of_measurement == 'on/off':
                 if response == '1':
