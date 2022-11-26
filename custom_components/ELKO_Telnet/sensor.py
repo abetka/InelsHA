@@ -351,7 +351,7 @@ class ELKOSensors(SensorEntity):
         self._attr_state_class = config.get(CONF_STATE_CLASS)
         self._attr_native_value = None
 
-    def async_update(self) -> None:
+    def update(self) -> None:
         """Fetch new state data for the sensor.
         This is the only method that should fetch new data for Home Assistant.
         """
@@ -379,4 +379,4 @@ class ELKOSensors(SensorEntity):
                 else:
                     self._attr_native_value = 'closed'
         else:
-            self._attr_native_value = int( response * 0.01 )
+            self._attr_native_value = int( int(response) * 0.01 )
