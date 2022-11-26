@@ -17,7 +17,7 @@
   sensors:
     cabinet_light_table:
       <<: *sensors
-      friendly_name: "Cabinet Backlight Table"
+      friendly_name: "Cabinet light Table"
       device_id: "0x01020029"
       device_class: 'binary'
       unit_of_measurement: "on/off"
@@ -25,7 +25,7 @@
   sensors:
     cabinet_light_wall:
       <<: *sensors
-      friendly_name: "Cabinet Backlight Wall"
+      friendly_name: "Cabinet light Wall"
       device_id: "0x01020011"
       device_class: 'binary'
       unit_of_measurement: "on/off"
