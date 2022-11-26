@@ -60,3 +60,50 @@
     {% else %}
       open
     {% endif %}
+
+
+- platform: ELKO_telnet
+  sensors:
+    cabinet_temperature_test:
+      friendly_name: "Cabinet Temperature Test"
+      host: "192.168.88.246"
+      device_id: "0x01050017"
+      port: 1111
+      device_class: 'temperature'
+      unit_of_measurement: "°C"
+- platform: ELKO_telnet
+  sensors:
+    cabinet_curtains_open_test:
+      friendly_name: "Cabinet Curtains Open Test"
+      host: "192.168.88.246"
+      device_id: "0x0102002f"
+      port: 1111
+      device_class: 'binary'
+      unit_of_measurement: "open/closed"
+- platform: ELKO_telnet
+  sensors:
+    cabinet_curtains_closed_test:
+      friendly_name: "Cabinet Curtains Closed Test"
+      host: "192.168.88.246"
+      device_id: "0x01020026"
+      port: 1111
+      device_class: 'binary'
+      unit_of_measurement: "closed/open"
+- platform: ELKO_telnet
+  sensors:
+    cabinet_backlight_wall_test:
+      friendly_name: "Cabinet Backlight Wall Test"
+      host: "192.168.88.246"
+      device_id: "0x01020011"
+      port: 1111
+      device_class: 'binary'
+      unit_of_measurement: "on/off"
+- platform: ELKO_telnet
+  sensors:
+    cabinet_backlight_wall_test_reverse:
+      friendly_name: "Cabinet Backlight Wall Test Reverse"
+      host: "192.168.88.246"
+      device_id: "0x01020011"
+      port: 1111
+      device_class: 'binary'
+      unit_of_measurement: "off/on"
