@@ -226,20 +226,41 @@ class ELKOLight(LightEntity):
             rgb_value = kwargs[ATTR_RGB_COLOR]
             self._cmd.update({
                 'device_id': self._red_device_id,
-                'command': str(int( rgb_value[0] * 0.39 )),
             })
+            if ATTR_BRIGHTNESS in kwargs:
+                self._cmd.update({
+                    'command': str(int( (rgb_value[0] * 0.39) * ( kwargs[ATTR_BRIGHTNESS] / 100))),
+                })
+            else:
+                self._cmd.update({
+                    'command': str(int( rgb_value[0] * 0.39 )),
+                })
             response = telnet.setData(**self._cmd)
             _LOGGER.debug("Status is: %s", response)
             self._cmd.update({
                 'device_id': self._green_device_id,
-                'command': str(int( rgb_value[1] * 0.39 )),
             })
+            if ATTR_BRIGHTNESS in kwargs:
+                self._cmd.update({
+                    'command': str(int( (rgb_value[1] * 0.39) * ( kwargs[ATTR_BRIGHTNESS] / 100))),
+                })
+            else:
+                self._cmd.update({
+                    'command': str(int( rgb_value[1] * 0.39 )),
+                })
             response = telnet.setData(**self._cmd)
             _LOGGER.debug("Status is: %s", response)
             self._cmd.update({
                 'device_id': self._blue_device_id,
-                'command': str(int( rgb_value[2] * 0.39 )),
             })
+            if ATTR_BRIGHTNESS in kwargs:
+                self._cmd.update({
+                    'command': str(int( (rgb_value[2] * 0.39) * ( kwargs[ATTR_BRIGHTNESS] / 100))),
+                })
+            else:
+                self._cmd.update({
+                    'command': str(int( rgb_value[2] * 0.39 )),
+                })
             response = telnet.setData(**self._cmd)
             _LOGGER.debug("Status is: %s", response)
 
