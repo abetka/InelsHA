@@ -358,38 +358,25 @@ class ELKOSensors(SensorEntity):
         response = int(telnet.getData(**self._cmd))
         _LOGGER.debug("Device id %s Status is: %s Device class is: %s Measurement is: %s", self._cmd['device_id'], response, self._attr_device_class, self._attr_native_unit_of_measurement)
         if self._attr_device_class == 'binary':
-            _LOGGER.debug("Device class binary")
             if self._attr_native_unit_of_measurement == 'on/off':
-                _LOGGER.debug("Measurement on/off")
                 if response == 1:
-                    _LOGGER.debug("Status is on")
                     self._attr_native_value = 'on'
                 else:
-                    _LOGGER.debug("Status is off")
                     self._attr_native_value = 'off'
             if self._attr_native_unit_of_measurement == 'off/on':
-                _LOGGER.debug("Measurement off/on")
                 if response == 0:
-                    _LOGGER.debug("Status is on")
                     self._attr_native_value = 'on'
                 else:
-                    _LOGGER.debug("Status is off")
                     self._attr_native_value = 'off'
             if self._attr_native_unit_of_measurement == 'open/closed':
-                _LOGGER.debug("Measurement open/closed")
                 if response == 1:
-                    _LOGGER.debug("Status is open")
                     self._attr_native_value = 'open'
                 else:
-                    _LOGGER.debug("Status is closed")
                     self._attr_native_value = 'closed'
             if self._attr_native_unit_of_measurement == 'closed/open':
-                _LOGGER.debug("Measurement closed/open")
                 if response == 0:
-                    _LOGGER.debug("Status is open")
                     self._attr_native_value = 'open'
                 else:
-                    _LOGGER.debug("Status is closed")
                     self._attr_native_value = 'closed'
         else:
-            self._attr_native_value = int( response * 0.01 )
+            self._attr_native_value = response * 0.01
