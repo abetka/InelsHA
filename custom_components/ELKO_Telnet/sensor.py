@@ -304,12 +304,12 @@ PLATFORM_SCHEMA = vol.All(
 )
 
 async def _async_create_entities(hass, config):
-    """Create the Template Lights."""
+    """Create the Sensors."""
     sensors = []
 
     for object_id, entity_config in config[CONF_SENSORS].items():
         unique_id = entity_config.get(CONF_UNIQUE_ID)
-        lights.append(
+        sensors.append(
             ELKOSensors(
                 hass,
                 object_id,
