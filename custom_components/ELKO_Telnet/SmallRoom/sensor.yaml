@@ -1,87 +1,64 @@
 # SmallRoom Temperature
-- platform: command_line
-  unique_id: smallroom_temperature
-  name: SmallRoom Temperature
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01050011"
-  unit_of_measurement: "°C"
-  value_template: "{{ value | multiply(0.01) | round(1) }}"
-- platform: command_line
-  unique_id: smallroom_heater
-  name: SmallRoom Heater
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020004"
-  value_template: >-
-    {% if value == '1' %}
-      on
-    {% else %}
-      off
-    {% endif %}
-- platform: command_line
-  unique_id: smallroom_curtains_open
-  name: SmallRoom Curtains Open
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0102006e"
-  value_template: >-
-    {% if value == '1' %}
-      open
-    {% else %}
-      closed
-    {% endif %}
-- platform: command_line
-  unique_id: smallroom_curtains_close
-  name: SmallRoom Curtains Close
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0102006f"
-  value_template: >-
-    {% if value == '1' %}
-      closed
-    {% else %}
-      open
-    {% endif %}
-- platform: command_line
-  unique_id: smallroom_tule_open
-  name: SmallRoom Tule Open
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020071"
-  value_template: >-
-    {% if value == '1' %}
-      open
-    {% else %}
-      closed
-    {% endif %}
-- platform: command_line
-  unique_id: smallroom_tule_close
-  name: SmallRoom Tule Close
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020070"
-  value_template: >-
-    {% if value == '1' %}
-      closed
-    {% else %}
-      open
-    {% endif %}
-- platform: command_line
-  unique_id: smallroom_chandelier
-  name: SmallRoom Chandelier
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0102000d"
-  value_template: >-
-    {% if value == '1' %}
-      on
-    {% else %}
-      off
-    {% endif %}
-- platform: command_line
-  unique_id: smallroom_points_lights
-  name: Smallroom Points Lights
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020028"
-  value_template: >-
-    {% if value == '1' %}
-      on
-    {% else %}
-      off
-    {% endif %}
-- platform: command_line
-  unique_id: smallroom_backlight_wall
-  name: Smallroom Backlight Wall
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0102003a"
-  value_template: >-
-    {% if value == '1' %}
-      on
-    {% else %}
-      off
-    {% endif %}
+- platform: ELKO_telnet
+  sensors:
+    smallroom_temperature: &sensors
+      friendly_name: "SmallRoom Temperature"
+      host: "192.168.88.246"
+      device_id: "0x01050011"
+      port: 1111
+      device_class: 'temperature'
+      unit_of_measurement: "°C"
+- platform: ELKO_telnet
+  sensors:
+    smallroom_curtains_open: &sensors3
+      <<: *sensors
+      friendly_name: "SmallRoom Curtains Open"
+      device_id: "0x0102006e"
+      device_class: 'binary'
+      unit_of_measurement: "open/closed"
+- platform: ELKO_telnet
+  sensors:
+    smallroom_curtains_close:
+      <<: *sensors3
+      friendly_name: "SmallRoom Curtains Close"
+      device_id: "0x0102006f"
+      unit_of_measurement: "closed/open"
+- platform: ELKO_telnet
+  sensors:
+    smallroom_tule_open:
+      <<: *sensors3
+      friendly_name: "SmallRoom Tule Open"
+      device_id: "0x01020071"
+- platform: ELKO_telnet
+  sensors:
+    smallroom_tule_close:
+      <<: *sensors3
+      friendly_name: "SmallRoom Tule Close"
+      device_id: "0x01020070"
+      unit_of_measurement: "closed/open"
+- platform: ELKO_telnet
+  sensors:
+    smallroom_chandelier: &sensors2
+      <<: *sensors
+      friendly_name: "SmallRoom Chandelier"
+      device_id: "0x0102000d"
+      device_class: 'binary'
+      unit_of_measurement: "on/off"
+- platform: ELKO_telnet
+  sensors:
+    smallroom_points_lights:
+      <<: *sensors2
+      friendly_name: "Smallroom Points Lights"
+      device_id: "0x01020028"
+- platform: ELKO_telnet
+  sensors:
+    smallroom_backlight_wall:
+      <<: *sensors2
+      friendly_name: "Smallroom Backlight Wall"
+      device_id: "0x0102003a"
+- platform: ELKO_telnet
+  sensors:
+    smallroom_heater:
+      <<: *sensors2
+      friendly_name: "SmallRoom Heater"
+      device_id: "0x01020004"

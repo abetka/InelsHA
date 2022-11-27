@@ -1,79 +1,63 @@
 # WC Temperature
-- platform: command_line
-  unique_id: wc_temperature
-  name: WC Temperature
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01050007"
-  unit_of_measurement: "°C"
-  value_template: "{{ value | multiply(0.01) | round(1) }}"
-- platform: command_line
-  unique_id: wc_humidity
-  name: WC Humidity
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01050009"
-  unit_of_measurement: "%"
-  value_template: "{{ value | multiply(0.01) | round(1) }}"
-- platform: command_line
-  unique_id: wc_waterleak
-  name: WC Waterleak
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020027"
-  value_template: >-
-    {% if value == '1' %}
-      off
-    {% else %}
-      on
-    {% endif %}
-- platform: command_line
-  unique_id: wc_switch_temperature
-  name: WC Switch Temperature
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0105001c"
-  unit_of_measurement: "°C"
-  value_template: "{{ value | multiply(0.01) | round(1) }}"
-- platform: command_line
-  unique_id: wc_mirror
-  name: WC Mirror Backlight
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020003"
-  value_template: >-
-    {% if value == '1' %}
-      on
-    {% else %}
-      off
-    {% endif %}
-- platform: command_line
-  unique_id: wc_backlight
-  name: WC Wall Backlight
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020014"
-  value_template: >-
-    {% if value == '1' %}
-      on
-    {% else %}
-      off
-    {% endif %}
-- platform: command_line
-  unique_id: wc_fan
-  name: WC Fan
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020025"
-  value_template: >-
-    {% if value == '1' %}
-      on
-    {% else %}
-      off
-    {% endif %}
-- platform: command_line
-  unique_id: wc_pointslights
-  name: WC Points Light
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0102002e"
-  value_template: >-
-    {% if value == '1' %}
-      on
-    {% else %}
-      off
-    {% endif %}
-- platform: command_line
-  unique_id: wc_floor_heater
-  name: WC Floor Heater
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020023"
-  value_template: >-
-    {% if value == '1' %}
-      on
-    {% else %}
-      off
-    {% endif %}
+- platform: ELKO_telnet
+  sensors:
+    wc_temperature: &sensors
+      friendly_name: "WC Temperature"
+      host: "192.168.88.246"
+      device_id: "0x01050007"
+      port: 1111
+      device_class: 'temperature'
+      unit_of_measurement: "°C"
+- platform: ELKO_telnet
+  sensors:
+    wc_switch_temperature:
+      <<: *sensors
+      friendly_name: "WC Switch Temperature"
+      device_id: "0x0105001c"
+- platform: ELKO_telnet
+  sensors:
+    wc_humidity:
+      <<: *sensors
+      friendly_name: "WC Humidity"
+      device_id: "0x01050009"
+      device_class: 'humidity'
+      unit_of_measurement: "%"
+- platform: ELKO_telnet
+  sensors:
+    wc_mirror: &sensors2
+      <<: *sensors
+      friendly_name: "WC Mirror Backlight"
+      device_id: "0x01020003"
+      device_class: 'binary'
+      unit_of_measurement: "on/off"
+- platform: ELKO_telnet
+  sensors:
+    wc_waterleak:
+      <<: *sensors2
+      friendly_name: "WC Waterleak"
+      device_id: "0x01020027"
+      unit_of_measurement: "off/on"
+- platform: ELKO_telnet
+  sensors:
+    wc_backlight:
+      <<: *sensors2
+      friendly_name: "WC Wall Backlight"
+      device_id: "0x01020014"
+- platform: ELKO_telnet
+  sensors:
+    wc_fan:
+      <<: *sensors2
+      friendly_name: "WC Fan"
+      device_id: "0x01020025"
+- platform: ELKO_telnet
+  sensors:
+    wc_pointslights:
+      <<: *sensors2
+      friendly_name: "WC Points Light"
+      device_id: "0x0102002e"
+- platform: ELKO_telnet
+  sensors:
+    wc_floor_heater:
+      <<: *sensors2
+      friendly_name: "WC Floor Heater"
+      device_id: "0x01020023"

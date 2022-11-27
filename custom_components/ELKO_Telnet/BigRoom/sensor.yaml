@@ -1,125 +1,98 @@
 # BigRoom Temperature
-- platform: command_line
-  unique_id: bigroom_temperature
-  name: BigRoom Temperature
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01050019"
-  unit_of_measurement: "°C"
-  value_template: "{{ value | multiply(0.01) | round(1) }}"
-- platform: command_line
-  unique_id: bigroom_second_temperature
-  name: BigRoom Second Temperature
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01050014"
-  unit_of_measurement: "°C"
-  value_template: "{{ value | multiply(0.01) | round(1) }}"
-- platform: command_line
-  unique_id: bigroom_humidity
-  name: BigRoom Humidity
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01050016"
-  unit_of_measurement: "°C"
-  value_template: "{{ value | multiply(0.01) | round(1) }}"
-- platform: command_line
-  unique_id: bigroom_second_humidity
-  name: BigRoom Second Humidity
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0105001b"
-  unit_of_measurement: "°C"
-  value_template: "{{ value | multiply(0.01) | round(1) }}"
-- platform: command_line
-  unique_id: bigroom_heater
-  name: BigRoom Heater
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020008"
-  value_template: >-
-    {% if value == '1' %}
-      on
-    {% else %}
-      off
-    {% endif %}
-- platform: command_line
-  unique_id: bigroom_curtains_open
-  name: Bigroom Curtains Open
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020073"
-  value_template: >-
-    {% if value == '1' %}
-      open
-    {% else %}
-      closed
-    {% endif %}
-- platform: command_line
-  unique_id: bigroom_curtains_close
-  name: Bigroom Curtains Close
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020072"
-  value_template: >-
-    {% if value == '1' %}
-      closed
-    {% else %}
-      open
-    {% endif %}
-- platform: command_line
-  unique_id: bigroom_tule_open
-  name: Bigroom Tule Open
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020074"
-  value_template: >-
-    {% if value == '1' %}
-      open
-    {% else %}
-      closed
-    {% endif %}
-- platform: command_line
-  unique_id: bigroom_tule_close
-  name: Bigroom Tule Close
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020075"
-  value_template: >-
-    {% if value == '1' %}
-      closed
-    {% else %}
-      open
-    {% endif %}
-- platform: command_line
-  unique_id: bigroom_chandelier
-  name: Bigroom Chandelier
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020005"
-  value_template: >-
-    {% if value == '1' %}
-      on
-    {% else %}
-      off
-    {% endif %}
-- platform: command_line
-  unique_id: bigroom_backlight_window
-  name: Bigroom Backlight Window
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020009"
-  value_template: >-
-    {% if value == '1' %}
-      on
-    {% else %}
-      off
-    {% endif %}
-- platform: command_line
-  unique_id: bigroom_backlight_door
-  name: Bigroom Backlight Door
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0102002a"
-  value_template: >-
-    {% if value == '1' %}
-      on
-    {% else %}
-      off
-    {% endif %}
-- platform: command_line
-  unique_id: bigroom_mirror
-  name: Bigroom Mirror
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0102000a"
-  value_template: >-
-    {% if value == '1' %}
-      on
-    {% else %}
-      off
-    {% endif %}
-- platform: command_line
-  unique_id: bigroom_point_light
-  name: Bigroom Point Light
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0102002b"
-  value_template: >-
-    {% if value == '1' %}
-      on
-    {% else %}
-      off
-    {% endif %}
+- platform: ELKO_telnet
+  sensors:
+    bigroom_temperature: &sensors
+      friendly_name: "BigRoom Temperature"
+      host: "192.168.88.246"
+      device_id: "0x01050019"
+      port: 1111
+      device_class: 'temperature'
+      unit_of_measurement: "°C"
+- platform: ELKO_telnet
+  sensors:
+    bigroom_second_temperature:
+      <<: *sensors
+      friendly_name: "BigRoom Second Temperature"
+      device_id: "0x01050014"
+- platform: ELKO_telnet
+  sensors:
+    bigroom_humidity:
+      <<: *sensors
+      friendly_name: "BigRoom Humidity"
+      device_id: "0x01050016"
+      device_class: 'humidity'
+      unit_of_measurement: "%"
+- platform: ELKO_telnet
+  sensors:
+    bigroom_second_humidity:
+      <<: *sensors
+      friendly_name: "BigRoom Second Humidity"
+      device_id: "0x0105001b"
+      device_class: 'humidity'
+      unit_of_measurement: "%"
+- platform: ELKO_telnet
+  sensors:
+    bigroom_heater: &sensors2
+      <<: *sensors
+      friendly_name: "BigRoom Heater"
+      device_id: "0x01020008"
+      device_class: 'binary'
+      unit_of_measurement: "on/off"
+- platform: ELKO_telnet
+  sensors:
+    bigroom_curtains_open: &sensors3
+      <<: *sensors
+      friendly_name: "Bigroom Curtains Open"
+      device_id: "0x01020073"
+      device_class: 'binary'
+      unit_of_measurement: "open/closed"
+- platform: ELKO_telnet
+  sensors:
+    bigroom_curtains_close:
+      <<: *sensors3
+      friendly_name: "Bigroom Curtains Close"
+      device_id: "0x01020072"
+      unit_of_measurement: "closed/open"
+- platform: ELKO_telnet
+  sensors:
+    bigroom_tule_open:
+      <<: *sensors3
+      friendly_name: "Bigroom Tule Open"
+      device_id: "0x01020074"
+- platform: ELKO_telnet
+  sensors:
+    bigroom_tule_close:
+      <<: *sensors3
+      friendly_name: "Bigroom Tule Close"
+      device_id: "0x01020075"
+      unit_of_measurement: "closed/open"
+- platform: ELKO_telnet
+  sensors:
+    bigroom_chandelier:
+      <<: *sensors2
+      friendly_name: "Bigroom Chandelier"
+      device_id: "0x01020005"
+- platform: ELKO_telnet
+  sensors:
+    bigroom_backlight_window:
+      <<: *sensors2
+      friendly_name: "Bigroom Backlight Window"
+      device_id: "0x01020009"
+- platform: ELKO_telnet
+  sensors:
+    bigroom_backlight_door:
+      <<: *sensors2
+      friendly_name: "Bigroom Backlight Door"
+      device_id: "0x0102002a"
+- platform: ELKO_telnet
+  sensors:
+    bigroom_mirror:
+      <<: *sensors2
+      friendly_name: "Bigroom Mirror"
+      device_id: "0x0102000a"
+- platform: ELKO_telnet
+  sensors:
+    bigroom_point_light:
+      <<: *sensors2
+      friendly_name: "Bigroom Point Light"
+      device_id: "0x0102002b"

@@ -1,85 +1,68 @@
 # Hall Temperature
-- platform: command_line
-  unique_id: hall_temperature
-  name: Hall Temperature
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01050010"
-  unit_of_measurement: "°C"
-  value_template: "{{ value | multiply(0.01) | round(1) }}"
-- platform: command_line
-  unique_id: hall_door_temperature
-  name: Hall Door Temperature
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0105001e"
-  unit_of_measurement: "°C"
-  value_template: "{{ value | multiply(0.01) | round(1) }}"
-- platform: command_line
-  unique_id: hall_inside_temperature
-  name: Hall Inside Temperature
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01050020"
-  unit_of_measurement: "°C"
-  value_template: "{{ value | multiply(0.01) | round(1) }}"
-- platform: command_line
-  unique_id: hall_humidity
-  name: Hall Humidity
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01050022"
-  unit_of_measurement: "°C"
-  value_template: "{{ value | multiply(0.01) | round(1) }}"
-- platform: command_line
-  unique_id: hall_floor_heater
-  name: Hall Floor Heater
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0102003b"
-  value_template: >-
-    {% if value == '1' %}
-      on
-    {% else %}
-      off
-    {% endif %}
-- platform: command_line
-  unique_id: hall_move_lights
-  name: Hall Move Lights
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020002"
-  value_template: >-
-    {% if value == '1' %}
-      on
-    {% else %}
-      off
-    {% endif %}
-- platform: command_line
-  unique_id: hall_wardrobe
-  name: Hall Wardrobe
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0102000f"
-  value_template: >-
-    {% if value == '1' %}
-      on
-    {% else %}
-      off
-    {% endif %}
-- platform: command_line
-  unique_id: hall_points_lights
-  name: Hall Points Lights
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x01020010"
-  value_template: >-
-    {% if value == '1' %}
-      on
-    {% else %}
-      off
-    {% endif %}
-- platform: command_line
-  unique_id: hall_lights
-  name: Hall Lights
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0102002c"
-  value_template: >-
-    {% if value == '1' %}
-      on
-    {% else %}
-      off
-    {% endif %}
-- platform: command_line
-  unique_id: hall_backlight
-  name: Hall Backlight
-  command: "python3 custom_components/ELKO_telnet/get_data.py -h 192.168.88.246 -p 1111 -i 0x0102002d"
-  value_template: >-
-    {% if value == '1' %}
-      on
-    {% else %}
-      off
-    {% endif %}
+- platform: ELKO_telnet
+  sensors:
+    hall_temperature: &sensors
+      friendly_name: "Hall Temperature"
+      host: "192.168.88.246"
+      device_id: "0x01050010"
+      port: 1111
+      device_class: 'temperature'
+      unit_of_measurement: "°C"
+- platform: ELKO_telnet
+  sensors:
+    hall_door_temperature:
+      <<: *sensors
+      friendly_name: "Hall Door Temperature"
+      device_id: "0x0105001e"
+- platform: ELKO_telnet
+  sensors:
+    hall_inside_temperature:
+      <<: *sensors
+      friendly_name: "Hall Inside Temperature"
+      device_id: "0x01050020"
+- platform: ELKO_telnet
+  sensors:
+    hall_humidity:
+      <<: *sensors
+      friendly_name: "Hall Humidity"
+      device_id: "0x01050022"
+      device_class: 'humidity'
+      unit_of_measurement: "%"
+- platform: ELKO_telnet
+  sensors:
+    hall_floor_heater: &sensors2
+      <<: *sensors
+      friendly_name: "Hall Floor Heater"
+      device_id: "0x0102003b"
+      device_class: 'binary'
+      unit_of_measurement: "on/off"
+- platform: ELKO_telnet
+  sensors:
+    hall_move_lights:
+      <<: *sensors2
+      friendly_name: "Hall Move Lights"
+      device_id: "0x01020002"
+- platform: ELKO_telnet
+  sensors:
+    hall_wardrobe:
+      <<: *sensors2
+      friendly_name: "Hall Wardrobe"
+      device_id: "0x0102000f"
+- platform: ELKO_telnet
+  sensors:
+    hall_points_lights:
+      <<: *sensors2
+      friendly_name: "Hall Points Lights"
+      device_id: "0x01020010"
+- platform: ELKO_telnet
+  sensors:
+    hall_lights:
+      <<: *sensors2
+      friendly_name: "Hall Lights"
+      device_id: "0x0102002c"
+- platform: ELKO_telnet
+  sensors:
+    hall_backlight:
+      <<: *sensors2
+      friendly_name: "Hall Backlight"
+      device_id: "0x0102002d"
