@@ -11,4 +11,7 @@
   target_temp: 24
   away_temp: 23
   comfort_temp: 24
+  home_temp: 24
+  sleep_temp: 22
+  activity_temp: 22
   target_sensor: sensor.smallroom_temperature
