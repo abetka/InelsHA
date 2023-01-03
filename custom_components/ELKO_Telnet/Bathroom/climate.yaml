@@ -4,10 +4,11 @@
   name: Bathroom Floor Heater
   heater: switch.bathroom_floor_heater_tmp
   ac_mode: false
-  min_temp: 10
-  max_temp: 30
+  min_temp: 23
+  max_temp: 25
   hot_tolerance: 0.5
   cold_tolerance: 0.5
   target_temp: 24
-  away_temp: 2
+  away_temp: 23
+  comfort_temp: 24
   target_sensor: sensor.bathroom_temperature

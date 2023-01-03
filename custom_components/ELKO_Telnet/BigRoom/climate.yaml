@@ -4,10 +4,11 @@
   name: Big Room Heater
   heater: switch.bigroom_heater_tmp
   ac_mode: false
-  min_temp: 10
-  max_temp: 30
+  min_temp: 23
+  max_temp: 24
   hot_tolerance: 0.5
   cold_tolerance: 0.5
   target_temp: 24
-  away_temp: 2
+  away_temp: 23
+  comfort_temp: 24
   target_sensor: sensor.bigroom_temperature
