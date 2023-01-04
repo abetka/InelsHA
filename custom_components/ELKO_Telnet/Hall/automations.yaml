@@ -88,21 +88,3 @@
     target:
       entity_id: switch.hall_move_lights_tmp
   mode: single
-- id: hall_floor_heater
-  alias: Hall Floor Heater
-  description: ''
-  trigger:
-  - platform: homeassistant
-    event: start
-  - platform: state
-    entity_id:
-    - sensor.hall_floor_heater
-  condition: []
-  action:
-  - condition: template
-    value_template: "{{ states('climate.hall_floor_heater') != states('sensor.hall_floor_heater') }}"
-  - service: climate.turn_{{states('sensor.hall_floor_heater')}}
-    data: {}
-    target:
-      entity_id: climate.hall_floor_heater
-  mode: single

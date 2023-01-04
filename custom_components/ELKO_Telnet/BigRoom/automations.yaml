@@ -124,21 +124,3 @@
     target:
       entity_id: cover.bigroom_tule
   mode: single
-- id: bigroom_heater
-  alias: BigRoom Heater
-  description: ''
-  trigger:
-  - platform: homeassistant
-    event: start
-  - platform: state
-    entity_id:
-    - sensor.bigroom_heater
-  condition: []
-  action:
-  - condition: template
-    value_template: "{{ states('climate.bigroom_heater') != states('sensor.bigroom_heater') }}"
-  - service: climate.turn_{{states('sensor.bigroom_heater')}}
-    data: {}
-    target:
-      entity_id: climate.bigroom_heater
-  mode: single
