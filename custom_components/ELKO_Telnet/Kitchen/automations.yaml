@@ -337,7 +337,7 @@
   - choose:
     - conditions:
       - condition: template
-        value_template: "{{ is_state('switch.kitchen_backlight_wall', 'off') }}"
+        value_template: "{{ is_state('switch.kitchen_switch_1_red_3', 'off') }}"
       sequence:
       - service: switch.turn_on
         data: {}
@@ -347,10 +347,6 @@
         data: {}
         target:
           entity_id: switch.kitchen_switch_1_red_2
-
-      - condition: template
-        value_template: "{{ is_state('switch.kitchen_backlight_table', 'off') }}"
-      sequence:
       - service: switch.turn_on
         data: {}
         target:
@@ -359,10 +355,6 @@
         data: {}
         target:
           entity_id: switch.kitchen_switch_1_red_1
-
-      - condition: template
-        value_template: "{{ is_state('switch.kitchen_chandelier', 'off') }}"
-      sequence:
       - service: switch.turn_on
         data: {}
         target:
@@ -371,10 +363,6 @@
         data: {}
         target:
           entity_id: switch.kitchen_switch_1_green_3
-
-      - condition: template
-        value_template: "{{ is_state('switch.kitchen_point_lights', 'off') }}"
-      sequence:
       - service: switch.turn_on
         data: {}
         target:
@@ -383,10 +371,6 @@
         data: {}
         target:
           entity_id: switch.kitchen_switch_1_green_2
-
-      - condition: template
-        value_template: "{{ is_state('switch.kitchen_point_lights_window', 'off') }}"
-      sequence:
       - service: switch.turn_on
         data: {}
         target:
@@ -395,10 +379,13 @@
         data: {}
         target:
           entity_id: switch.kitchen_switch_1_green_1
-
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.kitchen_switch_1_red_3
     - conditions:
       - condition: template
-        value_template: "{{ is_state('switch.kitchen_backlight_wall', 'on') }}"
+        value_template: "{{ is_state('switch.kitchen_switch_1_red_3', 'on') }}"
       sequence:
       - service: switch.turn_off
         data: {}
@@ -408,10 +395,6 @@
         data: {}
         target:
           entity_id: switch.kitchen_switch_1_red_2
-
-        - condition: template
-        value_template: "{{ is_state('switch.kitchen_backlight_table', 'on') }}"
-      sequence:
       - service: switch.turn_off
         data: {}
         target:
@@ -420,10 +403,6 @@
         data: {}
         target:
           entity_id: switch.kitchen_switch_1_red_1
-
-      - condition: template
-        value_template: "{{ is_state('switch.kitchen_chandelier', 'on') }}"
-      sequence:
       - service: switch.turn_off
         data: {}
         target:
@@ -432,10 +411,6 @@
         data: {}
         target:
           entity_id: switch.kitchen_switch_1_green_3
-
-      - condition: template
-        value_template: "{{ is_state('switch.kitchen_point_lights', 'on') }}"
-      sequence:
       - service: switch.turn_off
         data: {}
         target:
@@ -444,10 +419,6 @@
         data: {}
         target:
           entity_id: switch.kitchen_switch_1_green_2
-
-      - condition: template
-        value_template: "{{ is_state('switch.kitchen_point_lights_window', 'on') }}"
-      sequence:
       - service: switch.turn_off
         data: {}
         target:
@@ -456,6 +427,10 @@
         data: {}
         target:
           entity_id: switch.kitchen_switch_1_green_1
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.kitchen_switch_1_red_3
   mode: single
 - id: 'kitchen_switch_2_up_1'
   alias: Kitchen Switch 2 Up 1
