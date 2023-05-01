@@ -75,7 +75,66 @@
       <<: *settings
       name: Kitchen Point Lights
       device_id: "0x01020038"
-
+- platform: ELKO_telnet
+  switches:
+    kitchen_switch_1_green_1:
+      <<: *settings
+      name: Kitchen Switch 1 Green 1
+      device_id: "0x01020030"
+- platform: ELKO_telnet
+  switches:
+    kitchen_switch_1_green_2:
+      <<: *settings
+      name: Kitchen Switch 1 Green 2
+      device_id: "0x01020032"
+- platform: ELKO_telnet
+  switches:
+    kitchen_switch_1_green_3:
+      <<: *settings
+      name: Kitchen Switch 1 Green 3
+      device_id: "0x01020034"
+- platform: ELKO_telnet
+  switches:
+    kitchen_switch_2_green_1:
+      <<: *settings
+      name: Kitchen Switch 2 Green 1
+      device_id: "0x0102001f"
+- platform: ELKO_telnet
+  switches:
+    kitchen_switch_2_green_2:
+      <<: *settings
+      name: Kitchen Switch 2 Green 2
+      device_id: "0x01020021"
+- platform: ELKO_telnet
+  switches:
+    kitchen_switch_1_red_1:
+      <<: *settings
+      name: Kitchen Switch 1 Red 1
+      device_id: "0x01020031"
+- platform: ELKO_telnet
+  switches:
+    kitchen_switch_1_red_2:
+      <<: *settings
+      name: Kitchen Switch 1 Red 2
+      device_id: "0x01020033"
+- platform: ELKO_telnet
+  switches:
+    kitchen_switch_1_red_3:
+      <<: *settings
+      name: Kitchen Switch 1 Red 3
+      device_id: "0x01020035"
+- platform: ELKO_telnet
+  switches:
+    kitchen_switch_2_red_1:
+      <<: *settings
+      name: Kitchen Switch 2 Red 1
+      device_id: "0x01020020"
+- platform: ELKO_telnet
+  switches:
+    kitchen_switch_2_red_2:
+      <<: *settings
+      name: Kitchen Switch 2 Red 2
+      device_id: "0x01020022"
 
 # Templates
 # Kitchen Floor Heater Template

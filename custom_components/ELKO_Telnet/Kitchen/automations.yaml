@@ -124,4 +124,408 @@
     target:
       entity_id: cover.kitchen_tule
   mode: single
+- id: 'kitchen_switch_1_up_1'
+  alias: Kitchen Switch 1 Up 1
+  description: 'Kitchen Switch 1 Up 1'
+  trigger:
+  - platform: webhook
+    webhook_id: '0x01010023'
+  - platform: webhook
+    webhook_id: '0x01010020'
+  condition:
+  - condition: template
+    value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.kitchen_point_lights_window', 'off') }}"
+      sequence:
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.kitchen_point_lights_window
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.kitchen_switch_1_green_1
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.kitchen_switch_2_red_2
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.kitchen_point_lights_window', 'on') }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.kitchen_point_lights_window
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.kitchen_switch_1_green_1
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.kitchen_switch_2_red_2
+  mode: single
+- id: 'kitchen_switch_1_up_2'
+  alias: Kitchen Switch 1 Up 2
+  description: 'Kitchen Switch 1 Up 2'
+  trigger:
+  - platform: webhook
+    webhook_id: '0x01010025'
+  condition:
+  - condition: template
+    value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.kitchen_point_lights', 'off') }}"
+      sequence:
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.kitchen_point_lights
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.kitchen_switch_1_green_2
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.kitchen_point_lights', 'on') }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.kitchen_point_lights
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.kitchen_switch_1_green_2
+  mode: single
+- id: 'kitchen_switch_1_up_3'
+  alias: Kitchen Switch 1 Up 3
+  description: 'Kitchen Switch 1 Up 3'
+  trigger:
+  - platform: webhook
+    webhook_id: '0x01010027'
+  - platform: webhook
+    webhook_id: '0x0101001f'
+  condition:
+  - condition: template
+    value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.kitchen_chandelier', 'off') }}"
+      sequence:
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.kitchen_chandelier
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.kitchen_switch_1_green_3
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.kitchen_switch_2_green_2
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.kitchen_chandelier', 'on') }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.kitchen_chandelier
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.kitchen_switch_1_green_3
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.kitchen_switch_2_green_2
+  mode: single
+- id: 'kitchen_switch_1_down_1'
+  alias: Kitchen Switch 1 Down 1
+  description: 'Kitchen Switch 1 Down 1'
+  trigger:
+  - platform: webhook
+    webhook_id: '0x01010024'
+  condition:
+  - condition: template
+    value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.kitchen_backlight_table', 'off') }}"
+      sequence:
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.kitchen_backlight_table
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.kitchen_switch_1_red_1
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.kitchen_backlight_table', 'on') }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.kitchen_backlight_table
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.kitchen_switch_1_red_1
+  mode: single
+- id: 'kitchen_switch_1_down_2'
+  alias: Kitchen Switch 1 Down 2
+  description: 'Kitchen Switch 1 Down 2'
+  trigger:
+  - platform: webhook
+    webhook_id: '0x01010026'
+  condition:
+  - condition: template
+    value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.kitchen_backlight_wall', 'off') }}"
+      sequence:
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.kitchen_backlight_wall
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.kitchen_switch_1_red_2
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.kitchen_backlight_wall', 'on') }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.kitchen_backlight_wall
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.kitchen_switch_1_red_2
+  mode: single
+- id: 'kitchen_switch_1_down_3'
+  alias: Kitchen Switch 1 Down 3
+  description: 'Kitchen Switch 1 Down 3'
+  trigger:
+  - platform: webhook
+    webhook_id: '0x01010028'
+  condition:
+  - condition: template
+    value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.kitchen_backlight_wall', 'off') }}"
+      sequence:
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.kitchen_backlight_wall
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.kitchen_switch_1_red_2
 
+      - condition: template
+        value_template: "{{ is_state('switch.kitchen_backlight_table', 'off') }}"
+      sequence:
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.kitchen_backlight_table
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.kitchen_switch_1_red_1
+
+      - condition: template
+        value_template: "{{ is_state('switch.kitchen_chandelier', 'off') }}"
+      sequence:
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.kitchen_chandelier
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.kitchen_switch_1_green_3
+
+      - condition: template
+        value_template: "{{ is_state('switch.kitchen_point_lights', 'off') }}"
+      sequence:
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.kitchen_point_lights
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.kitchen_switch_1_green_2
+
+      - condition: template
+        value_template: "{{ is_state('switch.kitchen_point_lights_window', 'off') }}"
+      sequence:
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.kitchen_point_lights_window
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.kitchen_switch_1_green_1
+
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.kitchen_backlight_wall', 'on') }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.kitchen_backlight_wall
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.kitchen_switch_1_red_2
+
+        - condition: template
+        value_template: "{{ is_state('switch.kitchen_backlight_table', 'on') }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.kitchen_backlight_table
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.kitchen_switch_1_red_1
+
+      - condition: template
+        value_template: "{{ is_state('switch.kitchen_chandelier', 'on') }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.kitchen_chandelier
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.kitchen_switch_1_green_3
+
+      - condition: template
+        value_template: "{{ is_state('switch.kitchen_point_lights', 'on') }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.kitchen_point_lights
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.kitchen_switch_1_green_2
+
+      - condition: template
+        value_template: "{{ is_state('switch.kitchen_point_lights_window', 'on') }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.kitchen_point_lights_window
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.kitchen_switch_1_green_1
+  mode: single
+- id: 'kitchen_switch_2_up_1'
+  alias: Kitchen Switch 2 Up 1
+  description: 'Kitchen Switch 2 Up 1'
+  trigger:
+  - platform: webhook
+    webhook_id: '0x0101001d'
+  condition:
+  - condition: template
+    value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.kitchen_curtains_open', 'off') }}"
+      sequence:
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.kitchen_curtains_open
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.kitchen_switch_2_green_1
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.kitchen_curtains_open', 'on') }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.kitchen_curtains_open
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.kitchen_switch_2_green_1
+  mode: single
+- id: 'kitchen_switch_2_down_1'
+  alias: Kitchen Switch 2 Down 1
+  description: 'Kitchen Switch 2 Down 1'
+  trigger:
+  - platform: webhook
+    webhook_id: '0x0101001e'
+  condition:
+  - condition: template
+    value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.kitchen_tule_open', 'off') }}"
+      sequence:
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.kitchen_tule_open
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.kitchen_switch_2_red_1
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.kitchen_tule_open', 'on') }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.kitchen_tule_open
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.kitchen_switch_2_red_1
+  mode: single

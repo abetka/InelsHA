@@ -44,6 +44,12 @@
       device_id: "0x01020013"
 - platform: ELKO_telnet
   sensors:
+    kitchen_move_detector:
+      <<: *sensors2
+      friendly_name: "Kitchen Move Detector"
+      device_id: "0x01010007"
+- platform: ELKO_telnet
+  sensors:
     kitchen_chandelier:
       <<: *sensors2
       friendly_name: "Kitchen Chandelier"
