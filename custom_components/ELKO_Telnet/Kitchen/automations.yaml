@@ -536,9 +536,8 @@
   alias: Kitchen Motion
   description: 'Kitchen Motion'
   trigger:
-  - platform: state
-    entity_id:
-    - sensor.kitchen_move_detector
+  - platform: webhook
+    webhook_id: '0x01010007'
   condition:
   action:
   - choose:
@@ -554,7 +553,7 @@
           entity_id: switch.kitchen_switch_1_red_2
       - delay:
           hours: 0
-          minutes: 5
+          minutes: 3
           seconds: 0
           milliseconds: 0
       - service: switch.turn_off
