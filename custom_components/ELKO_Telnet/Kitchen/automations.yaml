@@ -464,7 +464,17 @@
   trigger:
   - platform: webhook
     webhook_id: '0x01010007'
-  condition:
+  condition: time
+    weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+      - sat
+      - sun
+    before: "08:00:00"
+    after: "08:00:00"
   action:
   - choose:
     - conditions: []
