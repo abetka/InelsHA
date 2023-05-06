@@ -529,16 +529,19 @@
             - 255
             - 255
             - 255
-          brightness_pct: 100
         target:
           entity_id: light.kitchen_rgb
       - delay:
           hours: 0
-          minutes: 3
-          seconds: 0
+          minutes: 0
+          seconds: 30
           milliseconds: 0
       - service: light.turn_off
-        data: {}
+        data:
+          rgb_color:
+            - 0
+            - 0
+            - 0
         target:
           entity_id: lights.kitchen_rgb
   mode: single

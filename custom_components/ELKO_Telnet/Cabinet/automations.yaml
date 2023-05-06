@@ -107,3 +107,26 @@
         data: {}
         target:
           entity_id: switch.cabinet_switch_1_green_1
+- id: 'cabinet_camera'
+  alias: Cabinet Camera
+  description: 'Kitchen Camera'
+  trigger:
+  - platform: webhook
+    webhook_id: '0x01010004'
+  condition:
+  - condition: template
+    value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.cabinet_light_wall', 'off') }}"
+      sequence:
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.cabinet_light_wall
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.cabinet_switch_1_green_1
