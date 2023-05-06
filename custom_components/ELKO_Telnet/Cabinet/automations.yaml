@@ -70,7 +70,7 @@
     target:
       entity_id: cover.cabinet_curtain
   mode: single
-  - id: 'cabinet_switch_1_up_1'
+- id: 'cabinet_switch_1_up_1'
   alias: Cabinet Switch 1 Up 1
   description: 'Kitchen Switch 1 Up 1'
   trigger:
