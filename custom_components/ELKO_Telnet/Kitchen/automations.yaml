@@ -522,7 +522,8 @@
     - conditions: []
       sequence:
       - service: light.turn_on
-        data: {}
+        data:
+          brightness_pct: 100
         target:
           entity_id: light.kitchen_rgb
       - delay:
@@ -531,7 +532,8 @@
           seconds: 0
           milliseconds: 0
       - service: light.turn_off
-        data: {}
+        data:
+          brightness_pct: 0
         target:
           entity_id: lights.kitchen_rgb
   mode: single
