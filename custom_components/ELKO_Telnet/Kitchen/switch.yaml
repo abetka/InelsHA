@@ -135,6 +135,14 @@
       <<: *settings
       name: Kitchen Switch 2 Red 2
       device_id: "0x01020022"
+- platform: ELKO_telnet
+  switches:
+    kitchen_camera:
+      <<: *settings
+      name: Kitchen Camera
+      device_id: "0x0101000e"
+
+
 
 # Templates
 # Kitchen Floor Heater Template

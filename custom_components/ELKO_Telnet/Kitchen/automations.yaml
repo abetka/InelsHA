@@ -401,6 +401,10 @@
       - condition: template
         value_template: "{{ is_state('switch.kitchen_curtains_open', 'off') }}"
       sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.kitchen_curtains_close
       - service: switch.turn_on
         data: {}
         target:
@@ -421,6 +425,10 @@
         data: {}
         target:
           entity_id: switch.kitchen_switch_2_green_1
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.kitchen_curtains_close
   mode: single
 - id: 'kitchen_switch_2_down_1'
   alias: Kitchen Switch 2 Down 1
@@ -437,6 +445,10 @@
       - condition: template
         value_template: "{{ is_state('switch.kitchen_tule_open', 'off') }}"
       sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.kitchen_tule_close
       - service: switch.turn_on
         data: {}
         target:
@@ -457,6 +469,10 @@
         data: {}
         target:
           entity_id: switch.kitchen_switch_2_red_1
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.kitchen_tule_close
   mode: single
 - id: 'kitchen_motion'
   alias: Kitchen Motion
@@ -493,4 +509,29 @@
         data: {}
         target:
           entity_id: switch.kitchen_switch_1_red_2
+  mode: single
+- id: 'kitchen_camera'
+  alias: Kitchen Camera
+  description: 'Kitchen Camera'
+  trigger:
+  - platform: webhook
+    webhook_id: '0x0101000e'
+  condition: []
+  action:
+  - choose:
+    - conditions: []
+      sequence:
+      - service: light.turn_on
+        data: {}
+        target:
+          entity_id: light.kitchen_rgb
+      - delay:
+          hours: 0
+          minutes: 3
+          seconds: 0
+          milliseconds: 0
+      - service: light.turn_off
+        data: {}
+        target:
+          entity_id: lights.kitchen_rgb
   mode: single
