@@ -520,32 +520,21 @@
   - condition: template
     value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
   action:
-  - choose:
-    - conditions: []
-      sequence:
-      - service: light.turn_on
-        data:
-          rgb_color:
-            - 255
-            - 128
-            - 255
-        target:
-          entity_id: light.kitchen_rgb
-      - delay:
-          hours: 0
-          minutes: 0
-          seconds: 10
-          milliseconds: 0
-      - service: light.turn_on
-        data:
-          rgb_color:
-            - 0
-            - 0
-            - 0
-        target:
-          entity_id: lights.kitchen_rgb
-      - service: light.turn_off
-        data: {}
-        target:
-          entity_id: lights.kitchen_rgb
+  - service: light.turn_on
+    data:
+      rgb_color:
+        - 218
+        - 81
+        - 0
+    target:
+      entity_id: light.kitchen_rgb
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 10
+      milliseconds: 0
+  - service: light.turn_off
+    data: {}
+    target:
+      entity_id: lights.kitchen_rgb
   mode: single
