@@ -72,7 +72,7 @@
   mode: single
 - id: 'cabinet_switch_1_up_1'
   alias: Cabinet Switch 1 Up 1
-  description: 'Kitchen Switch 1 Up 1'
+  description: 'Cabinet Switch 1 Up 1'
   trigger:
   - platform: webhook
     webhook_id: '0x01010039'
@@ -107,9 +107,207 @@
         data: {}
         target:
           entity_id: switch.cabinet_switch_1_green_1
+- id: 'cabinet_switch_1_up_2'
+  alias: Cabinet Switch 1 Up 2
+  description: 'Cabinet Switch 1 Up 2'
+  trigger:
+  - platform: webhook
+    webhook_id: '0x0101003b'
+  condition:
+  - condition: template
+    value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.cabinet_light_table', 'off') }}"
+      sequence:
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.cabinet_light_table
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.cabinet_switch_1_green_2
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.cabinet_light_table', 'on') }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.cabinet_light_table
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.cabinet_switch_1_green_2
+- id: 'cabinet_switch_1_up_3'
+  alias: Cabinet Switch 1 Up 3
+  description: 'Cabinet Switch 1 Up 3'
+  trigger:
+  - platform: webhook
+    webhook_id: '0x0101003d'
+  condition:
+  - condition: template
+    value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.cabinet_chandelier', 'off') }}"
+      sequence:
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.cabinet_chandelier
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.cabinet_switch_1_green_3
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.cabinet_chandelier', 'on') }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.cabinet_chandelier
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.cabinet_switch_1_green_3
+- id: 'cabinet_switch_1_down_1'
+  alias: Cabinet Switch 1 Down 1
+  description: 'Cabinet Switch 1 Down 1'
+  trigger:
+  - platform: webhook
+    webhook_id: '0x0101003a'
+  condition:
+  - condition: template
+    value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.bigroom_curtains_open', 'off') }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.bigroom_curtains_close
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.bigroom_curtains_open
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.cabinet_switch_1_red_1
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.bigroom_curtains_open', 'on') }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.bigroom_curtains_open
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.cabinet_switch_1_red_1
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.bigroom_curtains_close
+- id: 'cabinet_switch_1_down_2'
+  alias: Cabinet Switch 1 Down 2
+  description: 'Cabinet Switch 1 Down 2'
+  trigger:
+  - platform: webhook
+    webhook_id: '0x0101003c'
+  condition:
+  - condition: template
+    value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.cabinet_curtains_open', 'off') }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.cabinet_curtains_close
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.cabinet_curtains_open
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.cabinet_switch_1_red_2
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.cabinet_curtains_open', 'on') }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.cabinet_curtains_open
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.cabinet_switch_1_red_2
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.cabinet_curtains_close
+- id: 'cabinet_switch_1_down_3'
+  alias: Cabinet Switch 1 Down 3
+  description: 'Cabinet Switch 1 Down 3'
+  trigger:
+  - platform: webhook
+    webhook_id: '0x0101003e'
+  condition:
+  - condition: template
+    value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+  action:
+  - choose:
+    - conditions: []
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.cabinet_chandelier
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.cabinet_switch_1_green_3
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.cabinet_light_table
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.cabinet_switch_1_green_2
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.cabinet_light_wall
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.cabinet_switch_1_green_1
+      - service: light.turn_off
+        data: {}
+        target:
+          entity_id: lights.cabinet_rgb
+
 - id: 'cabinet_camera'
   alias: Cabinet Camera
-  description: 'Kitchen Camera'
+  description: 'Cabinet Camera'
   trigger:
   - platform: webhook
     webhook_id: '0x01010004'

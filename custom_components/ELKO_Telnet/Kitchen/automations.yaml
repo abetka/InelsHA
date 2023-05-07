@@ -527,8 +527,8 @@
         data:
           rgb_color:
             - 255
-            - 255
-            - 255
+            - 128
+            - 128
         target:
           entity_id: light.kitchen_rgb
       - delay:
@@ -537,11 +537,7 @@
           seconds: 30
           milliseconds: 0
       - service: light.turn_off
-        data:
-          rgb_color:
-            - 0
-            - 0
-            - 0
+        data: {}
         target:
           entity_id: lights.kitchen_rgb
   mode: single
