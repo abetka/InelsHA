@@ -17,6 +17,54 @@
       timeout: 0.1
 - platform: ELKO_telnet
   switches:
+    cabinet_switch_2_green_1:
+      <<: *settings
+      name: Cabinet Switch 2 Green 1
+      device_id: "0x0102007e"
+- platform: ELKO_telnet
+  switches:
+    cabinet_switch_2_green_2:
+      <<: *settings
+      name: Cabinet Switch 2 Green 2
+      device_id: "0x01020080"
+- platform: ELKO_telnet
+  switches:
+    cabinet_switch_2_red_1:
+      <<: *settings
+      name: Cabinet Switch 2 Red 1
+      device_id: "0x0102007f"
+- platform: ELKO_telnet
+  switches:
+    cabinet_switch_2_red_2:
+      <<: *settings
+      name: Cabinet Switch 2 Red 2
+      device_id: "0x01020081"
+- platform: ELKO_telnet
+  switches:
+    cabinet_switch_2_up_1:
+      <<: *settings
+      name: Cabinet Switch 2 Up 1
+      device_id: "0x010100af"
+- platform: ELKO_telnet
+  switches:
+    cabinet_switch_2_up_2:
+      <<: *settings
+      name: Cabinet Switch 2 Up 2
+      device_id: "0x010100b1"
+- platform: ELKO_telnet
+  switches:
+    cabinet_switch_2_down_1:
+      <<: *settings
+      name: Cabinet Switch 2 Down 1
+      device_id: "0x010100b0"
+- platform: ELKO_telnet
+  switches:
+    cabinet_switch_2_down_2:
+      <<: *settings
+      name: Cabinet Switch 2 Down 2
+      device_id: "0x010100b2"
+- platform: ELKO_telnet
+  switches:
     cabinet_switch_1_green_1:
       <<: *settings
       name: Cabinet Switch 1 Green 1
