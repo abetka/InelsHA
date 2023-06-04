@@ -24,6 +24,14 @@
       unit_of_measurement: "%"
 - platform: ELKO_telnet
   sensors:
+    wc_move_detector_battery:
+      <<: *sensors
+      friendly_name: "WC Move Detector Battery"
+      device_id: "0x010100a3"
+      device_class: 'battery'
+      unit_of_measurement: "%"
+- platform: ELKO_telnet
+  sensors:
     wc_mirror: &sensors2
       <<: *sensors
       friendly_name: "WC Mirror Backlight"
