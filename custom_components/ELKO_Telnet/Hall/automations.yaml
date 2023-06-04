@@ -1,3 +1,202 @@
+- id: 'hall_switch_1_down_2'
+  alias: Hall Switch 1 Down 2
+  description: 'Hall Switch 1 Down 2'
+  trigger:
+  - platform: webhook
+    webhook_id: '0x01010050'
+  - platform: webhook
+    webhook_id: '0x01010056'
+  condition:
+  - condition: template
+    value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+  action:
+  - choose:
+    - conditions: []
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.hall_points_lights
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.hall_switch_1_red_1
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.hall_switch_3_red_1
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.hall_lights
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.hall_switch_1_red_2
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.hall_switch_3_red_2
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.hall_wardrobe
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.hall_switch_1_green_1
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.hall_switch_3_green_1
+      - service: light.turn_off
+        data: {}
+        target:
+          entity_id: lights.cabinet_rgb
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.hall_switch_1_green_2
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.hall_switch_3_green_2
+          
+- id: 'hall_switch_1_down_1'
+  alias: Hall Switch 1 Down 1
+  description: 'Hall Switch 1 Down 1'
+  trigger:
+  - platform: webhook
+    webhook_id: '0x0101004e'
+  - platform: webhook
+    webhook_id: '0x01010054'
+  condition:
+  - condition: template
+    value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.hall_points_lights', 'off') }}"
+      sequence:
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.hall_points_lights
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.hall_switch_1_red_1
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.hall_switch_3_red_1
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.hall_points_lights', 'on') }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.switch.hall_points_lights
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.hall_switch_1_red_1
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.hall_switch_3_red_1
+- id: 'hall_switch_1_up_2'
+  alias: Hall Switch 1 Up 2
+  description: 'Hall Switch 1 Up 2'
+  trigger:
+  - platform: webhook
+    webhook_id: '0x0101004f'
+  - platform: webhook
+    webhook_id: '0x01010055'
+  condition:
+  - condition: template
+    value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.hall_lights', 'off') }}"
+      sequence:
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.hall_lights
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.hall_switch_1_green_2
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.hall_switch_3_green_2
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.hall_lights', 'on') }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.switch.hall_lights
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.hall_switch_1_green_2
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.hall_switch_3_green_2
+- id: 'hall_switch_1_up_1'
+  alias: Hall Switch 1 Up 1
+  description: 'Hall Switch 1 Up 1'
+  trigger:
+  - platform: webhook
+    webhook_id: '0x0101004d'
+  - platform: webhook
+    webhook_id: '0x01010053'
+  condition:
+  - condition: template
+    value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.hall_wardrobe', 'off') }}"
+      sequence:
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.hall_wardrobe
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.hall_switch_1_green_1
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.hall_switch_3_green_1
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.hall_wardrobe', 'on') }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.switch.hall_wardrobe
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.hall_switch_1_green_1
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.hall_switch_3_green_1
 - id: hall_backlight
   alias: Hall Backlight
   description: ''
