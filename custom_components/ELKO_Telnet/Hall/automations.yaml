@@ -34,7 +34,7 @@
         - service: switch.turn_off
           data: {}
           target:
-            entity_id: switch.switch.hall_points_lights
+            entity_id: switch.hall_points_lights
         - service: switch.turn_off
           data: {}
           target:
@@ -79,7 +79,7 @@
         - service: switch.turn_off
           data: {}
           target:
-            entity_id: switch.switch.hall_lights
+            entity_id: switch.hall_lights
         - service: switch.turn_off
           data: {}
           target:
@@ -124,7 +124,7 @@
         - service: switch.turn_off
           data: {}
           target:
-            entity_id: switch.switch.hall_wardrobe
+            entity_id: switch.hall_wardrobe
         - service: switch.turn_off
           data: {}
           target:
