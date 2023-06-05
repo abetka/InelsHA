@@ -1,11 +1,32 @@
+- id: 'wc_move_detector'
+  alias: WC Move Detector
+  description: 'WC Move Detector'
+  trigger:
+  - platform: webhook
+    webhook_id: '0x010100a4'
+  condition:
+  - condition: template
+    value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.wc_pointslights', 'off') }}"
+      sequence:
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.wc_pointslights
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.wc_switch_1_green_1
 - id: 'wc_switch_1_up_1'
   alias: WC Switch 1 Up 1
   description: 'WC Switch 1 Up 1'
   trigger:
   - platform: webhook
     webhook_id: '0x01010047'
-  - platform: webhook
-    webhook_id: '0x010100a4'
   condition:
   - condition: template
     value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
