@@ -22,24 +22,24 @@
     - choose:
         - conditions:
             - condition: template
-              value_template: "{{ is_state('switch.hall_points_lights', 'off') }}"
+              value_template: "{{ is_state('switch.hall_lights', 'off') }}"
           sequence:
             - service: switch.turn_on
               data: {}
               target:
                 entity_id:
-                  - switch.hall_points_lights
+                  - switch.hall_lights
                   - switch.hall_switch_1_red_1
                   - switch.hall_switch_3_red_1
         - conditions:
             - condition: template
-              value_template: "{{ is_state('switch.hall_points_lights', 'on') }}"
+              value_template: "{{ is_state('switch.hall_lights', 'on') }}"
           sequence:
             - service: switch.turn_off
               data: {}
               target:
                 entity_id:
-                  - switch.hall_points_lights
+                  - switch.hall_lights
                   - switch.hall_switch_1_red_1
                   - switch.hall_switch_3_red_1
   mode: single
@@ -147,24 +147,24 @@
     - choose:
         - conditions:
             - condition: template
-              value_template: "{{ is_state('switch.hall_lights', 'off') }}"
+              value_template: "{{ is_state('switch.hall_points_lights', 'off') }}"
           sequence:
             - service: switch.turn_on
               data: {}
               target:
                 entity_id:
-                  - switch.hall_lights
+                  - switch.hall_points_lights
                   - switch.hall_switch_1_green_2
                   - switch.hall_switch_3_green_2
         - conditions:
             - condition: template
-              value_template: "{{ is_state('switch.hall_lights', 'on') }}"
+              value_template: "{{ is_state('switch.hall_points_lights', 'on') }}"
           sequence:
             - service: switch.turn_off
               data: {}
               target:
                 entity_id:
-                  - switch.hall_lights
+                  - switch.hall_points_lights
                   - switch.hall_switch_1_green_2
                   - switch.hall_switch_3_green_2
   mode: single
