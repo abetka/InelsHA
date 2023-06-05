@@ -79,7 +79,6 @@
           - switch.hall_backlight
           - switch.hall_switch_1_green_2
           - switch.hall_switch_3_green_2
-
   mode: single
 - id: 'hall_switch_1_up_1'
   alias: Hall Switch 1 Up 1
