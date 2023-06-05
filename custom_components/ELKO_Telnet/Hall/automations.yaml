@@ -61,7 +61,6 @@
         data: {}
         target:
           entity_id: switch.hall_switch_3_green_2
-          
 - id: 'hall_switch_1_down_1'
   alias: Hall Switch 1 Down 1
   description: 'Hall Switch 1 Down 1'
