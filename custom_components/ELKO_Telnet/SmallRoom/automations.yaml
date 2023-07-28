@@ -88,3 +88,270 @@
     target:
       entity_id: cover.smallroom_tule
   mode: single
+- id: 'smallroom_switch_1_up_1'
+  alias: Smallroom Switch 1 Up 1
+  description: 'Smallroom Switch 1 Up 1'
+  trigger:
+  - platform: webhook
+    webhook_id: '0x0101002b'
+  condition:
+  - condition: template
+    value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.smallroom_backlight_wall', 'off') }}"
+      sequence:
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.smallroom_backlight_wall
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.smallroom_switch_1_green_1
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.smallroom_backlight_wall', 'on') }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.smallroom_backlight_wall
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.smallroom_switch_1_green_1
+  mode: single
+- id: 'smallroom_switch_1_up_2'
+  alias: Smallroom Switch 1 Up 2
+  description: 'Smallroom Switch 1 Up 2'
+  trigger:
+  - platform: webhook
+    webhook_id: '0x0101002d'
+  condition:
+  - condition: template
+    value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.smallroom_points_lights', 'off') }}"
+      sequence:
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.smallroom_points_lights
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.smallroom_switch_1_green_2
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.smallroom_points_lights', 'on') }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.smallroom_points_lights
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.smallroom_switch_1_green_2
+  mode: single
+- id: 'smallroom_switch_1_up_3'
+  alias: Smallroom Switch 1 Up 3
+  description: 'Smallroom Switch 1 Up 3'
+  trigger:
+  - platform: webhook
+    webhook_id: '0x0101002f'
+  condition:
+  - condition: template
+    value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.smallroom_chandelier', 'off') }}"
+      sequence:
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.smallroom_chandelier
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.smallroom_switch_1_green_3
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.smallroom_chandelier', 'on') }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.smallroom_chandelier
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.smallroom_switch_1_green_3
+  mode: single
+- id: 'smallroom_switch_1_down_1'
+  alias: Smallroom Switch 1 Down 1
+  description: 'Smallroom Switch 1 Down 1'
+  trigger:
+  - platform: webhook
+    webhook_id: '0x0101002c'
+  condition:
+  - condition: template
+    value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.smallroom_curtains_open', 'off') }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.smallroom_curtains_close
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.smallroom_curtains_open
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.smallroom_switch_1_red_1
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.smallroom_curtains_open', 'on') }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.smallroom_curtains_open
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.smallroom_switch_1_red_1
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.smallroom_curtains_close
+  mode: single
+- id: 'smallroom_switch_1_down_2'
+  alias: smallroom Switch 1 Down 2
+  description: 'smallroom Switch 1 Down 2'
+  trigger:
+  - platform: webhook
+    webhook_id: '0x0101002e'
+  condition:
+  - condition: template
+    value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.smallroom_tule_open', 'off') }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.smallroom_tule_close
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.smallroom_tule_open
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.smallroom_switch_1_red_2
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.smallroom_tule_open', 'on') }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.smallroom_tule_open
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.smallroom_switch_1_red_2
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.smallroom_tule_close
+  mode: single
+- id: 'smallroom_switch_1_down_3'
+  alias: Smallroom Switch 1 Down 3
+  description: 'Smallroom Switch 1 Down 3'
+  trigger:
+  - platform: webhook
+    webhook_id: '0x01010030'
+  condition:
+  - condition: template
+    value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+  action:
+  - choose:
+    - conditions: []
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.smallroom_backlight_wall
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.smallroom_switch_1_green_1
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.smallroom_points_lights
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.smallroom_switch_1_green_2
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.smallroom_chandelier
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.smallroom_switch_1_green_3
+  mode: single
+- id: 'smallroom_camera'
+  alias: Smallroom Camera
+  description: 'Smallroom Camera'
+  trigger:
+  - platform: webhook
+    webhook_id: '0x0101000d'
+  condition:
+  - condition: and
+    conditions:
+      - condition: template
+        value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+      - condition: time
+        after: "20:00:00"
+        before: "08:00:00"
+  action:
+  - service: light.turn_on
+    data:
+      rgb_color:
+        - 81
+        - 218
+        - 10
+    target:
+      entity_id: light.smallroom_rgb
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 10
+      milliseconds: 0
+  - service: light.turn_off
+    data: {}
+    target:
+      entity_id: light.smallroom_rgb
+  mode: single
