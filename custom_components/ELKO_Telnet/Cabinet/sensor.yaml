@@ -36,6 +36,9 @@
       device_id: "0x01020029"
       device_class: 'enum'
       unit_of_measurement: "on/off"
+      options:
+        - "on"
+        - "off"
 - platform: ELKO_telnet
   sensors:
     cabinet_light_wall:
