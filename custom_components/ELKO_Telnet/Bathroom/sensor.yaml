@@ -3,6 +3,7 @@
   sensors:
     bathroom_temperature: &sensors
       friendly_name: "Bathroom Temperature"
+      unique_id: bathroom_temeperature
       host: "192.168.88.246"
       device_id: "0x01050013"
       port: 1111
@@ -12,12 +13,14 @@
   sensors:
     bathroom_switch_temperature:
       <<: *sensors
+      unique_id: bathroom_switch_temeperature
       friendly_name: "Bathroom Switch Temperature"
       device_id: "0x01050004"
 - platform: ELKO_telnet
   sensors:
     bathroom_humidity:
       <<: *sensors
+      unique_id: bathroom_humidity
       friendly_name: "Bathroom Humidity"
       device_id: "0x01050006"
       device_class: 'humidity'
@@ -26,6 +29,7 @@
   sensors:
     bathroom_move_detector_battery:
       <<: *sensors
+      unique_id: bathroom_move_detector_battery
       friendly_name: "Bathroom Move Detector Battery"
       device_id: "0x010100a6"
       device_class: 'battery'
@@ -34,6 +38,7 @@
   sensors:
     bathroom_mirror: &sensors2
       <<: *sensors
+      unique_id: bathroom_mirror_backlight
       friendly_name: "Bathroom Mirror Backlight"
       device_id: "0x01020001"
       device_class: 'binary'
@@ -41,24 +46,28 @@
 - platform: ELKO_telnet
   sensors:
     bathroom_backlight:
-      <<: *sensors2
+      <<: *sensors
+      unique_id: bathroom_wall_backlight
       friendly_name: "Bathroom Wall Backlight"
       device_id: "0x01020012"
 - platform: ELKO_telnet
   sensors:
     bathroom_fan:
-      <<: *sensors2
+      <<: *sensors
+      unique_id: bathroom_fan
       friendly_name: "Bathroom Fan"
       device_id: "0x01020024"
 - platform: ELKO_telnet
   sensors:
     bathroom_pointslights:
-      <<: *sensors2
+      <<: *sensors
+      unique_id: bathroom_points_light
       friendly_name: "Bathroom Points Light"
       device_id: "0x0102000b"
 - platform: ELKO_telnet
   sensors:
     bathroom_floor_heater:
-      <<: *sensors2
+      <<: *sensors
+      unique_id: bathroom_floor_heater
       friendly_name: "Bathroom Floor Heater"
       device_id: "0x01020043"

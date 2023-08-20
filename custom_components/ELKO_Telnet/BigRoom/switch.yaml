@@ -70,6 +70,116 @@
       name: Bigroom Point Light
       device_id: "0x0102002b"
 
+- platform: ELKO_telnet
+  switches:
+    bigroom_switch_1_green_1:
+      <<: *settings
+      name: Bigroom Switch 1 Green 1
+      device_id: "0x0102004f"
+- platform: ELKO_telnet
+  switches:
+    bigroom_switch_1_green_2:
+      <<: *settings
+      name: Bigroom Switch 1 Green 2
+      device_id: "0x01020051"
+- platform: ELKO_telnet
+  switches:
+    bigroom_switch_2_green_1:
+      <<: *settings
+      name: Bigroom Switch 2 Green 1
+      device_id: "0x01020044"
+- platform: ELKO_telnet
+  switches:
+    bigroom_switch_2_green_2:
+      <<: *settings
+      name: Bigroom Switch 2 Green 2
+      device_id: "0x01020046"
+- platform: ELKO_telnet
+  switches:
+    bigroom_switch_3_green_1:
+      <<: *settings
+      name: Bigroom Switch 3 Green 1
+      device_id: ""
+- platform: ELKO_telnet
+  switches:
+    bigroom_switch_3_green_2:
+      <<: *settings
+      name: Bigroom Switch 3 Green 2
+      device_id: ""
+- platform: ELKO_telnet
+  switches:
+    bigroom_switch_4_green_1:
+      <<: *settings
+      name: Bigroom Switch 4 Green 1
+      device_id: ""
+- platform: ELKO_telnet
+  switches:
+    bigroom_switch_4_green_2:
+      <<: *settings
+      name: Bigroom Switch 4 Green 2
+      device_id: ""
+- platform: ELKO_telnet
+  switches:
+    kitchen_switch_1_red_1:
+      <<: *settings
+      name: Kitchen Switch 1 Red 1
+      device_id: "0x01020031"
+- platform: ELKO_telnet
+  switches:
+    bigroom_switch_1_red_1:
+      <<: *settings
+      name: Bigroom Switch 1 Red 1
+      device_id: "0x01020050"
+- platform: ELKO_telnet
+  switches:
+    bigroom_switch_1_red_2:
+      <<: *settings
+      name: Bigroom Switch 1 Red 2
+      device_id: "0x01020052"
+- platform: ELKO_telnet
+  switches:
+    bigroom_switch_2_red_1:
+      <<: *settings
+      name: Bigroom Switch 2 Red 1
+      device_id: "0x01020045"
+- platform: ELKO_telnet
+  switches:
+    bigroom_switch_2_red_2:
+      <<: *settings
+      name: Bigroom Switch 2 Red 2
+      device_id: "0x01020047"
+- platform: ELKO_telnet
+  switches:
+    bigroom_switch_3_red_1:
+      <<: *settings
+      name: Bigroom Switch 3 Red 1
+      device_id: ""
+- platform: ELKO_telnet
+  switches:
+    bigroom_switch_3_red_2:
+      <<: *settings
+      name: Bigroom Switch 3 Red 2
+      device_id: ""
+- platform: ELKO_telnet
+  switches:
+    bigroom_switch_4_red_1:
+      <<: *settings
+      name: Bigroom Switch 4 Red 1
+      device_id: ""
+- platform: ELKO_telnet
+  switches:
+    bigroom_switch_4_red_2:
+      <<: *settings
+      name: Bigroom Switch 4 Red 2
+      device_id: ""
+- platform: ELKO_telnet
+  switches:
+    bigroom_camera:
+      <<: *settings
+      name: Bigroom Camera
+      device_id: "0x01010005"
+
+
 # Templates
 # BigRoom Heater Template
 - platform: template
