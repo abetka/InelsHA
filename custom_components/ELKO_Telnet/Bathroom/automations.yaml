@@ -197,8 +197,8 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('switch.bathroom_mirror_tmp') != states('sensor.bathroom_mirror') }}"
-  - service: switch.turn_{{states('sensor.bathroom_mirror')}}
+    value_template: "{{ (states('switch.bathroom_mirror_tmp') == 'on' and states('sensor.bathroom_mirror') == 0) or (states('switch.bathroom_mirror_tmp') == 'off' and states('sensor.bathroom_mirror') == 1) }}"
+  - service: switch.turn_{%+ if states('sensor.bathroom_mirror') == 1 %}on{% else %}off{% endif %}
     data: {}
     target:
       entity_id: switch.bathroom_mirror_tmp
@@ -215,8 +215,8 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('switch.bathroom_backlight_tmp') != states('sensor.bathroom_backlight') }}"
-  - service: switch.turn_{{states('sensor.bathroom_backlight')}}
+    value_template: "{{ (states('switch.bathroom_backlight_tmp') == 'on' and states('sensor.bathroom_backlight') == 0) or (states('switch.bathroom_backlight_tmp') == 'off' and states('sensor.bathroom_backlight') == 1) }}"
+  - service: switch.turn_{%+ if states('sensor.bathroom_backlight') == 1 %}on{% else %}off{% endif %}
     data: {}
     target:
       entity_id: switch.bathroom_backlight_tmp
@@ -233,8 +233,8 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('switch.bathroom_fan_tmp') != states('sensor.bathroom_fan') }}"
-  - service: switch.turn_{{states('sensor.bathroom_fan')}}
+    value_template: "{{ (states('switch.bathroom_fan_tmp') == 'on' and states('sensor.bathroom_fan') == 0) or (states('switch.bathroom_fan_tmp') == 'off' and states('sensor.bathroom_fan') == 1) }}"
+  - service: switch.turn_{%+ if states('sensor.bathroom_fan') == 1 %}on{% else %}off{% endif %}
     data: {}
     target:
       entity_id: switch.bathroom_fan_tmp
@@ -251,14 +251,12 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('switch.bathroom_pointslights_tmp') != states('sensor.bathroom_pointslights') }}"
-  - service: switch.turn_{{states('sensor.bathroom_pointslights')}}
+    value_template: "{{ (states('switch.bathroom_pointslights_tmp') == 'on' and states('sensor.bathroom_pointslights') == 0) or (states('switch.bathroom_pointslights_tmp') == 'off' and states('sensor.bathroom_pointslights') == 1) }}"
+  - service: switch.turn_{%+ if states('sensor.bathroom_pointslights') == 1 %}on{% else %}off{% endif %}
     data: {}
     target:
       entity_id: switch.bathroom_pointslights_tmp
   mode: single
-
-
 
 
 # switchTools = {
