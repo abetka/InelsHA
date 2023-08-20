@@ -11,7 +11,7 @@
   action:
   - condition: template
     value_template: "{{ states('switch.cabinet_light_table_tmp') != states('sensor.cabinet_light_table') }}"
-  - service: switch.turn_{{states('sensor.cabinet_light_table')}}
+  - service: switch.turn_{{states('sensor.cabinet_light_table')? "on":"off"}}
     data: {}
     target:
       entity_id: switch.cabinet_light_table_tmp
