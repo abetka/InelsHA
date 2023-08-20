@@ -34,7 +34,7 @@
       <<: *sensors
       friendly_name: "Cabinet light Table"
       device_id: "0x01020029"
-      device_class: 'binary'
+      device_class: 'enum'
       unit_of_measurement: "on/off"
 - platform: ELKO_telnet
   sensors:
@@ -54,7 +54,7 @@
       <<: *sensors
       friendly_name: "Cabinet Curtains Open"
       device_id: "0x0102002f"
-      device_class: 'binary'
+      device_class: 'enum'
       unit_of_measurement: "open/closed"
 - platform: ELKO_telnet
   sensors:
@@ -62,5 +62,5 @@
       <<: *sensors
       friendly_name: "Cabinet Curtains Close"
       device_id: "0x01020026"
-      device_class: 'binary'
+      device_class: 'enum'
       unit_of_measurement: "closed/open"
