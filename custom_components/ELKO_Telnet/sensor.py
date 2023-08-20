@@ -357,26 +357,7 @@ class ELKOSensors(SensorEntity):
         """
         response = int(telnet.getData(**self._cmd))
         _LOGGER.debug("Device id %s Status is: %s Device class is: %s Measurement is: %s", self._cmd['device_id'], response, self._attr_device_class, self._attr_native_unit_of_measurement)
-        if self._attr_device_class == 'enum':
-            if self._attr_native_unit_of_measurement == 'on/off':
-                if response == 1:
-                    self._attr_native_value = 'on'
-                else:
-                    self._attr_native_value = 'off'
-            if self._attr_native_unit_of_measurement == 'off/on':
-                if response == 0:
-                    self._attr_native_value = 'on'
-                else:
-                    self._attr_native_value = 'off'
-            if self._attr_native_unit_of_measurement == 'open/closed':
-                if response == 1:
-                    self._attr_native_value = 'open'
-                else:
-                    self._attr_native_value = 'closed'
-            if self._attr_native_unit_of_measurement == 'closed/open':
-                if response == 0:
-                    self._attr_native_value = 'open'
-                else:
-                    self._attr_native_value = 'closed'
+        if self._attr_device_class == 'binary':
+            self._attr_native_value = response
         else:
             self._attr_native_value = response * 0.01

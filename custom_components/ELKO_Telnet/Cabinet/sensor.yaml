@@ -30,15 +30,18 @@
 
 - platform: ELKO_telnet
   sensors:
-    cabinet_light_table: &sensors2
+    bathroom_mirror: &sensors2
       <<: *sensors
+      friendly_name: "Bathroom Mirror Backlight"
+      device_id: "0x01020001"
+      device_class: 'binary'
+      unit_of_measurement: "on/off"
+- platform: ELKO_telnet
+  sensors:
+    cabinet_light_table:
+      <<: *sensors2
       friendly_name: "Cabinet light Table"
       device_id: "0x01020029"
-      device_class: 'enum'
-      unit_of_measurement: "on/off"
-      options:
-        - "on"
-        - "off"
 - platform: ELKO_telnet
   sensors:
     cabinet_light_wall:
@@ -57,7 +60,7 @@
       <<: *sensors
       friendly_name: "Cabinet Curtains Open"
       device_id: "0x0102002f"
-      device_class: 'enum'
+      device_class: 'binary'
       unit_of_measurement: "open/closed"
 - platform: ELKO_telnet
   sensors:
@@ -65,5 +68,5 @@
       <<: *sensors
       friendly_name: "Cabinet Curtains Close"
       device_id: "0x01020026"
-      device_class: 'enum'
+      device_class: 'binary'
       unit_of_measurement: "closed/open"
