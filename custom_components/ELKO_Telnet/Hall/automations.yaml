@@ -180,8 +180,8 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('switch.hall_backlight_tmp') != states('sensor.hall_backlight') }}"
-  - service: switch.turn_{{states('sensor.hall_backlight')}}
+    value_template: "{{ (states('switch.hall_backlight_tmp') == 'on' and states('sensor.hall_backlight') == 0) or (states('switch.hall_backlight_tmp') == 'off' and states('sensor.hall_backlight') == 1) }}"
+  - service: switch.turn_{%+ if states('sensor.hall_backlight') == 1 %}on{% else %}off{% endif %}
     data: {}
     target:
       entity_id: switch.hall_backlight_tmp
@@ -198,8 +198,8 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('switch.hall_lights_tmp') != states('sensor.hall_lights') }}"
-  - service: switch.turn_{{states('sensor.hall_lights')}}
+    value_template: "{{ (states('switch.hall_lights_tmp') == 'on' and states('sensor.hall_lights') == 0) or (states('switch.hall_lights_tmp') == 'off' and states('sensor.hall_lights') == 1) }}"
+  - service: switch.turn_{%+ if states('sensor.hall_lights') == 1 %}on{% else %}off{% endif %}
     data: {}
     target:
       entity_id: switch.hall_lights_tmp
@@ -216,8 +216,8 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('switch.hall_points_lights_tmp') != states('sensor.hall_points_lights') }}"
-  - service: switch.turn_{{states('sensor.hall_points_lights')}}
+    value_template: "{{ (states('switch.hall_points_lights_tmp') == 'on' and states('sensor.hall_points_lights') == 0) or (states('switch.hall_points_lights_tmp') == 'off' and states('sensor.hall_points_lights') == 1) }}"
+  - service: switch.turn_{%+ if states('sensor.hall_points_lights') == 1 %}on{% else %}off{% endif %}
     data: {}
     target:
       entity_id: switch.hall_points_lights_tmp
@@ -234,8 +234,8 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('switch.hall_wardrobe_tmp') != states('sensor.hall_wardrobe') }}"
-  - service: switch.turn_{{states('sensor.hall_wardrobe')}}
+    value_template: "{{ (states('switch.hall_wardrobe_tmp') == 'on' and states('sensor.hall_wardrobe') == 0) or (states('switch.hall_wardrobe_tmp') == 'off' and states('sensor.hall_wardrobe') == 1) }}"
+  - service: switch.turn_{%+ if states('sensor.hall_wardrobe') == 1 %}on{% else %}off{% endif %}
     data: {}
     target:
       entity_id: switch.hall_wardrobe_tmp
@@ -252,8 +252,8 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('switch.hall_move_lights_tmp') != states('sensor.hall_move_lights') }}"
-  - service: switch.turn_{{states('sensor.hall_move_lights')}}
+    value_template: "{{ (states('switch.hall_move_lights_tmp') == 'on' and states('sensor.hall_move_lights') == 0) or (states('switch.hall_move_lights_tmp') == 'off' and states('sensor.hall_move_lights') == 1) }}"
+  - service: switch.turn_{%+ if states('sensor.hall_move_lights') == 1 %}on{% else %}off{% endif %}
     data: {}
     target:
       entity_id: switch.hall_move_lights_tmp

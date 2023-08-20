@@ -10,8 +10,8 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('switch.kitchen_point_lights_tmp') != states('sensor.kitchen_point_lights') }}"
-  - service: switch.turn_{{states('sensor.kitchen_point_lights')}}
+    value_template: "{{ (states('switch.kitchen_point_lights_tmp') == 'on' and states('sensor.kitchen_point_lights') == 0) or (states('switch.kitchen_point_lights_tmp') == 'off' and states('sensor.kitchen_point_lights') == 1) }}"
+  - service: switch.turn_{%+ if states('sensor.kitchen_point_lights') == 1 %}on{% else %}off{% endif %}
     data: {}
     target:
       entity_id: switch.kitchen_point_lights_tmp
@@ -28,8 +28,8 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('switch.kitchen_point_lights_window_tmp') != states('sensor.kitchen_point_lights_window') }}"
-  - service: switch.turn_{{states('sensor.kitchen_point_lights_window')}}
+    value_template: "{{ (states('switch.kitchen_point_lights_window_tmp') == 'on' and states('sensor.kitchen_point_lights_window') == 0) or (states('switch.kitchen_point_lights_window_tmp') == 'off' and states('sensor.kitchen_point_lights_window') == 1) }}"
+  - service: switch.turn_{%+ if states('sensor.kitchen_point_lights_window') == 1 %}on{% else %}off{% endif %}
     data: {}
     target:
       entity_id: switch.kitchen_point_lights_window_tmp
@@ -46,8 +46,8 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('switch.kitchen_backlight_wall_tmp') != states('sensor.kitchen_backlight_wall') }}"
-  - service: switch.turn_{{states('sensor.kitchen_backlight_wall')}}
+    value_template: "{{ (states('switch.kitchen_backlight_wall_tmp') == 'on' and states('sensor.kitchen_backlight_wall') == 0) or (states('switch.kitchen_backlight_wall_tmp') == 'off' and states('sensor.kitchen_backlight_wall') == 1) }}"
+  - service: switch.turn_{%+ if states('sensor.kitchen_backlight_wall') == 1 %}on{% else %}off{% endif %}
     data: {}
     target:
       entity_id: switch.kitchen_backlight_wall_tmp
@@ -64,8 +64,8 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('switch.kitchen_backlight_table_tmp') != states('sensor.kitchen_backlight_table') }}"
-  - service: switch.turn_{{states('sensor.kitchen_backlight_table')}}
+    value_template: "{{ (states('switch.kitchen_backlight_table_tmp') == 'on' and states('sensor.kitchen_backlight_table') == 0) or (states('switch.kitchen_backlight_table_tmp') == 'off' and states('sensor.kitchen_backlight_table') == 1) }}"
+  - service: switch.turn_{%+ if states('sensor.kitchen_backlight_table') == 1 %}on{% else %}off{% endif %}
     data: {}
     target:
       entity_id: switch.kitchen_backlight_table_tmp
@@ -82,8 +82,8 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('switch.kitchen_chandelier_tmp') != states('sensor.kitchen_chandelier') }}"
-  - service: switch.turn_{{states('sensor.kitchen_chandelier')}}
+    value_template: "{{ (states('switch.kitchen_chandelier_tmp') == 'on' and states('sensor.kitchen_chandelier') == 0) or (states('switch.kitchen_chandelier_tmp') == 'off' and states('sensor.kitchen_chandelier') == 1) }}"
+  - service: switch.turn_{%+ if states('sensor.kitchen_chandelier') == 1 %}on{% else %}off{% endif %}
     data: {}
     target:
       entity_id: switch.kitchen_chandelier_tmp
@@ -100,8 +100,8 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('cover.kitchen_curtain') != states('sensor.kitchen_curtains_open') }}"
-  - service: cover.{{ states('sensor.kitchen_curtains_open') | replace("closed", "close") }}_cover
+    value_template: "{{ (states('cover.kitchen_curtain') == 'open' and states('sensor.kitchen_curtains_open') == 0) or (states('cover.kitchen_curtain') == 'closed' and states('sensor.kitchen_curtains_open') == 1) }}"
+  - service: cover.{%+ if states('sensor.kitchen_curtains_open') == 1 %}open{% else %}close{% endif %}_cover
     data: {}
     target:
       entity_id: cover.kitchen_curtain
@@ -118,8 +118,8 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('cover.kitchen_tule') != states('sensor.kitchen_tule_open') }}"
-  - service: cover.{{ states('sensor.kitchen_tule_open') | replace("closed", "close") }}_cover
+    value_template: "{{ (states('cover.kitchen_tule') == 'open' and states('sensor.kitchen_tule_open') == 0) or (states('cover.kitchen_tule') == 'closed' and states('sensor.kitchen_tule_open') == 1) }}"
+  - service: cover.{%+ if states('sensor.kitchen_tule_open') == 1 %}open{% else %}close{% endif %}_cover
     data: {}
     target:
       entity_id: cover.kitchen_tule

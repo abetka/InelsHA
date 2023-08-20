@@ -10,8 +10,8 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('switch.bigroom_point_light_tmp') != states('sensor.bigroom_point_light') }}"
-  - service: switch.turn_{{states('sensor.bigroom_point_light')}}
+    value_template: "{{ (states('switch.bigroom_point_light_tmp') == 'on' and states('sensor.bigroom_point_light') == 0) or (states('switch.bigroom_point_light_tmp') == 'off' and states('sensor.bigroom_point_light') == 1) }}"
+  - service: switch.turn_{%+ if states('sensor.bigroom_point_light') == 1 %}on{% else %}off{% endif %}
     data: {}
     target:
       entity_id: switch.bigroom_point_light_tmp
@@ -28,8 +28,8 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('switch.bigroom_mirror_tmp') != states('sensor.bigroom_mirror') }}"
-  - service: switch.turn_{{states('sensor.bigroom_mirror')}}
+    value_template: "{{ (states('switch.bigroom_mirror_tmp') == 'on' and states('sensor.bigroom_mirror') == 0) or (states('switch.bigroom_mirror_tmp') == 'off' and states('sensor.bigroom_mirror') == 1) }}"
+  - service: switch.turn_{%+ if states('sensor.bigroom_mirror') == 1 %}on{% else %}off{% endif %}
     data: {}
     target:
       entity_id: switch.bigroom_mirror_tmp
@@ -46,8 +46,8 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('switch.bigroom_backlight_door_tmp') != states('sensor.bigroom_backlight_door') }}"
-  - service: switch.turn_{{states('sensor.bigroom_backlight_door')}}
+    value_template: "{{ (states('switch.bigroom_backlight_door_tmp') == 'on' and states('sensor.bigroom_backlight_door') == 0) or (states('switch.bigroom_backlight_door_tmp') == 'off' and states('sensor.bigroom_backlight_door') == 1) }}"
+  - service: switch.turn_{%+ if states('sensor.bigroom_backlight_door') == 1 %}on{% else %}off{% endif %}
     data: {}
     target:
       entity_id: switch.bigroom_backlight_door_tmp
@@ -64,8 +64,8 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('switch.bigroom_backlight_window_tmp') != states('sensor.bigroom_backlight_window') }}"
-  - service: switch.turn_{{states('sensor.bigroom_backlight_window')}}
+    value_template: "{{ (states('switch.bigroom_backlight_window_tmp') == 'on' and states('sensor.bigroom_backlight_window') == 0) or (states('switch.bigroom_backlight_window_tmp') == 'off' and states('sensor.bigroom_backlight_window') == 1) }}"
+  - service: switch.turn_{%+ if states('sensor.bigroom_backlight_window') == 1 %}on{% else %}off{% endif %}
     data: {}
     target:
       entity_id: switch.bigroom_backlight_window_tmp
@@ -82,8 +82,8 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('switch.bigroom_chandelier_tmp') != states('sensor.bigroom_chandelier') }}"
-  - service: switch.turn_{{states('sensor.bigroom_chandelier')}}
+    value_template: "{{ (states('switch.bigroom_chandelier_tmp') == 'on' and states('sensor.bigroom_chandelier') == 0) or (states('switch.bigroom_chandelier_tmp') == 'off' and states('sensor.bigroom_chandelier') == 1) }}"
+  - service: switch.turn_{%+ if states('sensor.bigroom_chandelier') == 1 %}on{% else %}off{% endif %}
     data: {}
     target:
       entity_id: switch.bigroom_chandelier_tmp
@@ -100,8 +100,8 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('cover.bigroom_curtain') != states('sensor.bigroom_curtains_open') }}"
-  - service: cover.{{ states('sensor.bigroom_curtains_open') | replace("closed", "close") }}_cover
+    value_template: "{{ (states('cover.bigroom_curtain') == 'open' and states('sensor.bigroom_curtains_open') == 0) or (states('cover.bigroom_curtain') == 'closed' and states('sensor.bigroom_curtains_open') == 1) }}"
+  - service: cover.{%+ if states('sensor.bigroom_curtains_open') == 1 %}open{% else %}close{% endif %}_cover
     data: {}
     target:
       entity_id: cover.bigroom_curtain
@@ -118,8 +118,8 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('cover.bigroom_tule') != states('sensor.bigroom_tule_open') }}"
-  - service: cover.{{ states('sensor.bigroom_tule_open') | replace("closed", "close") }}_cover
+    value_template: "{{ (states('cover.bigroom_tule') == 'open' and states('sensor.bigroom_tule_open') == 0) or (states('cover.bigroom_tule') == 'closed' and states('sensor.bigroom_tule_open') == 1) }}"
+  - service: cover.{%+ if states('sensor.bigroom_tule_open') == 1 %}open{% else %}close{% endif %}_cover
     data: {}
     target:
       entity_id: cover.bigroom_tule

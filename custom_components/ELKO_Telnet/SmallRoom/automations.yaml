@@ -10,8 +10,8 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('switch.smallroom_point_lights_tmp') != states('sensor.smallroom_point_lights') }}"
-  - service: switch.turn_{{states('sensor.smallroom_point_lights')}}
+    value_template: "{{ (states('switch.smallroom_point_lights_tmp') == 'on' and states('sensor.smallroom_point_lights') == 0) or (states('switch.smallroom_point_lights_tmp') == 'off' and states('sensor.smallroom_point_lights') == 1) }}"
+  - service: switch.turn_{%+ if states('sensor.smallroom_point_lights') == 1 %}on{% else %}off{% endif %}
     data: {}
     target:
       entity_id: switch.smallroom_point_lights_tmp
@@ -28,8 +28,8 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('switch.smallroom_backlight_wall_tmp') != states('sensor.smallroom_backlight_wall') }}"
-  - service: switch.turn_{{states('sensor.smallroom_backlight_wall')}}
+    value_template: "{{ (states('switch.smallroom_backlight_wall_tmp') == 'on' and states('sensor.smallroom_backlight_wall') == 0) or (states('switch.smallroom_backlight_wall_tmp') == 'off' and states('sensor.smallroom_backlight_wall') == 1) }}"
+  - service: switch.turn_{%+ if states('sensor.smallroom_backlight_wall') == 1 %}on{% else %}off{% endif %}
     data: {}
     target:
       entity_id: switch.smallroom_backlight_wall_tmp
@@ -46,8 +46,8 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('switch.smallroom_chandelier_tmp') != states('sensor.smallroom_chandelier') }}"
-  - service: switch.turn_{{states('sensor.smallroom_chandelier')}}
+    value_template: "{{ (states('switch.smallroom_chandelier_tmp') == 'on' and states('sensor.smallroom_chandelier') == 0) or (states('switch.smallroom_chandelier_tmp') == 'off' and states('sensor.smallroom_chandelier') == 1) }}"
+  - service: switch.turn_{%+ if states('sensor.smallroom_chandelier') == 1 %}on{% else %}off{% endif %}
     data: {}
     target:
       entity_id: switch.smallroom_chandelier_tmp
@@ -64,8 +64,8 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('cover.smallroom_curtain') != states('sensor.smallroom_curtains_open') }}"
-  - service: cover.{{ states('sensor.smallroom_curtains_open') | replace("closed", "close") }}_cover
+    value_template: "{{ (states('cover.smallroom_curtain') == 'open' and states('sensor.smallroom_curtains_open') == 0) or (states('cover.smallroom_curtain') == 'closed' and states('sensor.smallroom_curtains_open') == 1) }}"
+  - service: cover.{%+ if states('sensor.smallroom_curtains_open') == 1 %}open{% else %}close{% endif %}_cover
     data: {}
     target:
       entity_id: cover.smallroom_curtain
@@ -82,8 +82,8 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('cover.smallroom_tule') != states('sensor.smallroom_tule_open') }}"
-  - service: cover.{{ states('sensor.smallroom_tule_open') | replace("closed", "close") }}_cover
+    value_template: "{{ (states('cover.smallroom_tule') == 'open' and states('sensor.smallroom_tule_open') == 0) or (states('cover.smallroom_tule') == 'closed' and states('sensor.smallroom_tule_open') == 1) }}"
+  - service: cover.{%+ if states('sensor.smallroom_tule_open') == 1 %}open{% else %}close{% endif %}_cover
     data: {}
     target:
       entity_id: cover.smallroom_tule

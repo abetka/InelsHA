@@ -197,8 +197,8 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('switch.wc_mirror_tmp') != states('sensor.wc_mirror') }}"
-  - service: switch.turn_{{states('sensor.wc_mirror')}}
+    value_template: "{{ (states('switch.wc_mirror_tmp') == 'on' and states('sensor.wc_mirror') == 0) or (states('switch.wc_mirror_tmp') == 'off' and states('sensor.wc_mirror') == 1) }}"
+  - service: switch.turn_{%+ if states('sensor.wc_mirror') == 1 %}on{% else %}off{% endif %}
     data: {}
     target:
       entity_id: switch.wc_mirror_tmp
@@ -215,8 +215,8 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('switch.wc_backlight_tmp') != states('sensor.wc_backlight') }}"
-  - service: switch.turn_{{states('sensor.wc_backlight')}}
+    value_template: "{{ (states('switch.wc_backlight_tmp') == 'on' and states('sensor.wc_backlight') == 0) or (states('switch.wc_backlight_tmp') == 'off' and states('sensor.wc_backlight') == 1) }}"
+  - service: switch.turn_{%+ if states('sensor.wc_backlight') == 1 %}on{% else %}off{% endif %}
     data: {}
     target:
       entity_id: switch.wc_backlight_tmp
@@ -233,8 +233,8 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('switch.wc_fan_tmp') != states('sensor.wc_fan') }}"
-  - service: switch.turn_{{states('sensor.wc_fan')}}
+    value_template: "{{ (states('switch.wc_fan_tmp') == 'on' and states('sensor.wc_fan') == 0) or (states('switch.wc_fan_tmp') == 'off' and states('sensor.wc_fan') == 1) }}"
+  - service: switch.turn_{%+ if states('sensor.wc_fan') == 1 %}on{% else %}off{% endif %}
     data: {}
     target:
       entity_id: switch.wc_fan_tmp
@@ -251,8 +251,8 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('switch.wc_waterleak_tmp') != states('sensor.wc_waterleak') }}"
-  - service: switch.turn_{{states('sensor.wc_waterleak')}}
+    value_template: "{{ (states('switch.wc_waterleak_tmp') == 'on' and states('sensor.wc_waterleak') == 0) or (states('switch.wc_waterleak_tmp') == 'off' and states('sensor.wc_waterleak') == 1) }}"
+  - service: switch.turn_{%+ if states('sensor.wc_waterleak') == 1 %}on{% else %}off{% endif %}
     data: {}
     target:
       entity_id: switch.wc_waterleak_tmp
@@ -269,8 +269,8 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('switch.wc_pointslights_tmp') != states('sensor.wc_pointslights') }}"
-  - service: switch.turn_{{states('sensor.wc_pointslights')}}
+    value_template: "{{ (states('switch.wc_pointslights_tmp') == 'on' and states('sensor.wc_pointslights') == 0) or (states('switch.wc_pointslights_tmp') == 'off' and states('sensor.wc_pointslights') == 1) }}"
+  - service: switch.turn_{%+ if states('sensor.wc_pointslights') == 1 %}on{% else %}off{% endif %}
     data: {}
     target:
       entity_id: switch.wc_pointslights_tmp
