@@ -10,9 +10,9 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('switch.cabinet_light_table_tmp') != states('sensor.cabinet_light_table') }}"
-  - service: switch.turn_{{states('sensor.cabinet_light_table')}}
-    data: {}
+    value_template: "{{ (states('switch.cabinet_light_table_tmp') == 'on' and states('sensor.cabinet_light_table') == 0) or (states('switch.cabinet_light_table_tmp') == 'off' and states('sensor.cabinet_light_table') == 1) }}"
+  - data: {}
+    service: switch.turn_{%+ if states('sensor.cabinet_light_table') == 1 %}on{% else %}off{% endif %}
     target:
       entity_id: switch.cabinet_light_table_tmp
   mode: single
@@ -28,8 +28,8 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('switch.cabinet_light_wall_tmp') != states('sensor.cabinet_light_wall') }}"
-  - service: switch.turn_{{states('sensor.cabinet_light_wall')}}
+    value_template: "{{ (states('switch.cabinet_light_wall_tmp') == 'on' and states('sensor.cabinet_light_wall') == 0) or (states('switch.cabinet_light_wall_tmp') == 'off' and states('sensor.cabinet_light_wall') == 1) }}"
+  - service: switch.turn_{%+ if states('sensor.cabinet_light_wall') == 1 %}on{% else %}off{% endif %}
     data: {}
     target:
       entity_id: switch.cabinet_light_wall_tmp
@@ -46,8 +46,8 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('switch.cabinet_chandelier_tmp') != states('sensor.cabinet_chandelier') }}"
-  - service: switch.turn_{{states('sensor.cabinet_chandelier')}}
+    value_template: "{{ (states('switch.cabinet_chandelier_tmp') == 'on' and states('sensor.cabinet_chandelier') == 0) or (states('switch.cabinet_chandelier_tmp') == 'off' and states('sensor.cabinet_chandelier') == 1) }}"
+  - service: switch.turn_{%+ if states('sensor.cabinet_chandelier') == 1 %}on{% else %}off{% endif %}
     data: {}
     target:
       entity_id: switch.cabinet_chandelier_tmp
@@ -64,8 +64,8 @@
   condition: []
   action:
   - condition: template
-    value_template: "{{ states('cover.cabinet_curtain') != states('sensor.cabinet_curtains_open') }}"
-  - service: cover.{{ states('sensor.cabinet_curtains_open') | replace("closed", "close") }}_cover
+    value_template: "{{ (states('cover.cabinet_curtain') == 'open' and states('sensor.cabinet_curtains_open') == 0) or (states('cover.cabinet_curtain') == 'closed' and states('sensor.cabinet_curtains_open') == 1) }}"
+  - service: cover.{%+ if states('sensor.cabinet_curtains_open') == 1 %}open{% else %}close{% endif %}_cover
     data: {}
     target:
       entity_id: cover.cabinet_curtain
