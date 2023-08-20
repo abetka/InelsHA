@@ -27,9 +27,10 @@
       device_id: "0x01050029"
       device_class: 'humidity'
       unit_of_measurement: "%"
+
 - platform: ELKO_telnet
   sensors:
-    cabinet_light_table:
+    cabinet_light_table: &sensors2
       <<: *sensors
       friendly_name: "Cabinet light Table"
       device_id: "0x01020029"
@@ -38,19 +39,15 @@
 - platform: ELKO_telnet
   sensors:
     cabinet_light_wall:
-      <<: *sensors
+      <<: *sensors2
       friendly_name: "Cabinet light Wall"
       device_id: "0x01020011"
-      device_class: 'binary'
-      unit_of_measurement: "on/off"
 - platform: ELKO_telnet
   sensors:
     cabinet_chandelier:
-      <<: *sensors
+      <<: *sensors2
       friendly_name: "Cabinet Chandelier"
       device_id: "0x01020039"
-      device_class: 'binary'
-      unit_of_measurement: "on/off"
 - platform: ELKO_telnet
   sensors:
     cabinet_curtains_open:
