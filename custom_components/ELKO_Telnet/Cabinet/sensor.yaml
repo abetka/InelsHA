@@ -18,7 +18,7 @@
     cabinet_temperature_door:
       <<: *sensors
       friendly_name: "Cabinet Temperature Door"
-      device_id: "0x01050028"
+      device_id: "0x01050027"
 - platform: ELKO_telnet
   sensors:
     cabinet_humidity:
