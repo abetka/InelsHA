@@ -129,9 +129,7 @@
   description: 'Bigroom Switch 1 Up 1'
   trigger:
   - platform: webhook
-    webhook_id: '0x01010023'
-  - platform: webhook
-    webhook_id: '0x01010020'
+    webhook_id: '0x01010041'
   condition:
   - condition: template
     value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
@@ -139,34 +137,22 @@
   - choose:
     - conditions:
       - condition: template
-        value_template: "{{ is_state('switch.kitchen_point_lights_window', 'off') }}"
+        value_template: "{{ is_state('switch.bigroom_chandelier', 'off') }}"
       sequence:
       - service: switch.turn_on
         data: {}
         target:
-          entity_id: switch.kitchen_point_lights_window
-      - service: switch.turn_on
-        data: {}
-        target:
-          entity_id: switch.kitchen_switch_1_green_1
-      - service: switch.turn_on
-        data: {}
-        target:
-          entity_id: switch.kitchen_switch_2_red_2
+          entity_id:
+            - switch.bigroom_chandelier
+            - bigroom_switch_1_green_1
     - conditions:
       - condition: template
-        value_template: "{{ is_state('switch.kitchen_point_lights_window', 'on') }}"
+        value_template: "{{ is_state('switch.bigroom_chandelier', 'on') }}"
       sequence:
       - service: switch.turn_off
         data: {}
         target:
-          entity_id: switch.kitchen_point_lights_window
-      - service: switch.turn_off
-        data: {}
-        target:
-          entity_id: switch.kitchen_switch_1_green_1
-      - service: switch.turn_off
-        data: {}
-        target:
-          entity_id: switch.kitchen_switch_2_red_2
+          entity_id:
+            - switch.bigroom_chandelier
+            - bigroom_switch_1_green_1
   mode: single
