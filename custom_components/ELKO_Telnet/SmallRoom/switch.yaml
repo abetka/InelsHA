@@ -133,11 +133,15 @@
       turn_on:
         service: switch.turn_on
         target:
-          entity_id: switch.smallroom_backlight_wall
+          entity_id:
+            - switch.smallroom_backlight_wall
+            - switch.smallroom_switch_1_green_1
       turn_off:
         service: switch.turn_off
         target:
-          entity_id: switch.smallroom_backlight_wall
+          entity_id:
+            - switch.smallroom_backlight_wall
+            - switch.smallroom_switch_1_green_1
       icon_template: >-
         {% if is_state('switch.smallroom_backlight_wall', 'on') %}
           mdi:wall-sconce-flat
@@ -152,11 +156,15 @@
       turn_on:
         service: switch.turn_on
         target:
-          entity_id: switch.smallroom_chandelier
+          entity_id:
+            - switch.smallroom_chandelier
+            - switch.smallroom_switch_1_green_3
       turn_off:
         service: switch.turn_off
         target:
-          entity_id: switch.smallroom_chandelier
+          entity_id:
+            - switch.smallroom_chandelier
+            - switch.smallroom_switch_1_green_3
       icon_template: >-
         {% if is_state('switch.smallroom_chandelier', 'on') %}
           mdi:ceiling-light
@@ -170,11 +178,15 @@
       turn_on:
         service: switch.turn_on
         target:
-          entity_id: switch.smallroom_points_lights
+          entity_id:
+            - switch.smallroom_points_lights
+            - switch.smallroom_switch_1_green_2
       turn_off:
         service: switch.turn_off
         target:
-          entity_id: switch.smallroom_points_lights
+          entity_id:
+            - switch.smallroom_points_lights
+            - switch.smallroom_switch_1_green_2
       icon_template: >-
         {% if is_state('switch.smallroom_points_lights', 'on') %}
           mdi:lightbulb-group
