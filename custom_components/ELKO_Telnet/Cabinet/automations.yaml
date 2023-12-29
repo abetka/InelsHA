@@ -334,3 +334,14 @@
         data: {}
         target:
           entity_id: switch.cabinet_switch_1_green_1
+
+- id: 'general_run_listener'
+  alias: 'Run Listener'
+  description: 'Run Listener'
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: time
+    at: "04:00:00"
+  action:
+    service: shell_command.run_listener
