@@ -10,10 +10,10 @@ def checkServiceStatus():
             if int(line) >= 1:
                 logging.debug("The listener.py script was already running! Try to restart script")
                 os.popen("ps -fu $USER| grep 'listener.py' | grep -v 'grep' | awk '{print $2}'| xargs -n1 kill ")
-                os.popen("python3 listener.py > listener_stdout.log &")
+                os.popen("python3 ../listener.py > listener_stdout.log &")
                 logging.debug("The listener.py script was restarting")
             else:
-                os.popen("python3 listener.py > listener_stdout.log &")
+                os.popen("python3 ../listener.py > listener_stdout.log &")
                 logging.debug("The listener.py script started!")
     except OSError as ose:
         logging.error('The problem with checking ' + ose)
