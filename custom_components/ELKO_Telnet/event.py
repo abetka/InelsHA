@@ -3,9 +3,12 @@ import logging
 
 _LOGGER = logging.getLogger(__name__)
 
+tn_ip = "192.168.88.246"
+tn_port = "1111"
+
 def connect(host = tn_ip,port = tn_port):
     try:
-        tn = telnetlib.Telnet(tn_ip, tn_port, 15)
+        tn = telnetlib.Telnet(host, port, 15)
     except BaseException as e:
         _LOGGER .error('EVENT ENTITY: Failed to connect to Telnet server: ' + str(e))
         if e.errno == 51:
@@ -18,8 +21,6 @@ def connect(host = tn_ip,port = tn_port):
 
 class ELKOEvents(EventEntity):
     #--configuration
-    tn_ip = "192.168.88.246"
-    tn_port = "1111"
     _attr_device_class = EventDeviceClass.BUTTON
     _attr_event_types = ["single_press", "double_press"]
 
