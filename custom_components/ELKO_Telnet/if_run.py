@@ -21,4 +21,6 @@ def checkServiceStatus():
     pass
 
 if __name__ == '__main__':
-    checkServiceStatus()
+    while True:
+        checkServiceStatus()
+        time.sleep(10)

@@ -1,0 +1,10 @@
+ [Unit]
+ Description=Listener Service
+ After=multi-user.target
+
+ [Service]
+ Type=idle
+ ExecStart=/usr/bin/python3 /mnt/data/supervisor/homeassistant/custom_components/ELKO_Telnet/if_run.py > /mnt/data/supervisor/homeassistant/if_run.log 2>&1
+
+ [Install]
+ WantedBy=multi-user.target
