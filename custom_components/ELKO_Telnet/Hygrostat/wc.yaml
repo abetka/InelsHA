@@ -1,5 +1,5 @@
 
-- name: Bedroom
+- name: wc
   humidifier: switch.wc_fan_tmp
   target_sensor: sensor.wc_humidity
   min_humidity: 30

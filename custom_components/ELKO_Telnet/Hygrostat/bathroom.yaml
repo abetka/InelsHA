@@ -1,4 +1,4 @@
-- name: Bedroom
+- name: bathroom
   humidifier: switch.bathroom_fan_tmp
   target_sensor: sensor.bathroom_humidity
   min_humidity: 30
