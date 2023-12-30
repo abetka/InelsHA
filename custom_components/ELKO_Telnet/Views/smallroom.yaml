@@ -1,6 +1,5 @@
-- title: WC
-  path: wc
-  icon: mdi:human-male-female
+- title: Small Room
+  icon: mdi:bed
   badges: []
   cards:
     - type: vertical-stack
@@ -12,55 +11,50 @@
               type: button
               tap_action:
                 action: toggle
-              name: Back Light
-              entity: switch.wc_backlight_tmp
+              entity: switch.smallroom_chandelier_tmp
+              name: Chandelier
             - show_name: true
               show_icon: true
               type: button
               tap_action:
                 action: toggle
-              entity: switch.wc_fan_tmp
-              name: Fan
+              entity: switch.smallroom_backlight_wall_tmp
+              name: Wall Back Light
             - show_name: true
               show_icon: true
               type: button
               tap_action:
                 action: toggle
-              entity: switch.wc_mirror_tmp
-              name: Mirror Light
-            - show_name: true
-              show_icon: true
-              type: button
-              tap_action:
-                action: toggle
-              entity: switch.wc_pointslights_tmp
+              entity: switch.smallroom_points_lights_tmp
               name: Point Light
-            - show_name: true
-              show_icon: true
-              type: button
-              tap_action:
-                action: toggle
-              entity: switch.wc_waterleak_tmp
-              name: Water
         - type: horizontal-stack
           cards:
-            - type: humidifier
-              entity: humidifier.wc
-              features:
-                - type: humidifier-toggle
-              name: Dehydrator
             - type: thermostat
-              name: Floor Heater
-              entity: climate.wc_floor_heater
+              entity: climate.smallroom_heater
+              name: Heater
+        - type: horizontal-stack
+          cards:
+            - show_name: true
+              show_icon: true
+              type: button
+              tap_action:
+                action: toggle
+              entity: cover.smallroom_curtain
+              name: Covers
+            - show_name: true
+              show_icon: true
+              type: button
+              tap_action:
+                action: toggle
+              entity: cover.smallroom_tule
+              name: Tule
         - type: horizontal-stack
           cards:
             - graph: line
               type: sensor
-              entity: sensor.wc_temperature
+              entity: sensor.smallroom_temperature
               detail: 1
               name: Temperature
-            - graph: line
-              type: sensor
-              entity: sensor.wc_humidity
-              detail: 1
-              name: Humidity
+        - type: light
+          entity: light.smallroom_rgb
+          name: RGB

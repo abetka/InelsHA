@@ -9,6 +9,7 @@ sensor: !include_dir_merge_list custom_components/ELKO_telnet/Sensor
 light: !include_dir_merge_list custom_components/ELKO_telnet/Light
 cover: !include_dir_merge_list custom_components/ELKO_telnet/Cover
 climate: !include_dir_merge_list custom_components/ELKO_telnet/Climate
+views: !include_dir_merge_list custom_components/ELKO_telnet/Views
 
 script: !include scripts.yaml
 scene: !include scenes.yaml
@@ -16,4 +17,4 @@ scene: !include scenes.yaml
 logger:
   default: info
   logs:
-    custom_components.ELKO_telnet: debug 
+    custom_components.ELKO_telnet: debug

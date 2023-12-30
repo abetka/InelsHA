@@ -1,0 +1,79 @@
+- title: Big Room
+  icon: mdi:bed-king
+  badges: []
+  cards:
+    - type: vertical-stack
+      cards:
+        - type: horizontal-stack
+          cards:
+            - show_name: true
+              show_icon: true
+              type: button
+              tap_action:
+                action: toggle
+              entity: switch.bigroom_mirror_tmp
+              name: Mirror Light
+            - show_name: true
+              show_icon: true
+              type: button
+              tap_action:
+                action: toggle
+              entity: switch.bigroom_chandelier_tmp
+              name: Chandelier
+            - show_name: true
+              show_icon: true
+              type: button
+              tap_action:
+                action: toggle
+              entity: switch.bigroom_backlight_window_tmp
+              name: Window Back Light
+            - show_name: true
+              show_icon: true
+              type: button
+              tap_action:
+                action: toggle
+              entity: switch.bigroom_backlight_door_tmp
+              name: Door Back Light
+            - show_name: true
+              show_icon: true
+              type: button
+              tap_action:
+                action: toggle
+              entity: switch.bigroom_point_light_tmp
+              name: Point Light
+        - type: horizontal-stack
+          cards:
+            - type: thermostat
+              entity: climate.big_room_heater
+              name: Heater
+        - type: horizontal-stack
+          cards:
+            - show_name: true
+              show_icon: true
+              type: button
+              tap_action:
+                action: toggle
+              entity: cover.bigroom_curtain
+              name: Covers
+            - show_name: true
+              show_icon: true
+              type: button
+              tap_action:
+                action: toggle
+              entity: cover.bigroom_tule
+              name: Tule
+        - type: horizontal-stack
+          cards:
+            - graph: line
+              type: sensor
+              entity: sensor.bigroom_temperature
+              detail: 1
+              name: Temperature
+            - graph: line
+              type: sensor
+              entity: sensor.bigroom_humidity
+              detail: 1
+              name: Humidity
+        - type: light
+          entity: light.bigroom_rgb
+          name: RGB

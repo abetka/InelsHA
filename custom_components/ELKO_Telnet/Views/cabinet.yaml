@@ -1,0 +1,53 @@
+- title: Cabinet
+  icon: mdi:cog-clockwise
+  badges: []
+  cards:
+    - type: vertical-stack
+      cards:
+        - type: horizontal-stack
+          cards:
+            - show_name: true
+              show_icon: true
+              type: button
+              tap_action:
+                action: toggle
+              entity: switch.cabinet_light_table_tmp
+              name: Table Back Light
+            - show_name: true
+              show_icon: true
+              type: button
+              tap_action:
+                action: toggle
+              entity: switch.cabinet_chandelier_tmp
+              name: Chandelier
+            - show_name: true
+              show_icon: true
+              type: button
+              tap_action:
+                action: toggle
+              entity: switch.cabinet_light_wall_tmp
+              name: Wall Back Light
+        - type: horizontal-stack
+          cards:
+            - show_name: true
+              show_icon: true
+              type: button
+              tap_action:
+                action: toggle
+              entity: cover.cabinet_curtain
+              name: Covers
+        - type: horizontal-stack
+          cards:
+            - graph: line
+              type: sensor
+              entity: sensor.cabinet_temperature
+              detail: 1
+              name: Temperature
+            - graph: line
+              type: sensor
+              entity: sensor.cabinet_humidity
+              detail: 1
+              name: Humidity
+        - type: light
+          entity: light.cabinet_rgb
+          name: RGB

@@ -1,6 +1,5 @@
-- title: WC
-  path: wc
-  icon: mdi:human-male-female
+- title: Hall
+  icon: mdi:walk
   badges: []
   cards:
     - type: vertical-stack
@@ -12,55 +11,50 @@
               type: button
               tap_action:
                 action: toggle
+              entity: switch.hall_backlight_tmp
               name: Back Light
-              entity: switch.wc_backlight_tmp
             - show_name: true
               show_icon: true
               type: button
               tap_action:
                 action: toggle
-              entity: switch.wc_fan_tmp
-              name: Fan
+              entity: switch.hall_lights_tmp
+              name: Light
             - show_name: true
               show_icon: true
               type: button
               tap_action:
                 action: toggle
-              entity: switch.wc_mirror_tmp
-              name: Mirror Light
+              entity: switch.hall_move_lights_tmp
+              name: Move Light
             - show_name: true
               show_icon: true
               type: button
               tap_action:
                 action: toggle
-              entity: switch.wc_pointslights_tmp
+              entity: switch.hall_wardrobe_tmp
+              name: Wardrobe Light
+            - show_name: true
+              show_icon: true
+              type: button
+              tap_action:
+                action: toggle
+              entity: switch.hall_points_lights_tmp
               name: Point Light
-            - show_name: true
-              show_icon: true
-              type: button
-              tap_action:
-                action: toggle
-              entity: switch.wc_waterleak_tmp
-              name: Water
         - type: horizontal-stack
           cards:
-            - type: humidifier
-              entity: humidifier.wc
-              features:
-                - type: humidifier-toggle
-              name: Dehydrator
             - type: thermostat
+              entity: climate.hall_floor_heater
               name: Floor Heater
-              entity: climate.wc_floor_heater
         - type: horizontal-stack
           cards:
             - graph: line
               type: sensor
-              entity: sensor.wc_temperature
+              entity: sensor.hall_temperature
               detail: 1
               name: Temperature
             - graph: line
               type: sensor
-              entity: sensor.wc_humidity
+              entity: sensor.hall_humidity
               detail: 1
               name: Humidity

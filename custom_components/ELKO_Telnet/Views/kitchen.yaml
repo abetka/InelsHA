@@ -1,0 +1,82 @@
+- title: Kitchen
+  icon: mdi:fridge
+  badges: []
+  cards:
+    - type: vertical-stack
+      cards:
+        - type: horizontal-stack
+          cards:
+            - show_name: true
+              show_icon: true
+              type: button
+              tap_action:
+                action: toggle
+              entity: switch.kitchen_backlight_table_tmp
+              name: Back Light
+            - show_name: true
+              show_icon: true
+              type: button
+              tap_action:
+                action: toggle
+              entity: switch.kitchen_chandelier_tmp
+              name: Chandelier
+            - show_name: true
+              show_icon: true
+              type: button
+              tap_action:
+                action: toggle
+              entity: switch.kitchen_backlight_wall_tmp
+              name: Wall Back Light
+            - show_name: true
+              show_icon: true
+              type: button
+              tap_action:
+                action: toggle
+              entity: switch.kitchen_point_lights_window_tmp
+              name: Window Point Light
+            - show_name: true
+              show_icon: true
+              type: button
+              tap_action:
+                action: toggle
+              entity: switch.kitchen_point_lights_tmp
+              name: Point Light
+        - type: horizontal-stack
+          cards:
+            - type: thermostat
+              entity: climate.kitchen_floor_heater
+              name: Floor Heater
+            - type: thermostat
+              entity: climate.kitchen_heater
+              name: Heater
+        - type: horizontal-stack
+          cards:
+            - show_name: true
+              show_icon: true
+              type: button
+              tap_action:
+                action: toggle
+              entity: cover.kitchen_curtain
+              name: Covers
+            - show_name: true
+              show_icon: true
+              type: button
+              tap_action:
+                action: toggle
+              entity: cover.kitchen_tule
+              name: Tule
+        - type: horizontal-stack
+          cards:
+            - graph: line
+              type: sensor
+              entity: sensor.kitchen_temperature
+              detail: 1
+              name: Temperature
+            - graph: line
+              type: sensor
+              entity: sensor.kitchen_humidity
+              detail: 1
+              name: Humidity
+        - type: light
+          entity: light.kitchen_rgb
+          name: RGB
