@@ -40,5 +40,6 @@ def ELKOlistener():
                 }
                 headers = {'Content-Type': 'application/json'}
                 uri = hass_url + splitted_line[2]
-                requests.post( uri, json=event_data, headers=headers )    except (KeyboardInterrupt, SystemExit):
-        logging.debug("The application was closed")
+                requests.post( uri, json=event_data, headers=headers )
+    except (KeyboardInterrupt, SystemExit):
+        log.debug("Event listener: The application was closed")
