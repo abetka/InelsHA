@@ -120,12 +120,6 @@
       device_id: ""
 - platform: ELKO_telnet
   switches:
-    kitchen_switch_1_red_1:
-      <<: *settings
-      name: Kitchen Switch 1 Red 1
-      device_id: "0x01020031"
-- platform: ELKO_telnet
-  switches:
     bigroom_switch_1_red_1:
       <<: *settings
       name: Bigroom Switch 1 Red 1
