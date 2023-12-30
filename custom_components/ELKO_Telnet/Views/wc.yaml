@@ -1,0 +1,68 @@
+- title: WC
+  path: wc
+  icon: mdi:human-male-female
+  type: sidebar
+  subview: true
+  badges: []
+  cards:
+    - type: vertical-stack
+      cards:
+        - type: horizontal-stack
+          cards:
+            - show_name: true
+              show_icon: true
+              type: button
+              tap_action:
+                action: toggle
+              name: Back Light
+              entity: switch.wc_backlight_tmp
+            - show_name: true
+              show_icon: true
+              type: button
+              tap_action:
+                action: toggle
+              entity: switch.wc_fan_tmp
+              name: Fan
+            - show_name: true
+              show_icon: true
+              type: button
+              tap_action:
+                action: toggle
+              entity: switch.wc_mirror_tmp
+              name: Mirror Light
+            - show_name: true
+              show_icon: true
+              type: button
+              tap_action:
+                action: toggle
+              entity: switch.wc_pointslights_tmp
+              name: Point Light
+            - show_name: true
+              show_icon: true
+              type: button
+              tap_action:
+                action: toggle
+              entity: switch.wc_waterleak_tmp
+              name: Water
+        - type: horizontal-stack
+          cards:
+            - type: humidifier
+              entity: humidifier.wc
+              features:
+                - type: humidifier-toggle
+              name: Dehydrator
+            - type: thermostat
+              name: Floor Heater
+              entity: climate.wc_floor_heater
+        - type: horizontal-stack
+          cards:
+            - graph: line
+              type: sensor
+              entity: sensor.wc_temperature
+              detail: 1
+              name: Temperature
+            - graph: line
+              type: sensor
+              entity: sensor.wc_humidity
+              detail: 1
+              name: Humidity

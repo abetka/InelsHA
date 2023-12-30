@@ -1,0 +1,58 @@
+- title: Bathroom
+  icon: mdi:shower-head
+  badges: []
+  cards:
+    - type: vertical-stack
+      cards:
+        - type: horizontal-stack
+          cards:
+            - show_name: true
+              show_icon: true
+              type: button
+              tap_action:
+                action: toggle
+              entity: switch.bathroom_backlight_tmp
+              name: Back Light
+            - show_name: true
+              show_icon: true
+              type: button
+              tap_action:
+                action: toggle
+              entity: switch.bathroom_fan_tmp
+              name: Fan
+            - show_name: true
+              show_icon: true
+              type: button
+              tap_action:
+                action: toggle
+              entity: switch.bathroom_mirror_tmp
+              name: Mirror Light
+            - show_name: true
+              show_icon: true
+              type: button
+              tap_action:
+                action: toggle
+              entity: switch.bathroom_pointslights_tmp
+              name: Point Light
+        - type: horizontal-stack
+          cards:
+            - type: humidifier
+              entity: humidifier.bathroom
+              features:
+                - type: humidifier-toggle
+              name: Dehydrator
+            - type: thermostat
+              entity: climate.bathroom_floor_heater
+              name: Floor Heater
+        - type: horizontal-stack
+          cards:
+            - graph: line
+              type: sensor
+              entity: sensor.bathroom_temperature
+              detail: 1
+              name: Temperature
+            - graph: line
+              type: sensor
+              entity: sensor.bathroom_humidity
+              detail: 1
+              name: Humidity
