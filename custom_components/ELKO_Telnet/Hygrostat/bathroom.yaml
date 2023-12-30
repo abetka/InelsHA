@@ -6,7 +6,7 @@
   target_humidity: 45
   dry_tolerance: 3
   wet_tolerance: 0
-  device_class: "humidifier"
+  device_class: "dehumidifier"
   min_cycle_duration:
     seconds: 5
   keep_alive:
