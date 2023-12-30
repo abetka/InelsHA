@@ -1,4 +1,5 @@
 import telnetlib
+import requests
 
 tn_ip = "192.168.88.246"
 tn_port = "1111"
@@ -32,6 +33,12 @@ def ELKOlistener():
             splitted_line = line.decode('ascii').split(';')
             if 'EVENT' in splitted_line[0]:
                 log.debug("Event listener: " + line.decode('ascii') )
-                event.fire("ELKO", { "event_id": splitted_line[1], "device_code": splitted_line[2], "device_state": splitted_line[3].rstrip("\n").rstrip("\r") } )
-    except (KeyboardInterrupt, SystemExit):
+                event_data = {
+                    "event_id": splitted_line[1],
+                    "device_code": splitted_line[2],
+                    "device_state": splitted_line[3].rstrip("\n").rstrip("\r")
+                }
+                headers = {'Content-Type': 'application/json'}
+                uri = hass_url + splitted_line[2]
+                requests.post( uri, json=event_data, headers=headers )    except (KeyboardInterrupt, SystemExit):
         logging.debug("The application was closed")
