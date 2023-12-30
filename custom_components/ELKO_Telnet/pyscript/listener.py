@@ -31,13 +31,7 @@ def ELKOlistener():
                 log.debug("Event listener: It seems The previous session was closed so was used a new one.")
             splitted_line = line.decode('ascii').split(';')
             if 'EVENT' in splitted_line[0]:
-                log.debug("Event listener: " + splitted_line )
-                event_data = {
-                    "event_id": splitted_line[1],
-                    "device_code": splitted_line[2],
-                    "device_state": splitted_line[3].rstrip("\n").rstrip("\r")
-                }
-                log.debug("Event listener: " + event_data)
-                event.fire("ELKO", event_data )
+                log.debug("Event listener: " + line.decode('ascii') )
+                event.fire("ELKO", { "event_id": splitted_line[1], "device_code": splitted_line[2], "device_state": splitted_line[3].rstrip("\n").rstrip("\r") } )
     except (KeyboardInterrupt, SystemExit):
         logging.debug("The application was closed")
