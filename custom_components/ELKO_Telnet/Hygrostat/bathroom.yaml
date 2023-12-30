@@ -1,0 +1,17 @@
+- name: Bedroom
+  humidifier: switch.bathroom_fan_tmp
+  target_sensor: sensor.bathroom_humidity
+  min_humidity: 30
+  max_humidity: 70
+  target_humidity: 45
+  dry_tolerance: 3
+  wet_tolerance: 0
+  device_class: "humidifier"
+  min_cycle_duration:
+    seconds: 5
+  keep_alive:
+    minutes: 3
+  initial_state: true
+  away_humidity: 35
+  away_fixed: True
+  sensor_stale_duration: 00:15:00

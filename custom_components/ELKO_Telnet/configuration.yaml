@@ -1,0 +1,19 @@
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+
+automation: !include_dir_merge_list custom_components/ELKO_telnet/Automation
+switch: !include_dir_merge_list custom_components/ELKO_telnet/Switch
+sensor: !include_dir_merge_list custom_components/ELKO_telnet/Sensor
+light: !include_dir_merge_list custom_components/ELKO_telnet/Light
+cover: !include_dir_merge_list custom_components/ELKO_telnet/Cover
+climate: !include_dir_merge_list custom_components/ELKO_telnet/Climate
+
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+logger:
+  default: info
+  logs:
+    custom_components.ELKO_telnet: debug 
