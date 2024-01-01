@@ -10,10 +10,10 @@
     - service: cover.open_cover
       target:
         entity_id:
-          - cover.cabinet_curtains
-          - cover.kitchen_curtains
-          - cover.smallroom_curtains
-          - cover.bigroom_curtains
+          - cover.cabinet_curtain
+          - cover.kitchen_curtain
+          - cover.smallroom_curtain
+          - cover.bigroom_curtain
       data: {}
   mode: single
 - id: sunset
@@ -28,9 +28,9 @@
     - service: cover.close_cover
       target:
         entity_id:
-          - cover.cabinet_curtains
-          - cover.kitchen_curtains
-          - cover.smallroom_curtains
-          - cover.bigroom_curtains
+          - cover.cabinet_curtain
+          - cover.kitchen_curtain
+          - cover.smallroom_curtain
+          - cover.bigroom_curtain
       data: {}
   mode: single
