@@ -31,7 +31,7 @@
   - condition: template
     value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
   action:
-    - service: pyscript.kitchen_motion
+    - service: pyscript.bathroom_motion
       data: {}
 - id: 'bathroom_switch_1_up_2'
   alias: Bathroom Switch 1 Up 2
