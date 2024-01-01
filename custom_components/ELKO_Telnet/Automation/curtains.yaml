@@ -1,16 +1,13 @@
-- id: sunrise_sunset
-  alias: Sunrise Sunset
-  description: Sunrise Sunset Automation
+- id: sunrise
+  alias: Sunrise
+  description: Sunrise Automation
   trigger:
     - platform: sun
       event: sunrise
       offset: "+20"
-    - platform: sun
-      event: sunset
-      offset: "-20"
   condition: []
   action:
-    - service: cover.{%+ if trigger.event == sunrise %}open{% else %}close{% endif %}_cover
+    - service: cover.open_cover
       target:
         entity_id:
           - cover.cabinet_curtains
@@ -18,5 +15,24 @@
           - cover.smallroom_curtains
           - cover.bigroom_curtains
       data:
-        skip_condition: false
+        skip_condition:
+  mode: single
+- id: sunset
+  alias: Sunset
+  description: Sunset Automation
+  trigger:
+    - platform: sun
+      event: sunset
+      offset: "-20"
+  condition: []
+  action:
+    - service: cover.close_cover
+      target:
+        entity_id:
+          - cover.cabinet_curtains
+          - cover.kitchen_curtains
+          - cover.smallroom_curtains
+          - cover.bigroom_curtains
+      data:
+        skip_condition:
   mode: single
