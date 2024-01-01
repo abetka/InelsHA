@@ -14,8 +14,7 @@
           - cover.kitchen_curtains
           - cover.smallroom_curtains
           - cover.bigroom_curtains
-      data:
-        skip_condition:
+      data: {}
   mode: single
 - id: sunset
   alias: Sunset
@@ -33,6 +32,5 @@
           - cover.kitchen_curtains
           - cover.smallroom_curtains
           - cover.bigroom_curtains
-      data:
-        skip_condition:
+      data: {}
   mode: single
