@@ -1,6 +1,6 @@
 @state_trigger("security.rear_motion == '1' or security.side_motion == '1'")
 @time_active("range(sunset - 20min, sunrise + 20min)")
-def motion_light_rear():
+def kitchen_motion():
     """Turn on rear light for 5 minutes when there is motion and it's dark"""
     task.unique("motion_light_rear")
     log.info(f"triggered; turning on the light")
