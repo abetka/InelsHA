@@ -43,11 +43,11 @@ if __name__ == '__main__':
                     "device_code": splitted_line[2],
                     "device_state": splitted_line[3].rstrip("\n").rstrip("\r")
                 }
-                HomeAssistant.bus.async_fire("ELKO_telnet", event_data)
-                # headers = {'Content-Type': 'application/json'}
-                # print (event_data)
-                # uri = hass_url + splitted_line[2]
-                # print (uri)
-                # requests.post( uri, json=event_data, headers=headers )
+                # HomeAssistant.bus.async_fire("ELKO_telnet", event_data)
+                headers = {'Content-Type': 'application/json'}
+                print (event_data)
+                uri = hass_url + splitted_line[2]
+                print (uri)
+                requests.post( uri, json=event_data, headers=headers )
     except (KeyboardInterrupt, SystemExit):
         logging.debug("The application was closed")
