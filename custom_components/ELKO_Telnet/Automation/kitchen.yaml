@@ -474,42 +474,42 @@
         target:
           entity_id: switch.kitchen_tule_close
   mode: single
-- id: 'kitchen_motion'
-  alias: Kitchen Motion
-  description: 'Kitchen Motion'
-  trigger:
-  - platform: webhook
-    webhook_id: '0x01010007'
-  condition:
-  - condition: time
-    after: "20:00:00"
-    before: "08:00:00"
-  action:
-  - choose:
-    - conditions: []
-      sequence:
-      - service: switch.turn_on
-        data: {}
-        target:
-          entity_id: switch.kitchen_backlight_wall
-      - service: switch.turn_on
-        data: {}
-        target:
-          entity_id: switch.kitchen_switch_1_red_2
-      - delay:
-          hours: 0
-          minutes: 3
-          seconds: 0
-          milliseconds: 0
-      - service: switch.turn_off
-        data: {}
-        target:
-          entity_id: switch.kitchen_backlight_wall
-      - service: switch.turn_off
-        data: {}
-        target:
-          entity_id: switch.kitchen_switch_1_red_2
-  mode: single
+# - id: 'kitchen_motion'
+#   alias: Kitchen Motion
+#   description: 'Kitchen Motion'
+#   trigger:
+#   - platform: webhook
+#     webhook_id: '0x01010007'
+#   condition:
+#   - condition: time
+#     after: "20:00:00"
+#     before: "08:00:00"
+#   action:
+#   - choose:
+#     - conditions: []
+#       sequence:
+#       - service: switch.turn_on
+#         data: {}
+#         target:
+#           entity_id: switch.kitchen_backlight_wall
+#       - service: switch.turn_on
+#         data: {}
+#         target:
+#           entity_id: switch.kitchen_switch_1_red_2
+#       - delay:
+#           hours: 0
+#           minutes: 3
+#           seconds: 0
+#           milliseconds: 0
+#       - service: switch.turn_off
+#         data: {}
+#         target:
+#           entity_id: switch.kitchen_backlight_wall
+#       - service: switch.turn_off
+#         data: {}
+#         target:
+#           entity_id: switch.kitchen_switch_1_red_2
+#   mode: single
 - id: 'kitchen_camera'
   alias: Kitchen Camera
   description: 'Kitchen Camera'

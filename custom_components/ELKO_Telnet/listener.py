@@ -2,7 +2,7 @@ import sys
 import telnetlib
 import logging
 import requests
-from homeassistant.core import HomeAssistant
+
 #--configuration
 hass_url = "http://192.168.88.247:8123/api/webhook/"
 tn_ip = "192.168.88.246"
@@ -43,7 +43,6 @@ if __name__ == '__main__':
                     "device_code": splitted_line[2],
                     "device_state": splitted_line[3].rstrip("\n").rstrip("\r")
                 }
-                # HomeAssistant.bus.async_fire("ELKO_telnet", event_data)
                 headers = {'Content-Type': 'application/json'}
                 print (event_data)
                 uri = hass_url + splitted_line[2]

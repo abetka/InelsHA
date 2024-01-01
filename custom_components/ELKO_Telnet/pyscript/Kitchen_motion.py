@@ -1,10 +1,11 @@
-@state_trigger("security.rear_motion == '1' or security.side_motion == '1'")
+@service
 @time_active("range(sunset - 20min, sunrise + 20min)")
 def kitchen_motion():
-    """Turn on rear light for 5 minutes when there is motion and it's dark"""
-    task.unique("motion_light_rear")
-    log.info(f"triggered; turning on the light")
-    if light.outside_rear != "on":
-        light.turn_on(entity_id="light.outside_rear", brightness=255)
+    task.unique("kitchen_motion")
+    log.info(f"triggered; turning on the kitchen wall light on 5 min")
+    if switch.kitchen_backlight_wall != "on":
+        switch.turn_on(entity_id="switch.kitchen_backlight_wall")
+        switch.turn_on(entity_id="switch.kitchen_switch_1_red_2")
     task.sleep(300)
-    light.turn_off(entity_id="light.outside_rear")
+    switch.turn_off(entity_id="switch.kitchen_backlight_wall")
+    switch.turn_off(entity_id="switch.kitchen_switch_1_red_2")
