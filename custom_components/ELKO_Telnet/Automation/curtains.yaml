@@ -1,0 +1,38 @@
+- id: sunrise
+  alias: Sunrise
+  description: Sun Rise Aitomation
+  trigger:
+    - platform: sun
+      event: sunrise
+      offset: "+20"
+  condition: []
+  action:
+    - service: automation.trigger
+      target:
+        entity_id:
+          - automation.cabinet_curtains
+          - automation.kitchen_curtains
+          - automation.smallroom_curtains
+          - automation.bigroom_curtains
+      data:
+        skip_condition: false
+  mode: single
+- id: sunset
+  alias: Sunset
+  description: Sun Set Aitomation
+  trigger:
+    - platform: sun
+      event: sunset
+      offset: "-20"
+  condition: []
+  action:
+    - service: automation.trigger
+      target:
+        entity_id:
+          - automation.cabinet_curtains
+          - automation.kitchen_curtains
+          - automation.smallroom_curtains
+          - automation.bigroom_curtains
+      data:
+        skip_condition: false
+  mode: single
