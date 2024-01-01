@@ -21,24 +21,18 @@
 #         data: {}
 #         target:
 #           entity_id: switch.bathroom_switch_1_green_2
-# - id: 'bathroom_move_detector'
-#   alias: Bathroom Move Detector
-#   description: 'Bathroom Move Detector'
-#   trigger:
-#   - platform: webhook
-#     webhook_id: '0x010100a7'
-#   condition:
-#   - condition: template
-#     value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
-#   action:
-#     - service: cover.open_cover
-#       target:
-#         entity_id:
-#           - cover.cabinet_curtain
-#           - cover.kitchen_curtain
-#           - cover.smallroom_curtain
-#           - cover.bigroom_curtain
-#       data: {}
+- id: 'bathroom_move_detector'
+  alias: Bathroom Move Detector
+  description: 'Bathroom Move Detector'
+  trigger:
+  - platform: webhook
+    webhook_id: '0x010100a7'
+  condition:
+  - condition: template
+    value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+  action:
+    - service: pyscript.kitchen_motion
+      data: {}
 - id: 'bathroom_switch_1_up_2'
   alias: Bathroom Switch 1 Up 2
   description: 'Bathroom Switch 1 Up 2'

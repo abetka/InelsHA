@@ -474,6 +474,19 @@
         target:
           entity_id: switch.kitchen_tule_close
   mode: single
+- id: 'kitchen_motion'
+  alias: Kitchen Motion
+  description: 'Kitchen Motion'
+  trigger:
+  - platform: webhook
+    webhook_id: '0x01010007'
+  condition:
+  - condition: template
+    value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+  action:
+    - service: pyscript.kitchen_motion
+      data: {}
+
 # - id: 'kitchen_motion'
 #   alias: Kitchen Motion
 #   description: 'Kitchen Motion'
