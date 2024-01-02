@@ -1,5 +1,4 @@
 @service
-@time_active("range(sunset - 20min, sunrise + 20min)")
 def kitchen_motion():
     task.unique("kitchen_motion")
     log.info(f"triggered; turning on the kitchen wall light on 5 min")

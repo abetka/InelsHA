@@ -4,7 +4,7 @@
   trigger:
     - platform: sun
       event: sunrise
-      offset: "+20"
+      offset: "-20"
   condition: []
   action:
     - service: cover.open_cover
@@ -22,7 +22,7 @@
   trigger:
     - platform: sun
       event: sunset
-      offset: "-20"
+      offset: "20"
   condition: []
   action:
     - service: cover.close_cover
