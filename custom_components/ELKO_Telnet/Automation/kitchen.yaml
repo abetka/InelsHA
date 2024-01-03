@@ -491,7 +491,7 @@
   action:
     - service: pyscript.kitchen_motion
       data: {}
-
+  mode: parallel
 # - id: 'kitchen_motion'
 #   alias: Kitchen Motion
 #   description: 'Kitchen Motion'

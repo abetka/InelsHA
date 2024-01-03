@@ -33,6 +33,7 @@
   action:
     - service: pyscript.bathroom_motion
       data: {}
+  mode: parallel
 - id: 'bathroom_switch_1_up_2'
   alias: Bathroom Switch 1 Up 2
   description: 'Bathroom Switch 1 Up 2'
