@@ -1,6 +1,6 @@
 @service
-@task_unique('kitchen_motion', kill_me=True )
 def kitchen_motion():
+    task.unique("kitchen_motion")
     log.info(f"triggered; turning on the kitchen wall light on 5 min")
     if switch.kitchen_backlight_wall != "on":
         switch.turn_on(entity_id="switch.kitchen_backlight_wall")
