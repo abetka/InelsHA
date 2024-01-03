@@ -1,6 +1,6 @@
 @service
+@task_unique('wc_motion', kill_me=True )
 def wc_motion():
-    task.unique("wc_motion")
     log.info(f"triggered; turning on the wc light on 5 min")
     if switch.wc_pointslights != "on":
         switch.turn_on(entity_id="switch.wc_pointslights")

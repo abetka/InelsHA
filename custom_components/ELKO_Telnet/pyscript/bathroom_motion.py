@@ -1,6 +1,6 @@
 @service
+@task_unique('bathroom_motion', kill_me=True )
 def bathroom_motion():
-    task.unique("bathroom_motion")
     log.info(f"triggered; turning on the bathroom light on 5 min")
     if switch.bathroom_pointslights != "on":
         switch.turn_on(entity_id="switch.bathroom_pointslights")
