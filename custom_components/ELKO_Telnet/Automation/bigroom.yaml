@@ -129,7 +129,10 @@
   description: 'Bigroom Switch 1 Up 1'
   trigger:
   - platform: webhook
-    webhook_id: '0x01010041'
+    webhook_id:
+      - '0x01010041'
+      - '0x010100a9'
+      - '0x010100bb'
   condition:
   - condition: template
     value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
@@ -137,22 +140,266 @@
   - choose:
     - conditions:
       - condition: template
-        value_template: "{{ is_state('switch.bigroom_chandelier', 'off') }}"
+        value_template: "{{ is_state('switch.bigroom_chandelier_tmp', 'off') }}"
       sequence:
       - service: switch.turn_on
         data: {}
         target:
           entity_id:
-            - switch.bigroom_chandelier
-            - bigroom_switch_1_green_1
+            - switch.bigroom_chandelier_tmp
+            - switch.bigroom_switch_1_green_1
+            - switch.bigroom_switch_3_green_1
+            - switch.bigroom_switch_4_green_1
     - conditions:
       - condition: template
-        value_template: "{{ is_state('switch.bigroom_chandelier', 'on') }}"
+        value_template: "{{ is_state('switch.bigroom_chandelier_tmp', 'on') }}"
       sequence:
       - service: switch.turn_off
         data: {}
         target:
           entity_id:
-            - switch.bigroom_chandelier
-            - bigroom_switch_1_green_1
+            - switch.bigroom_chandelier_tmp
+            - switch.bigroom_switch_1_green_1
+            - switch.bigroom_switch_3_green_1
+            - switch.bigroom_switch_4_green_1
+  mode: single
+- id: 'bigroom_switch_1_down_1'
+  alias: Bigroom Switch 1 Down 1
+  description: 'Bigroom Switch 1 Down 1'
+  trigger:
+  - platform: webhook
+    webhook_id:
+      - '0x01010042'
+      - '0x010100aa'
+      - '0x010100bc'
+  condition:
+  - condition: template
+    value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.bigroom_point_light_tmp', 'off') }}"
+      sequence:
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id:
+            - switch.bigroom_point_light_tmp
+            - switch.bigroom_switch_1_red_1
+            - switch.bigroom_switch_3_red_1
+            - switch.bigroom_switch_4_red_1
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.bigroom_point_light_tmp', 'on') }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id:
+            - switch.bigroom_point_light_tmp
+            - switch.bigroom_switch_1_red_1
+            - switch.bigroom_switch_3_red_1
+            - switch.bigroom_switch_4_red_1
+  mode: single
+- id: 'bigroom_switch_1_up_2'
+  alias: Bigroom Switch 1 Up 2
+  description: 'Bigroom Switch 1 Up 2'
+  trigger:
+  - platform: webhook
+    webhook_id: '0x01010043'
+  condition:
+  - condition: template
+    value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.bigroom_mirror_tmp', 'off') }}"
+      sequence:
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id:
+            - switch.bigroom_mirror_tmp
+            - switch.bigroom_switch_1_green_2
+            - switch.bigroom_switch_3_green_2
+            - switch.bigroom_switch_4_green_2
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('switch.bigroom_mirror_tmp', 'on') }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id:
+            - switch.bigroom_mirror_tmp
+            - switch.bigroom_switch_1_green_2
+            - switch.bigroom_switch_3_green_2
+            - switch.bigroom_switch_4_green_2
+  mode: single
+- id: 'bigroom_switch_1_down_2'
+  alias: Bigroom Switch 1 Down 2
+  description: 'Bigroom Switch 1 Down 2'
+  mode: single
+  trigger:
+    - platform: webhook
+      webhook_id: '0x01010044'
+  condition:
+    - condition: template
+      value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+  action:
+    - service: switch.turn_off
+      target:
+        entity_id:
+          - switch.bigroom_chandelier_tmp
+          - switch.bigroom_mirror_tmp
+          - switch.bigroom_point_light_tmp
+          - switch.bigroom_switch_1_red_1
+          - switch.bigroom_switch_3_red_1
+          - switch.bigroom_switch_4_red_1
+          - switch.bigroom_switch_1_red_2
+          - switch.bigroom_switch_3_red_2
+          - switch.bigroom_switch_4_red_2
+          - switch.bigroom_switch_1_green_1
+          - switch.bigroom_switch_3_green_1
+          - switch.bigroom_switch_4_green_1
+          - switch.bigroom_switch_1_green_2
+          - switch.bigroom_switch_3_green_2
+          - switch.bigroom_switch_4_green_2
+      data: {}
+- id: 'bigroom_switch_2_up_1'
+  alias: Bigroom Switch 2 Up 1
+  description: 'Bigroom Switch 2 Up 1'
+  trigger:
+  - platform: webhook
+    webhook_id:
+      - '0x01010033'
+      - '0x010100ab'
+      - '0x010100bd'
+      - '0x01010036'
+  condition:
+  - condition: template
+    value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('cover.bigroom_curtain', 'closed') }}"
+      sequence:
+      - service: cover.open_cover
+        data: {}
+        target:
+          entity_id: cover.bigroom_curtain
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id:
+            - switch.bigroom_switch_2_green_1
+            - switch.bigroom_switch_3_green_2
+            - switch.bigroom_switch_4_green_2
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('cover.bigroom_curtain', 'open') }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id:
+            - switch.bigroom_switch_2_green_1
+            - switch.bigroom_switch_3_green_2
+            - switch.bigroom_switch_4_green_2
+      - service: cover.close_cover
+        data: {}
+        target:
+          entity_id: cover.bigroom_curtain
+  mode: single
+- id: 'bigroom_switch_2_down_1'
+  alias: Bigroom Switch 2 Down 1
+  description: 'Bigroom Switch 2 Down 1'
+  trigger:
+  - platform: webhook
+    webhook_id:
+      - '0x01010034'
+      - '0x010100ac'
+      - '0x010100be'
+      - '0x01010036'
+  condition:
+  - condition: template
+    value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('cover.bigroom_tule', 'closed') }}"
+      sequence:
+      - service: cover.open_cover
+        data: {}
+        target:
+          entity_id: cover.bigroom_tule
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id:
+            - switch.bigroom_switch_2_red_1
+            - switch.bigroom_switch_3_red_2
+            - switch.bigroom_switch_4_red_2
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('cover.bigroom_tule', 'open') }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id:
+            - switch.bigroom_switch_2_red_1
+            - switch.bigroom_switch_3_red_2
+            - switch.bigroom_switch_4_red_2
+      - service: cover.close_cover
+        data: {}
+        target:
+          entity_id: cover.bigroom_tule
+  mode: single
+
+- id: 'bigroom_switch_2_up_2'
+  alias: Bigroom Switch 2 Up 2
+  description: 'Bigroom Switch 2 Up 2'
+  trigger:
+  - platform: webhook
+    webhook_id:
+      - '0x01010035'
+      - '0x01010036'
+  condition:
+  - condition: template
+    value_template: "{{ trigger.json.event_id == '29' and trigger.json.device_state == '1' }}"
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('cover.cabinet_curtain', 'closed') }}"
+      sequence:
+      - service: cover.open_cover
+        data: {}
+        target:
+          entity_id: cover.cabinet_curtain
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id:
+            - switch.bigroom_switch_2_green_2
+            - switch.cabinet_switch_1_red_1
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('cover.cabinet_curtain', 'open') }}"
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id:
+            - switch.bigroom_switch_2_green_2
+            - switch.cabinet_switch_1_red_1
+      - service: cover.close_cover
+        data: {}
+        target:
+          entity_id: cover.cabinet_curtain
   mode: single
