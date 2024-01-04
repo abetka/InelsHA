@@ -99,25 +99,25 @@
     bigroom_switch_3_green_1:
       <<: *settings
       name: Bigroom Switch 3 Green 1
-      device_id: ""
+      device_id: "0x01020086"
 - platform: ELKO_telnet
   switches:
     bigroom_switch_3_green_2:
       <<: *settings
       name: Bigroom Switch 3 Green 2
-      device_id: ""
+      device_id: "0x01020088"
 - platform: ELKO_telnet
   switches:
     bigroom_switch_4_green_1:
       <<: *settings
       name: Bigroom Switch 4 Green 1
-      device_id: ""
+      device_id: "0x0102007a"
 - platform: ELKO_telnet
   switches:
     bigroom_switch_4_green_2:
       <<: *settings
       name: Bigroom Switch 4 Green 2
-      device_id: ""
+      device_id: "0x0102007c"
 - platform: ELKO_telnet
   switches:
     bigroom_switch_1_red_1:
@@ -147,25 +147,25 @@
     bigroom_switch_3_red_1:
       <<: *settings
       name: Bigroom Switch 3 Red 1
-      device_id: ""
+      device_id: "0x01020087"
 - platform: ELKO_telnet
   switches:
     bigroom_switch_3_red_2:
       <<: *settings
       name: Bigroom Switch 3 Red 2
-      device_id: ""
+      device_id: "0x01020089"
 - platform: ELKO_telnet
   switches:
     bigroom_switch_4_red_1:
       <<: *settings
       name: Bigroom Switch 4 Red 1
-      device_id: ""
+      device_id: "0x0102007b"
 - platform: ELKO_telnet
   switches:
     bigroom_switch_4_red_2:
       <<: *settings
       name: Bigroom Switch 4 Red 2
-      device_id: ""
+      device_id: "0x0102007d"
 - platform: ELKO_telnet
   switches:
     bigroom_camera:
