@@ -35,3 +35,8 @@ def setData( **kwargs ) -> str | None:
     })
     _LOGGER.debug("command line: %s", kwargs['telnet_command'])
     return command(**kwargs)
+
+SET;0x01020005;1
+SET;0x01020005;0
+SET;0x01020007;1
+SET;0x01020007;0

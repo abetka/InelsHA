@@ -63,8 +63,6 @@
       <<: *settings
       name: Kitchen Backlight Wall
       device_id: "0x0102000e"
-      command_on: "0"
-      command_off: "1"
 - platform: ELKO_telnet
   switches:
     kitchen_point_lights_window:
