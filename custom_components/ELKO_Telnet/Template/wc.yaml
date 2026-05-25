@@ -1,0 +1,116 @@
+# WC — modern template entities (replaces legacy `- platform: template` blocks).
+# Migrated for HA 2026.6, which removes the legacy template switch/cover platforms.
+- switch:
+    - name: wc_floor_heater_tmp
+      unique_id: elko_template_wc_floor_heater_tmp
+      default_entity_id: switch.wc_floor_heater_tmp
+      state: "{{ is_state('switch.wc_floor_heater', 'on') }}"
+      icon: >-
+        {% if is_state('switch.wc_floor_heater', 'on') %}
+          mdi:radiator
+        {% else %}
+          mdi:radiator-disabled
+        {% endif %}
+      turn_on:
+        - action: switch.turn_on
+          target:
+            entity_id: switch.wc_floor_heater
+      turn_off:
+        - action: switch.turn_off
+          target:
+            entity_id: switch.wc_floor_heater
+
+    - name: wc_mirror_tmp
+      unique_id: elko_template_wc_mirror_tmp
+      default_entity_id: switch.wc_mirror_tmp
+      state: "{{ is_state('switch.wc_mirror', 'on') }}"
+      icon: >-
+        {% if is_state('switch.wc_mirror', 'on') %}
+          mdi:globe-light
+        {% else %}
+          mdi:globe-light-outline
+        {% endif %}
+      turn_on:
+        - action: switch.turn_on
+          target:
+            entity_id: switch.wc_mirror
+      turn_off:
+        - action: switch.turn_off
+          target:
+            entity_id: switch.wc_mirror
+
+    - name: wc_backlight_tmp
+      unique_id: elko_template_wc_backlight_tmp
+      default_entity_id: switch.wc_backlight_tmp
+      state: "{{ is_state('switch.wc_backlight', 'on') }}"
+      icon: >-
+        {% if is_state('switch.wc_backlight', 'on') %}
+          mdi:wall-sconce-flat
+        {% else %}
+          mdi:wall-sconce-flat-outline
+        {% endif %}
+      turn_on:
+        - action: switch.turn_on
+          target:
+            entity_id: switch.wc_backlight
+      turn_off:
+        - action: switch.turn_off
+          target:
+            entity_id: switch.wc_backlight
+
+    - name: wc_fan_tmp
+      unique_id: elko_template_wc_fan_tmp
+      default_entity_id: switch.wc_fan_tmp
+      state: "{{ is_state('switch.wc_fan', 'on') }}"
+      icon: >-
+        {% if is_state('switch.wc_fan', 'on') %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+      turn_on:
+        - action: switch.turn_on
+          target:
+            entity_id: switch.wc_fan
+      turn_off:
+        - action: switch.turn_off
+          target:
+            entity_id: switch.wc_fan
+
+    - name: wc_pointslights_tmp
+      unique_id: elko_template_wc_pointslights_tmp
+      default_entity_id: switch.wc_pointslights_tmp
+      state: "{{ is_state('switch.wc_pointslights', 'on') }}"
+      icon: >-
+        {% if is_state('switch.wc_pointslights', 'on') %}
+          mdi:ceiling-light
+        {% else %}
+          mdi:ceiling-light-outline
+        {% endif %}
+      turn_on:
+        - action: switch.turn_on
+          target:
+            entity_id: switch.wc_pointslights
+      turn_off:
+        - action: switch.turn_off
+          target:
+            entity_id: switch.wc_pointslights
+
+    - name: wc_waterleak_tmp
+      unique_id: elko_template_wc_waterleak_tmp
+      default_entity_id: switch.wc_waterleak_tmp
+      state: "{{ is_state('switch.wc_waterleak', 'on') }}"
+      icon: >-
+        {% if is_state('switch.wc_waterleak', 'on') %}
+          mdi:water
+        {% else %}
+          mdi:water-outline
+        {% endif %}
+      turn_on:
+        - action: switch.turn_on
+          target:
+            entity_id: switch.wc_waterleak
+      turn_off:
+        - action: switch.turn_off
+          target:
+            entity_id: switch.wc_waterleak

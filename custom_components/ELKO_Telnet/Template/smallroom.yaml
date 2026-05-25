@@ -1,0 +1,181 @@
+# Smallroom — modern template entities (replaces legacy `- platform: template` blocks).
+# Migrated for HA 2026.6, which removes the legacy template switch/cover platforms.
+- switch:
+    - name: smallroom_heater_tmp
+      unique_id: elko_template_smallroom_heater_tmp
+      default_entity_id: switch.smallroom_heater_tmp
+      state: "{{ is_state('switch.smallroom_heater', 'on') }}"
+      icon: >-
+        {% if is_state('switch.smallroom_heater', 'on') %}
+          mdi:radiator
+        {% else %}
+          mdi:radiator-disabled
+        {% endif %}
+      turn_on:
+        - action: switch.turn_on
+          target:
+            entity_id: switch.smallroom_heater
+      turn_off:
+        - action: switch.turn_off
+          target:
+            entity_id: switch.smallroom_heater
+
+    - name: smallroom_backlight_wall_tmp
+      unique_id: elko_template_smallroom_backlight_wall_tmp
+      default_entity_id: switch.smallroom_backlight_wall_tmp
+      state: "{{ is_state('switch.smallroom_backlight_wall', 'on') }}"
+      icon: >-
+        {% if is_state('switch.smallroom_backlight_wall', 'on') %}
+          mdi:wall-sconce-flat
+        {% else %}
+          mdi:wall-sconce-flat-outline
+        {% endif %}
+      turn_on:
+        - action: switch.turn_on
+          target:
+            entity_id:
+              - switch.smallroom_backlight_wall
+              - switch.smallroom_switch_1_green_1
+      turn_off:
+        - action: switch.turn_off
+          target:
+            entity_id:
+              - switch.smallroom_backlight_wall
+              - switch.smallroom_switch_1_green_1
+
+    - name: smallroom_chandelier_tmp
+      unique_id: elko_template_smallroom_chandelier_tmp
+      default_entity_id: switch.smallroom_chandelier_tmp
+      state: "{{ is_state('switch.smallroom_chandelier', 'on') }}"
+      icon: >-
+        {% if is_state('switch.smallroom_chandelier', 'on') %}
+          mdi:ceiling-light
+        {% else %}
+          mdi:ceiling-light-outline
+        {% endif %}
+      turn_on:
+        - action: switch.turn_on
+          target:
+            entity_id:
+              - switch.smallroom_chandelier
+              - switch.smallroom_switch_1_green_3
+      turn_off:
+        - action: switch.turn_off
+          target:
+            entity_id:
+              - switch.smallroom_chandelier
+              - switch.smallroom_switch_1_green_3
+
+    - name: smallroom_points_lights_tmp
+      unique_id: elko_template_smallroom_points_lights_tmp
+      default_entity_id: switch.smallroom_points_lights_tmp
+      state: "{{ is_state('switch.smallroom_points_lights', 'on') }}"
+      icon: >-
+        {% if is_state('switch.smallroom_points_lights', 'on') %}
+          mdi:lightbulb-group
+        {% else %}
+          mdi:lightbulb-group-off
+        {% endif %}
+      turn_on:
+        - action: switch.turn_on
+          target:
+            entity_id:
+              - switch.smallroom_points_lights
+              - switch.smallroom_switch_1_green_2
+      turn_off:
+        - action: switch.turn_off
+          target:
+            entity_id:
+              - switch.smallroom_points_lights
+              - switch.smallroom_switch_1_green_2
+
+- cover:
+    - name: smallroom_curtain
+      unique_id: elko_template_smallroom_curtain
+      default_entity_id: cover.smallroom_curtain
+      device_class: curtain
+      position: >-
+        {% if is_state('switch.smallroom_curtains_open', 'on') %}
+          99
+        {% else %}
+          0
+        {% endif %}
+      icon: >-
+        {% if is_state('switch.smallroom_curtains_open', 'on') %}
+          mdi:curtains
+        {% else %}
+          mdi:curtains-closed
+        {% endif %}
+      open_cover:
+        - if:
+            - alias: "If curtain in close state"
+              condition: state
+              entity_id: switch.smallroom_curtains_close
+              state: 'on'
+          then:
+            - alias: "Turn Off close state"
+              action: switch.turn_off
+              target:
+                entity_id: switch.smallroom_curtains_close
+        - action: switch.turn_on
+          target:
+            entity_id: switch.smallroom_curtains_open
+      close_cover:
+        - if:
+            - alias: "If curtain in open state"
+              condition: state
+              entity_id: switch.smallroom_curtains_open
+              state: 'on'
+          then:
+            - alias: "Turn Off open state"
+              action: switch.turn_off
+              target:
+                entity_id: switch.smallroom_curtains_open
+        - action: switch.turn_on
+          target:
+            entity_id: switch.smallroom_curtains_close
+
+    - name: smallroom_tule
+      unique_id: elko_template_smallroom_tule
+      default_entity_id: cover.smallroom_tule
+      device_class: curtain
+      position: >-
+        {% if is_state('switch.smallroom_tule_open', 'on') %}
+          99
+        {% else %}
+          0
+        {% endif %}
+      icon: >-
+        {% if is_state('switch.smallroom_tule_open', 'on') %}
+          mdi:curtains
+        {% else %}
+          mdi:curtains-closed
+        {% endif %}
+      open_cover:
+        - if:
+            - alias: "If tule in close state"
+              condition: state
+              entity_id: switch.smallroom_tule_close
+              state: 'on'
+          then:
+            - alias: "Turn Off close state"
+              action: switch.turn_off
+              target:
+                entity_id: switch.smallroom_tule_close
+        - action: switch.turn_on
+          target:
+            entity_id: switch.smallroom_tule_open
+      close_cover:
+        - if:
+            - alias: "If tule in open state"
+              condition: state
+              entity_id: switch.smallroom_tule_open
+              state: 'on'
+          then:
+            - alias: "Turn Off open state"
+              action: switch.turn_off
+              target:
+                entity_id: switch.smallroom_tule_open
+        - action: switch.turn_on
+          target:
+            entity_id: switch.smallroom_tule_close

@@ -1,0 +1,116 @@
+# Hall — modern template entities (replaces legacy `- platform: template` blocks).
+# Migrated for HA 2026.6, which removes the legacy template switch/cover platforms.
+- switch:
+    - name: hall_floor_heater_tmp
+      unique_id: elko_template_hall_floor_heater_tmp
+      default_entity_id: switch.hall_floor_heater_tmp
+      state: "{{ is_state('switch.hall_floor_heater', 'on') }}"
+      icon: >-
+        {% if is_state('switch.hall_floor_heater', 'on') %}
+          mdi:radiator
+        {% else %}
+          mdi:radiator-disabled
+        {% endif %}
+      turn_on:
+        - action: switch.turn_on
+          target:
+            entity_id: switch.hall_floor_heater
+      turn_off:
+        - action: switch.turn_off
+          target:
+            entity_id: switch.hall_floor_heater
+
+    - name: hall_backlight_tmp
+      unique_id: elko_template_hall_backlight_tmp
+      default_entity_id: switch.hall_backlight_tmp
+      state: "{{ is_state('switch.hall_backlight', 'on') }}"
+      icon: >-
+        {% if is_state('switch.hall_backlight', 'on') %}
+          mdi:wall-sconce-flat
+        {% else %}
+          mdi:wall-sconce-flat-outline
+        {% endif %}
+      turn_on:
+        - action: switch.turn_on
+          target:
+            entity_id: switch.hall_backlight
+      turn_off:
+        - action: switch.turn_off
+          target:
+            entity_id: switch.hall_backlight
+
+    - name: hall_move_lights_tmp
+      unique_id: elko_template_hall_move_lights_tmp
+      default_entity_id: switch.hall_move_lights_tmp
+      state: "{{ is_state('switch.hall_move_lights', 'on') }}"
+      icon: >-
+        {% if is_state('switch.hall_move_lights', 'on') %}
+          mdi:wall-sconce-flat
+        {% else %}
+          mdi:wall-sconce-flat-outline
+        {% endif %}
+      turn_on:
+        - action: switch.turn_on
+          target:
+            entity_id: switch.hall_move_lights
+      turn_off:
+        - action: switch.turn_off
+          target:
+            entity_id: switch.hall_move_lights
+
+    - name: hall_wardrobe_tmp
+      unique_id: elko_template_hall_wardrobe_tmp
+      default_entity_id: switch.hall_wardrobe_tmp
+      state: "{{ is_state('switch.hall_wardrobe', 'on') }}"
+      icon: >-
+        {% if is_state('switch.hall_wardrobe', 'on') %}
+          mdi:lightbulb-group
+        {% else %}
+          mdi:lightbulb-group-off
+        {% endif %}
+      turn_on:
+        - action: switch.turn_on
+          target:
+            entity_id: switch.hall_wardrobe
+      turn_off:
+        - action: switch.turn_off
+          target:
+            entity_id: switch.hall_wardrobe
+
+    - name: hall_points_lights_tmp
+      unique_id: elko_template_hall_points_lights_tmp
+      default_entity_id: switch.hall_points_lights_tmp
+      state: "{{ is_state('switch.hall_points_lights', 'on') }}"
+      icon: >-
+        {% if is_state('switch.hall_points_lights', 'on') %}
+          mdi:lightbulb-group
+        {% else %}
+          mdi:lightbulb-group-off
+        {% endif %}
+      turn_on:
+        - action: switch.turn_on
+          target:
+            entity_id: switch.hall_points_lights
+      turn_off:
+        - action: switch.turn_off
+          target:
+            entity_id: switch.hall_points_lights
+
+    - name: hall_lights_tmp
+      unique_id: elko_template_hall_lights_tmp
+      default_entity_id: switch.hall_lights_tmp
+      state: "{{ is_state('switch.hall_lights', 'on') }}"
+      icon: >-
+        {% if is_state('switch.hall_lights', 'on') %}
+          mdi:lightbulb-group
+        {% else %}
+          mdi:lightbulb-group-off
+        {% endif %}
+      turn_on:
+        - action: switch.turn_on
+          target:
+            entity_id: switch.hall_lights
+      turn_off:
+        - action: switch.turn_off
+          target:
+            entity_id: switch.hall_lights

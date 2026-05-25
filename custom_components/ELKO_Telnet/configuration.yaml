@@ -7,9 +7,11 @@ automation: !include_dir_merge_list custom_components/ELKO_telnet/Automation
 switch: !include_dir_merge_list custom_components/ELKO_telnet/Switch
 sensor: !include_dir_merge_list custom_components/ELKO_telnet/Sensor
 light: !include_dir_merge_list custom_components/ELKO_telnet/Light
-cover: !include_dir_merge_list custom_components/ELKO_telnet/Cover
 climate: !include_dir_merge_list custom_components/ELKO_telnet/Climate
-views: !include_dir_merge_list custom_components/ELKO_telnet/Views
+
+# Modern unified `template:` integration. Replaces the legacy
+# `- platform: template` blocks for switch/cover that HA 2026.6 removes.
+template: !include_dir_merge_list custom_components/ELKO_telnet/Template
 
 script: !include scripts.yaml
 scene: !include scenes.yaml

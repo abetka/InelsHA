@@ -1,71 +1,102 @@
-# WC Temperature
+# WC sensors — explicit entries to avoid the `<<:` merge that produced
+# `duplicate key` warnings from annotatedyaml (HA core). Host/port are
+# anchored once so they remain a single source of truth.
 - platform: ELKO_telnet
   sensors:
-    wc_temperature: &sensors
+    wc_temperature:
       friendly_name: "WC Temperature"
-      host: "192.168.88.246"
+      host: &wc_host "192.168.88.246"
+      port: &wc_port 1111
       device_id: "0x01050007"
-      port: 1111
       device_class: 'temperature'
       unit_of_measurement: "°C"
+
 - platform: ELKO_telnet
   sensors:
     wc_switch_temperature:
-      <<: *sensors
       friendly_name: "WC Switch Temperature"
+      host: *wc_host
+      port: *wc_port
       device_id: "0x0105001c"
+      device_class: 'temperature'
+      unit_of_measurement: "°C"
+
 - platform: ELKO_telnet
   sensors:
     wc_humidity:
-      <<: *sensors
       friendly_name: "WC Humidity"
+      host: *wc_host
+      port: *wc_port
       device_id: "0x01050009"
       device_class: 'humidity'
       unit_of_measurement: "%"
+
 - platform: ELKO_telnet
   sensors:
     wc_move_detector_battery:
-      <<: *sensors
       friendly_name: "WC Move Detector Battery"
+      host: *wc_host
+      port: *wc_port
       device_id: "0x010100a3"
       device_class: 'battery'
       unit_of_measurement: "%"
+
 - platform: ELKO_telnet
   sensors:
-    wc_mirror: &sensors2
-      <<: *sensors
+    wc_mirror:
       friendly_name: "WC Mirror Backlight"
+      host: *wc_host
+      port: *wc_port
       device_id: "0x01020003"
       device_class: 'binary'
       unit_of_measurement: "on/off"
+
 - platform: ELKO_telnet
   sensors:
     wc_waterleak:
-      <<: *sensors2
       friendly_name: "WC Waterleak"
+      host: *wc_host
+      port: *wc_port
       device_id: "0x01020027"
+      device_class: 'binary'
       unit_of_measurement: "off/on"
+
 - platform: ELKO_telnet
   sensors:
     wc_backlight:
-      <<: *sensors2
       friendly_name: "WC Wall Backlight"
+      host: *wc_host
+      port: *wc_port
       device_id: "0x01020014"
+      device_class: 'binary'
+      unit_of_measurement: "on/off"
+
 - platform: ELKO_telnet
   sensors:
     wc_fan:
-      <<: *sensors2
       friendly_name: "WC Fan"
+      host: *wc_host
+      port: *wc_port
       device_id: "0x01020025"
+      device_class: 'binary'
+      unit_of_measurement: "on/off"
+
 - platform: ELKO_telnet
   sensors:
     wc_pointslights:
-      <<: *sensors2
       friendly_name: "WC Points Light"
+      host: *wc_host
+      port: *wc_port
       device_id: "0x0102002e"
+      device_class: 'binary'
+      unit_of_measurement: "on/off"
+
 - platform: ELKO_telnet
   sensors:
     wc_floor_heater:
-      <<: *sensors2
       friendly_name: "WC Floor Heater"
+      host: *wc_host
+      port: *wc_port
       device_id: "0x01020023"
+      device_class: 'binary'
+      unit_of_measurement: "on/off"
