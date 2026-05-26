@@ -1,7 +1,8 @@
-# Bathroom Floor Heater
+# Auto-expanded: legacy YAML merge keys replaced with explicit fields
+# to eliminate annotatedyaml duplicate-key warnings on HA startup.
 - platform: ELKO_telnet
   switches:
-    bathroom_floor_heater: &settings
+    bathroom_floor_heater:
       resource: "192.168.88.246"
       port: 1111
       command_on: "1"
@@ -13,69 +14,165 @@
           False
         {% endif %}
       timeout: 0.1
-      name: Bathroom Floor Heater
+      name: "Bathroom Floor Heater"
       device_id: "0x01020043"
 - platform: ELKO_telnet
   switches:
     bathroom_mirror:
-      <<: *settings
-      name: Bathroom Mirror Backlight
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Bathroom Mirror Backlight"
       device_id: "0x01020001"
 - platform: ELKO_telnet
   switches:
     bathroom_backlight:
-      <<: *settings
-      name: Bathroom Wall Backlight
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Bathroom Wall Backlight"
       device_id: "0x01020012"
 - platform: ELKO_telnet
   switches:
     bathroom_fan:
-      <<: *settings
-      name: Bathroom Fan
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Bathroom Fan"
       device_id: "0x01020024"
 - platform: ELKO_telnet
   switches:
     bathroom_pointslights:
-      <<: *settings
-      name: Bathroom Points Light
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Bathroom Points Light"
       device_id: "0x0102000b"
 - platform: ELKO_telnet
   switches:
     bathroom_switch_1_green_1:
-      <<: *settings
-      name: Bathroom Switch 1 Green 1
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Bathroom Switch 1 Green 1"
       device_id: "0x01020015"
 - platform: ELKO_telnet
   switches:
     bathroom_switch_1_green_2:
-      <<: *settings
-      name: Bathroom Switch 1 Green 2
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Bathroom Switch 1 Green 2"
       device_id: "0x01020017"
 - platform: ELKO_telnet
   switches:
     bathroom_switch_1_green_3:
-      <<: *settings
-      name: Bathroom Switch 1 Green 3
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Bathroom Switch 1 Green 3"
       device_id: "0x0102001b"
 - platform: ELKO_telnet
   switches:
     bathroom_switch_1_red_1:
-      <<: *settings
-      name: Bathroom Switch 1 Red 1
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Bathroom Switch 1 Red 1"
       device_id: "0x01020016"
 - platform: ELKO_telnet
   switches:
     bathroom_switch_1_red_2:
-      <<: *settings
-      name: Bathroom Switch 1 Red 2
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Bathroom Switch 1 Red 2"
       device_id: "0x01020018"
 - platform: ELKO_telnet
   switches:
     bathroom_switch_1_red_3:
-      <<: *settings
-      name: Bathroom Switch 1 Red 3
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Bathroom Switch 1 Red 3"
       device_id: "0x0102001c"
-
-# NOTE: legacy `- platform: template` switch blocks for this room have been
-# migrated to the modern top-level `template:` integration. See
-# ../Template/bathroom.yaml. Required for HA 2026.6.

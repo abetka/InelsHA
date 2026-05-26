@@ -1,7 +1,8 @@
-# SmallRoom Heater
+# Auto-expanded: legacy YAML merge keys replaced with explicit fields
+# to eliminate annotatedyaml duplicate-key warnings on HA startup.
 - platform: ELKO_telnet
   switches:
-    smallroom_chandelier: &settings
+    smallroom_chandelier:
       resource: "192.168.88.246"
       port: 1111
       command_on: "1"
@@ -13,99 +14,245 @@
           False
         {% endif %}
       timeout: 0.1
-      name: Smallroom Chandelier
+      name: "Smallroom Chandelier"
       device_id: "0x0102000d"
 - platform: ELKO_telnet
   switches:
     smallroom_curtains_open:
-      <<: *settings
-      name: Smallroom Curtains Open
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Smallroom Curtains Open"
       device_id: "0x0102006e"
 - platform: ELKO_telnet
   switches:
     smallroom_curtains_close:
-      <<: *settings
-      name: Smallroom Curtains Close
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Smallroom Curtains Close"
       device_id: "0x0102006f"
 - platform: ELKO_telnet
   switches:
     smallroom_tule_open:
-      <<: *settings
-      name: Smallroom Tule Open
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Smallroom Tule Open"
       device_id: "0x01020071"
 - platform: ELKO_telnet
   switches:
     smallroom_tule_close:
-      <<: *settings
-      name: Smallroom Tule Close
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Smallroom Tule Close"
       device_id: "0x01020070"
 - platform: ELKO_telnet
   switches:
     smallroom_heater:
-      <<: *settings
-      name: SmallRoom Heater
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "SmallRoom Heater"
       device_id: "0x01020004"
 - platform: ELKO_telnet
   switches:
     smallroom_points_lights:
-      <<: *settings
-      name: Smallroom Points Lights
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Smallroom Points Lights"
       device_id: "0x01020028"
 - platform: ELKO_telnet
   switches:
     smallroom_backlight_wall:
-      <<: *settings
-      name: Smallroom Backlight Wall
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Smallroom Backlight Wall"
       device_id: "0x0102003a"
 - platform: ELKO_telnet
   switches:
     smallroom_switch_1_green_1:
-      <<: *settings
-      name: Smallroom Switch 1 Green 1
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Smallroom Switch 1 Green 1"
       device_id: "0x0102003c"
 - platform: ELKO_telnet
   switches:
     smallroom_switch_1_green_2:
-      <<: *settings
-      name: Smallroom Switch 1 Green 2
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Smallroom Switch 1 Green 2"
       device_id: "0x0102003e"
 - platform: ELKO_telnet
   switches:
     smallroom_switch_1_green_3:
-      <<: *settings
-      name: Smallroom Switch 1 Green 3
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Smallroom Switch 1 Green 3"
       device_id: "0x01020040"
 - platform: ELKO_telnet
   switches:
     smallroom_switch_1_red_1:
-      <<: *settings
-      name: smallroom Switch 1 Red 1
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "smallroom Switch 1 Red 1"
       device_id: "0x0102003d"
 - platform: ELKO_telnet
   switches:
     smallroom_switch_1_red_2:
-      <<: *settings
-      name: smallroom Switch 1 Red 2
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "smallroom Switch 1 Red 2"
       device_id: "0x0102003f"
 - platform: ELKO_telnet
   switches:
     smallroom_switch_1_red_3:
-      <<: *settings
-      name: smallroom Switch 1 Red 3
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "smallroom Switch 1 Red 3"
       device_id: "0x01020041"
 - platform: ELKO_telnet
   switches:
     smallroom_switch_1_light:
-      <<: *settings
-      name: smallroom Switch 1 Light
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "smallroom Switch 1 Light"
       device_id: "0x01020042"
 - platform: ELKO_telnet
   switches:
     smallroom_camera:
-      <<: *settings
-      name: smallroom Camera
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "smallroom Camera"
       device_id: "0x0101000e"
-
-# NOTE: legacy `- platform: template` switch blocks for this room have been
-# migrated to the modern top-level `template:` integration. See
-# ../Template/smallroom.yaml. Required for HA 2026.6.

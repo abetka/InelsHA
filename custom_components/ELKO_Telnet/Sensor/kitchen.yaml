@@ -1,108 +1,146 @@
-# Kitchen Temperature
+# Auto-expanded: legacy `<<: *anchor` merges replaced with explicit
+# fields to eliminate annotatedyaml duplicate-key warnings.
 - platform: ELKO_telnet
   sensors:
-    kitchen_temperature: &sensors
+    kitchen_temperature:
       friendly_name: "Kitchen Temperature"
       host: "192.168.88.246"
-      device_id: "0x01050003"
       port: 1111
-      device_class: 'temperature'
+      device_id: "0x01050003"
+      device_class: "temperature"
       unit_of_measurement: "°C"
 - platform: ELKO_telnet
   sensors:
     kitchen_window_temperature:
-      <<: *sensors
       friendly_name: "Kitchen Window Temperature"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x0105000a"
+      device_class: "temperature"
+      unit_of_measurement: "°C"
 - platform: ELKO_telnet
   sensors:
     kitchen_door_temperature:
-      <<: *sensors
       friendly_name: "Kitchen Door Temperature"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x0105000e"
+      device_class: "temperature"
+      unit_of_measurement: "°C"
 - platform: ELKO_telnet
   sensors:
     kitchen_humidity:
-      <<: *sensors
       friendly_name: "Kitchen Humidity"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x0105000c"
-      device_class: 'humidity'
+      device_class: "humidity"
       unit_of_measurement: "%"
 - platform: ELKO_telnet
   sensors:
-    kitchen_floor_heater: &sensors2
-      <<: *sensors
+    kitchen_floor_heater:
       friendly_name: "Kitchen Floor Heater"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x0102001a"
-      device_class: 'binary'
+      device_class: "binary"
       unit_of_measurement: "on/off"
 - platform: ELKO_telnet
   sensors:
     kitchen_heater:
-      <<: *sensors2
       friendly_name: "Kitchen Heater"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x01020013"
+      device_class: "binary"
+      unit_of_measurement: "on/off"
 - platform: ELKO_telnet
   sensors:
     kitchen_move_detector:
-      <<: *sensors2
       friendly_name: "Kitchen Move Detector"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x01010007"
+      device_class: "binary"
+      unit_of_measurement: "on/off"
 - platform: ELKO_telnet
   sensors:
     kitchen_chandelier:
-      <<: *sensors2
       friendly_name: "Kitchen Chandelier"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x01020006"
+      device_class: "binary"
+      unit_of_measurement: "on/off"
 - platform: ELKO_telnet
   sensors:
     kitchen_backlight_table:
-      <<: *sensors2
       friendly_name: "Kitchen Backlight Table"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x01020007"
+      device_class: "binary"
+      unit_of_measurement: "on/off"
 - platform: ELKO_telnet
   sensors:
     kitchen_backlight_wall:
-      <<: *sensors2
       friendly_name: "Kitchen Backlight Wall"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x0102000e"
+      device_class: "binary"
+      unit_of_measurement: "on/off"
 - platform: ELKO_telnet
   sensors:
     kitchen_point_lights_window:
-      <<: *sensors2
       friendly_name: "Kitchen Point Lights Window"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x01020037"
+      device_class: "binary"
+      unit_of_measurement: "on/off"
 - platform: ELKO_telnet
   sensors:
     kitchen_point_lights:
-      <<: *sensors2
       friendly_name: "Kitchen Point Lights"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x01020038"
+      device_class: "binary"
+      unit_of_measurement: "on/off"
 - platform: ELKO_telnet
   sensors:
-    kitchen_curtains_open: &sensors3
-      <<: *sensors
+    kitchen_curtains_open:
       friendly_name: "Kitchen Curtains Open"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x01020076"
-      device_class: 'binary'
+      device_class: "binary"
       unit_of_measurement: "open/closed"
 - platform: ELKO_telnet
   sensors:
     kitchen_curtains_close:
-      <<: *sensors3
       friendly_name: "Kitchen Curtains Close"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x01020077"
+      device_class: "binary"
       unit_of_measurement: "closed/open"
 - platform: ELKO_telnet
   sensors:
     kitchen_tule_open:
-      <<: *sensors3
       friendly_name: "Kitchen Tule Open"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x01020079"
+      device_class: "binary"
+      unit_of_measurement: "open/closed"
 - platform: ELKO_telnet
   sensors:
     kitchen_tule_close:
-      <<: *sensors3
       friendly_name: "Kitchen Tule Close"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x01020078"
+      device_class: "binary"
       unit_of_measurement: "closed/open"

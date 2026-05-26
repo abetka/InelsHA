@@ -1,7 +1,8 @@
-# BigRoom Heater
+# Auto-expanded: legacy YAML merge keys replaced with explicit fields
+# to eliminate annotatedyaml duplicate-key warnings on HA startup.
 - platform: ELKO_telnet
   switches:
-    bigroom_heater: &settings
+    bigroom_heater:
       resource: "192.168.88.246"
       port: 1111
       command_on: "1"
@@ -13,166 +14,421 @@
           False
         {% endif %}
       timeout: 0.1
-      name: BigRoom Heater
+      name: "BigRoom Heater"
       device_id: "0x01020008"
 - platform: ELKO_telnet
   switches:
     bigroom_curtains_open:
-      <<: *settings
-      name: Bigroom Curtains Open
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Bigroom Curtains Open"
       device_id: "0x01020073"
 - platform: ELKO_telnet
   switches:
     bigroom_curtains_close:
-      <<: *settings
-      name: Bigroom Curtains Close
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Bigroom Curtains Close"
       device_id: "0x01020072"
 - platform: ELKO_telnet
   switches:
     bigroom_tule_open:
-      <<: *settings
-      name: Bigroom Tule Open
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Bigroom Tule Open"
       device_id: "0x01020074"
 - platform: ELKO_telnet
   switches:
     bigroom_tule_close:
-      <<: *settings
-      name: Bigroom Tule Close
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Bigroom Tule Close"
       device_id: "0x01020075"
 - platform: ELKO_telnet
   switches:
     bigroom_chandelier:
-      <<: *settings
-      name: Bigroom Chandelier
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Bigroom Chandelier"
       device_id: "0x01020005"
 - platform: ELKO_telnet
   switches:
     bigroom_backlight_window:
-      <<: *settings
-      name: Bigroom Backlight Window
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Bigroom Backlight Window"
       device_id: "0x01020009"
 - platform: ELKO_telnet
   switches:
     bigroom_backlight_door:
-      <<: *settings
-      name: Bigroom Backlight Door
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Bigroom Backlight Door"
       device_id: "0x0102002a"
 - platform: ELKO_telnet
   switches:
     bigroom_mirror:
-      <<: *settings
-      name: Bigroom Mirror
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Bigroom Mirror"
       device_id: "0x0102000a"
 - platform: ELKO_telnet
   switches:
     bigroom_point_light:
-      <<: *settings
-      name: Bigroom Point Light
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Bigroom Point Light"
       device_id: "0x0102002b"
-
 - platform: ELKO_telnet
   switches:
     bigroom_switch_1_green_1:
-      <<: *settings
-      name: Bigroom Switch 1 Green 1
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Bigroom Switch 1 Green 1"
       device_id: "0x0102004f"
 - platform: ELKO_telnet
   switches:
     bigroom_switch_1_green_2:
-      <<: *settings
-      name: Bigroom Switch 1 Green 2
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Bigroom Switch 1 Green 2"
       device_id: "0x01020051"
 - platform: ELKO_telnet
   switches:
     bigroom_switch_2_green_1:
-      <<: *settings
-      name: Bigroom Switch 2 Green 1
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Bigroom Switch 2 Green 1"
       device_id: "0x01020044"
 - platform: ELKO_telnet
   switches:
     bigroom_switch_2_green_2:
-      <<: *settings
-      name: Bigroom Switch 2 Green 2
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Bigroom Switch 2 Green 2"
       device_id: "0x01020046"
 - platform: ELKO_telnet
   switches:
     bigroom_switch_3_green_1:
-      <<: *settings
-      name: Bigroom Switch 3 Green 1
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Bigroom Switch 3 Green 1"
       device_id: "0x01020086"
 - platform: ELKO_telnet
   switches:
     bigroom_switch_3_green_2:
-      <<: *settings
-      name: Bigroom Switch 3 Green 2
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Bigroom Switch 3 Green 2"
       device_id: "0x01020088"
 - platform: ELKO_telnet
   switches:
     bigroom_switch_4_green_1:
-      <<: *settings
-      name: Bigroom Switch 4 Green 1
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Bigroom Switch 4 Green 1"
       device_id: "0x0102007a"
 - platform: ELKO_telnet
   switches:
     bigroom_switch_4_green_2:
-      <<: *settings
-      name: Bigroom Switch 4 Green 2
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Bigroom Switch 4 Green 2"
       device_id: "0x0102007c"
 - platform: ELKO_telnet
   switches:
     bigroom_switch_1_red_1:
-      <<: *settings
-      name: Bigroom Switch 1 Red 1
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Bigroom Switch 1 Red 1"
       device_id: "0x01020050"
 - platform: ELKO_telnet
   switches:
     bigroom_switch_1_red_2:
-      <<: *settings
-      name: Bigroom Switch 1 Red 2
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Bigroom Switch 1 Red 2"
       device_id: "0x01020052"
 - platform: ELKO_telnet
   switches:
     bigroom_switch_2_red_1:
-      <<: *settings
-      name: Bigroom Switch 2 Red 1
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Bigroom Switch 2 Red 1"
       device_id: "0x01020045"
 - platform: ELKO_telnet
   switches:
     bigroom_switch_2_red_2:
-      <<: *settings
-      name: Bigroom Switch 2 Red 2
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Bigroom Switch 2 Red 2"
       device_id: "0x01020047"
 - platform: ELKO_telnet
   switches:
     bigroom_switch_3_red_1:
-      <<: *settings
-      name: Bigroom Switch 3 Red 1
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Bigroom Switch 3 Red 1"
       device_id: "0x01020087"
 - platform: ELKO_telnet
   switches:
     bigroom_switch_3_red_2:
-      <<: *settings
-      name: Bigroom Switch 3 Red 2
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Bigroom Switch 3 Red 2"
       device_id: "0x01020089"
 - platform: ELKO_telnet
   switches:
     bigroom_switch_4_red_1:
-      <<: *settings
-      name: Bigroom Switch 4 Red 1
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Bigroom Switch 4 Red 1"
       device_id: "0x0102007b"
 - platform: ELKO_telnet
   switches:
     bigroom_switch_4_red_2:
-      <<: *settings
-      name: Bigroom Switch 4 Red 2
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Bigroom Switch 4 Red 2"
       device_id: "0x0102007d"
 - platform: ELKO_telnet
   switches:
     bigroom_camera:
-      <<: *settings
-      name: Bigroom Camera
+      resource: "192.168.88.246"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
+      name: "Bigroom Camera"
       device_id: "0x01010005"
-
-# NOTE: legacy `- platform: template` switch blocks for this room have been
-# migrated to the modern top-level `template:` integration. See
-# ../Template/bigroom.yaml. Required for HA 2026.6.

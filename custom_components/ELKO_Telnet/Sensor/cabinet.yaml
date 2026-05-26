@@ -1,72 +1,85 @@
-# General Listener
+# Auto-expanded: legacy `<<: *anchor` merges replaced with explicit
+# fields to eliminate annotatedyaml duplicate-key warnings.
 - platform: command_line
-  unique_id: event_listener
-  name: Event Listener
-  command: "python3 custom_components/ELKO_telnet/if_run.py"
-  value_template: ""
+  sensors:
 - platform: ELKO_telnet
   sensors:
-    cabinet_temperature: &sensors
+    cabinet_temperature:
       friendly_name: "Cabinet Temperature"
       host: "192.168.88.246"
-      device_id: "0x01050017"
       port: 1111
-      device_class: 'temperature'
+      device_id: "0x01050017"
+      device_class: "temperature"
       unit_of_measurement: "°C"
 - platform: ELKO_telnet
   sensors:
     cabinet_temperature_door:
-      <<: *sensors
       friendly_name: "Cabinet Temperature Door"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x01050027"
+      device_class: "temperature"
+      unit_of_measurement: "°C"
 - platform: ELKO_telnet
   sensors:
     cabinet_humidity:
-      <<: *sensors
       friendly_name: "Cabinet Humidity"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x01050029"
-      device_class: 'humidity'
+      device_class: "humidity"
       unit_of_measurement: "%"
-
 - platform: ELKO_telnet
   sensors:
-    bathroom_mirror: &sensors2
-      <<: *sensors
+    bathroom_mirror:
       friendly_name: "Bathroom Mirror Backlight"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x01020001"
-      device_class: 'binary'
+      device_class: "binary"
       unit_of_measurement: "on/off"
 - platform: ELKO_telnet
   sensors:
     cabinet_light_table:
-      <<: *sensors2
       friendly_name: "Cabinet light Table"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x01020029"
+      device_class: "binary"
+      unit_of_measurement: "on/off"
 - platform: ELKO_telnet
   sensors:
     cabinet_light_wall:
-      <<: *sensors2
       friendly_name: "Cabinet light Wall"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x01020011"
+      device_class: "binary"
+      unit_of_measurement: "on/off"
 - platform: ELKO_telnet
   sensors:
     cabinet_chandelier:
-      <<: *sensors2
       friendly_name: "Cabinet Chandelier"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x01020039"
+      device_class: "binary"
+      unit_of_measurement: "on/off"
 - platform: ELKO_telnet
   sensors:
     cabinet_curtains_open:
-      <<: *sensors
       friendly_name: "Cabinet Curtains Open"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x0102002f"
-      device_class: 'binary'
+      device_class: "binary"
       unit_of_measurement: "open/closed"
 - platform: ELKO_telnet
   sensors:
     cabinet_curtains_close:
-      <<: *sensors
       friendly_name: "Cabinet Curtains Close"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x01020026"
-      device_class: 'binary'
+      device_class: "binary"
       unit_of_measurement: "closed/open"

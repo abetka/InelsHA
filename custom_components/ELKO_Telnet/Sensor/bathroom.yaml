@@ -1,64 +1,83 @@
-# Bathroom Temperature
+# Auto-expanded: legacy `<<: *anchor` merges replaced with explicit
+# fields to eliminate annotatedyaml duplicate-key warnings.
 - platform: ELKO_telnet
   sensors:
-    bathroom_temperature: &sensors
+    bathroom_temperature:
       friendly_name: "Bathroom Temperature"
       host: "192.168.88.246"
-      device_id: "0x01050013"
       port: 1111
-      device_class: 'temperature'
+      device_id: "0x01050013"
+      device_class: "temperature"
       unit_of_measurement: "°C"
 - platform: ELKO_telnet
   sensors:
     bathroom_switch_temperature:
-      <<: *sensors
       friendly_name: "Bathroom Switch Temperature"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x01050004"
+      device_class: "temperature"
+      unit_of_measurement: "°C"
 - platform: ELKO_telnet
   sensors:
     bathroom_humidity:
-      <<: *sensors
       friendly_name: "Bathroom Humidity"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x01050006"
-      device_class: 'humidity'
+      device_class: "humidity"
       unit_of_measurement: "%"
 - platform: ELKO_telnet
   sensors:
     bathroom_move_detector_battery:
-      <<: *sensors
       friendly_name: "Bathroom Move Detector Battery"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x010100a6"
-      device_class: 'battery'
+      device_class: "battery"
       unit_of_measurement: "%"
 - platform: ELKO_telnet
   sensors:
-    bathroom_mirror: &sensors2
-      <<: *sensors
+    bathroom_mirror:
       friendly_name: "Bathroom Mirror Backlight"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x01020001"
-      device_class: 'binary'
+      device_class: "binary"
       unit_of_measurement: "on/off"
 - platform: ELKO_telnet
   sensors:
     bathroom_backlight:
-      <<: *sensors2
       friendly_name: "Bathroom Wall Backlight"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x01020012"
+      device_class: "binary"
+      unit_of_measurement: "on/off"
 - platform: ELKO_telnet
   sensors:
     bathroom_fan:
-      <<: *sensors2
       friendly_name: "Bathroom Fan"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x01020024"
+      device_class: "binary"
+      unit_of_measurement: "on/off"
 - platform: ELKO_telnet
   sensors:
     bathroom_pointslights:
-      <<: *sensors2
       friendly_name: "Bathroom Points Light"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x0102000b"
+      device_class: "binary"
+      unit_of_measurement: "on/off"
 - platform: ELKO_telnet
   sensors:
     bathroom_floor_heater:
-      <<: *sensors2
       friendly_name: "Bathroom Floor Heater"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x01020043"
+      device_class: "binary"
+      unit_of_measurement: "on/off"

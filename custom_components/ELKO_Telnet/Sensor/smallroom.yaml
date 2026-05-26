@@ -1,64 +1,83 @@
-# SmallRoom Temperature
+# Auto-expanded: legacy `<<: *anchor` merges replaced with explicit
+# fields to eliminate annotatedyaml duplicate-key warnings.
 - platform: ELKO_telnet
   sensors:
-    smallroom_temperature: &sensors
+    smallroom_temperature:
       friendly_name: "SmallRoom Temperature"
       host: "192.168.88.246"
-      device_id: "0x01050011"
       port: 1111
-      device_class: 'temperature'
+      device_id: "0x01050011"
+      device_class: "temperature"
       unit_of_measurement: "°C"
 - platform: ELKO_telnet
   sensors:
-    smallroom_curtains_open: &sensors3
-      <<: *sensors
+    smallroom_curtains_open:
       friendly_name: "SmallRoom Curtains Open"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x0102006e"
-      device_class: 'binary'
+      device_class: "binary"
       unit_of_measurement: "open/closed"
 - platform: ELKO_telnet
   sensors:
     smallroom_curtains_close:
-      <<: *sensors3
       friendly_name: "SmallRoom Curtains Close"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x0102006f"
+      device_class: "binary"
       unit_of_measurement: "closed/open"
 - platform: ELKO_telnet
   sensors:
     smallroom_tule_open:
-      <<: *sensors3
       friendly_name: "SmallRoom Tule Open"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x01020071"
+      device_class: "binary"
+      unit_of_measurement: "open/closed"
 - platform: ELKO_telnet
   sensors:
     smallroom_tule_close:
-      <<: *sensors3
       friendly_name: "SmallRoom Tule Close"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x01020070"
+      device_class: "binary"
       unit_of_measurement: "closed/open"
 - platform: ELKO_telnet
   sensors:
-    smallroom_chandelier: &sensors2
-      <<: *sensors
+    smallroom_chandelier:
       friendly_name: "SmallRoom Chandelier"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x0102000d"
-      device_class: 'binary'
+      device_class: "binary"
       unit_of_measurement: "on/off"
 - platform: ELKO_telnet
   sensors:
     smallroom_points_lights:
-      <<: *sensors2
       friendly_name: "Smallroom Points Lights"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x01020028"
+      device_class: "binary"
+      unit_of_measurement: "on/off"
 - platform: ELKO_telnet
   sensors:
     smallroom_backlight_wall:
-      <<: *sensors2
       friendly_name: "Smallroom Backlight Wall"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x0102003a"
+      device_class: "binary"
+      unit_of_measurement: "on/off"
 - platform: ELKO_telnet
   sensors:
     smallroom_heater:
-      <<: *sensors2
       friendly_name: "SmallRoom Heater"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x01020004"
+      device_class: "binary"
+      unit_of_measurement: "on/off"

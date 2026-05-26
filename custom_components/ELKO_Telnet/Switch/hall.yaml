@@ -1,8 +1,9 @@
-# Hall Floor Heater
+# Auto-expanded: legacy YAML merge keys replaced with explicit fields
+# to eliminate annotatedyaml duplicate-key warnings on HA startup.
 - platform: ELKO_telnet
   switches:
-    hall_floor_heater: &settings
-      name: Hall Floor Heater
+    hall_floor_heater:
+      name: "Hall Floor Heater"
       resource: "192.168.88.246"
       device_id: "0x0102003b"
       port: 1111
@@ -18,178 +19,464 @@
 - platform: ELKO_telnet
   switches:
     hall_switch_3_green_1:
-      <<: *settings
-      name: Hall Switch 3 Green 1
+      name: "Hall Switch 3 Green 1"
+      resource: "192.168.88.246"
       device_id: "0x0102005d"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
 - platform: ELKO_telnet
   switches:
     hall_switch_3_green_2:
-      <<: *settings
-      name: Hall Switch 3 Green 2
+      name: "Hall Switch 3 Green 2"
+      resource: "192.168.88.246"
       device_id: "0x0102005f"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
 - platform: ELKO_telnet
   switches:
     hall_switch_3_red_1:
-      <<: *settings
-      name: Hall Switch 3 Red 1
+      name: "Hall Switch 3 Red 1"
+      resource: "192.168.88.246"
       device_id: "0x0102005e"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
 - platform: ELKO_telnet
   switches:
     hall_switch_3_red_2:
-      <<: *settings
-      name: Hall Switch 3 Red 2
+      name: "Hall Switch 3 Red 2"
+      resource: "192.168.88.246"
       device_id: "0x01020060"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
 - platform: ELKO_telnet
   switches:
     hall_switch_3_up_1:
-      <<: *settings
-      name: Hall Switch 3 Up 1
+      name: "Hall Switch 3 Up 1"
+      resource: "192.168.88.246"
       device_id: "0x01010053"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
 - platform: ELKO_telnet
   switches:
     hall_switch_3_up_2:
-      <<: *settings
-      name: Hall Switch 3 Up 2
+      name: "Hall Switch 3 Up 2"
+      resource: "192.168.88.246"
       device_id: "0x01010055"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
 - platform: ELKO_telnet
   switches:
     hall_switch_3_down_1:
-      <<: *settings
-      name: Hall Switch 3 Down 1
+      name: "Hall Switch 3 Down 1"
+      resource: "192.168.88.246"
       device_id: "0x01010054"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
 - platform: ELKO_telnet
   switches:
     hall_switch_3_down_2:
-      <<: *settings
-      name: Hall Switch 3 Down 2
+      name: "Hall Switch 3 Down 2"
+      resource: "192.168.88.246"
       device_id: "0x01010056"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
 - platform: ELKO_telnet
   switches:
     hall_switch_2_green_1:
-      <<: *settings
-      name: Hall Switch 2 Green 1
+      name: "Hall Switch 2 Green 1"
+      resource: "192.168.88.246"
       device_id: "0x01020082"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
 - platform: ELKO_telnet
   switches:
     hall_switch_2_green_2:
-      <<: *settings
-      name: Hall Switch 2 Green 2
+      name: "Hall Switch 2 Green 2"
+      resource: "192.168.88.246"
       device_id: "0x01020084"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
 - platform: ELKO_telnet
   switches:
     hall_switch_2_red_1:
-      <<: *settings
-      name: Hall Switch 2 Red 1
+      name: "Hall Switch 2 Red 1"
+      resource: "192.168.88.246"
       device_id: "0x01020083"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
 - platform: ELKO_telnet
   switches:
     hall_switch_2_red_2:
-      <<: *settings
-      name: Hall Switch 2 Red 2
+      name: "Hall Switch 2 Red 2"
+      resource: "192.168.88.246"
       device_id: "0x01020085"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
 - platform: ELKO_telnet
   switches:
     hall_switch_2_up_1:
-      <<: *settings
-      name: Hall Switch 2 Up 1
+      name: "Hall Switch 2 Up 1"
+      resource: "192.168.88.246"
       device_id: "0x010100b5"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
 - platform: ELKO_telnet
   switches:
     hall_switch_2_up_2:
-      <<: *settings
-      name: Hall Switch 2 Up 2
+      name: "Hall Switch 2 Up 2"
+      resource: "192.168.88.246"
       device_id: "0x010100b7"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
 - platform: ELKO_telnet
   switches:
     hall_switch_2_down_1:
-      <<: *settings
-      name: Hall Switch 2 Down 1
+      name: "Hall Switch 2 Down 1"
+      resource: "192.168.88.246"
       device_id: "0x010100b6"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
 - platform: ELKO_telnet
   switches:
     hall_switch_2_down_2:
-      <<: *settings
-      name: Hall Switch 2 Down 2
+      name: "Hall Switch 2 Down 2"
+      resource: "192.168.88.246"
       device_id: "0x010100b8"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
 - platform: ELKO_telnet
   switches:
     hall_switch_1_green_1:
-      <<: *settings
-      name: Hall Switch 1 Green 1
+      name: "Hall Switch 1 Green 1"
+      resource: "192.168.88.246"
       device_id: "0x01020058"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
 - platform: ELKO_telnet
   switches:
     hall_switch_1_green_2:
-      <<: *settings
-      name: Hall Switch 1 Green 2
+      name: "Hall Switch 1 Green 2"
+      resource: "192.168.88.246"
       device_id: "0x0102005a"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
 - platform: ELKO_telnet
   switches:
     hall_switch_1_red_1:
-      <<: *settings
-      name: Hall Switch 1 Red 1
+      name: "Hall Switch 1 Red 1"
+      resource: "192.168.88.246"
       device_id: "0x01020059"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
 - platform: ELKO_telnet
   switches:
     hall_switch_1_red_2:
-      <<: *settings
-      name: Hall Switch 1 Red 2
+      name: "Hall Switch 1 Red 2"
+      resource: "192.168.88.246"
       device_id: "0x0102005b"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
 - platform: ELKO_telnet
   switches:
     hall_switch_1_up_1:
-      <<: *settings
-      name: Hall Switch 1 Up 1
+      name: "Hall Switch 1 Up 1"
+      resource: "192.168.88.246"
       device_id: "0x0101004d"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
 - platform: ELKO_telnet
   switches:
     hall_switch_1_up_2:
-      <<: *settings
-      name: Hall Switch 1 Up 2
+      name: "Hall Switch 1 Up 2"
+      resource: "192.168.88.246"
       device_id: "0x0101004f"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
 - platform: ELKO_telnet
   switches:
     hall_switch_1_down_1:
-      <<: *settings
-      name: Hall Switch 1 Down 1
+      name: "Hall Switch 1 Down 1"
+      resource: "192.168.88.246"
       device_id: "0x0101004e"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
 - platform: ELKO_telnet
   switches:
     hall_switch_1_down_2:
-      <<: *settings
-      name: Hall Switch 1 Down 2
+      name: "Hall Switch 1 Down 2"
+      resource: "192.168.88.246"
       device_id: "0x01010050"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
 - platform: ELKO_telnet
   switches:
     hall_move_lights:
-      <<: *settings
-      name: Hall Move Lights
+      name: "Hall Move Lights"
+      resource: "192.168.88.246"
       device_id: "0x01020002"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
 - platform: ELKO_telnet
   switches:
     hall_wardrobe:
-      <<: *settings
-      name: Hall Wardrobe
+      name: "Hall Wardrobe"
+      resource: "192.168.88.246"
       device_id: "0x0102000f"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
 - platform: ELKO_telnet
   switches:
     hall_points_lights:
-      <<: *settings
-      name: Hall Points Lights
+      name: "Hall Points Lights"
+      resource: "192.168.88.246"
       device_id: "0x01020010"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
 - platform: ELKO_telnet
   switches:
     hall_lights:
-      <<: *settings
-      name: Hall Lights
+      name: "Hall Lights"
+      resource: "192.168.88.246"
       device_id: "0x0102002c"
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1
 - platform: ELKO_telnet
   switches:
     hall_backlight:
-      <<: *settings
-      name: Hall Backlight
+      name: "Hall Backlight"
+      resource: "192.168.88.246"
       device_id: "0x0102002d"
-
-# NOTE: legacy `- platform: template` switch blocks for this room have been
-# migrated to the modern top-level `template:` integration. See
-# ../Template/hall.yaml. Required for HA 2026.6.
+      port: 1111
+      command_on: "1"
+      command_off: "0"
+      value_template: >-
+        {% if value == '1' %}
+          True
+        {% else %}
+          False
+        {% endif %}
+      timeout: 0.1

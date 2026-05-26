@@ -1,98 +1,128 @@
-# BigRoom Temperature
+# Auto-expanded: legacy `<<: *anchor` merges replaced with explicit
+# fields to eliminate annotatedyaml duplicate-key warnings.
 - platform: ELKO_telnet
   sensors:
-    bigroom_temperature: &sensors
+    bigroom_temperature:
       friendly_name: "BigRoom Temperature"
       host: "192.168.88.246"
-      device_id: "0x01050019"
       port: 1111
-      device_class: 'temperature'
+      device_id: "0x01050019"
+      device_class: "temperature"
       unit_of_measurement: "°C"
 - platform: ELKO_telnet
   sensors:
     bigroom_second_temperature:
-      <<: *sensors
       friendly_name: "BigRoom Second Temperature"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x01050014"
+      device_class: "temperature"
+      unit_of_measurement: "°C"
 - platform: ELKO_telnet
   sensors:
     bigroom_humidity:
-      <<: *sensors
       friendly_name: "BigRoom Humidity"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x01050016"
-      device_class: 'humidity'
+      device_class: "humidity"
       unit_of_measurement: "%"
 - platform: ELKO_telnet
   sensors:
     bigroom_second_humidity:
-      <<: *sensors
       friendly_name: "BigRoom Second Humidity"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x0105001b"
-      device_class: 'humidity'
+      device_class: "humidity"
       unit_of_measurement: "%"
 - platform: ELKO_telnet
   sensors:
-    bigroom_heater: &sensors2
-      <<: *sensors
+    bigroom_heater:
       friendly_name: "BigRoom Heater"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x01020008"
-      device_class: 'binary'
+      device_class: "binary"
       unit_of_measurement: "on/off"
 - platform: ELKO_telnet
   sensors:
-    bigroom_curtains_open: &sensors3
-      <<: *sensors
+    bigroom_curtains_open:
       friendly_name: "Bigroom Curtains Open"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x01020073"
-      device_class: 'binary'
+      device_class: "binary"
       unit_of_measurement: "open/closed"
 - platform: ELKO_telnet
   sensors:
     bigroom_curtains_close:
-      <<: *sensors3
       friendly_name: "Bigroom Curtains Close"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x01020072"
+      device_class: "binary"
       unit_of_measurement: "closed/open"
 - platform: ELKO_telnet
   sensors:
     bigroom_tule_open:
-      <<: *sensors3
       friendly_name: "Bigroom Tule Open"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x01020074"
+      device_class: "binary"
+      unit_of_measurement: "open/closed"
 - platform: ELKO_telnet
   sensors:
     bigroom_tule_close:
-      <<: *sensors3
       friendly_name: "Bigroom Tule Close"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x01020075"
+      device_class: "binary"
       unit_of_measurement: "closed/open"
 - platform: ELKO_telnet
   sensors:
     bigroom_chandelier:
-      <<: *sensors2
       friendly_name: "Bigroom Chandelier"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x01020005"
+      device_class: "binary"
+      unit_of_measurement: "on/off"
 - platform: ELKO_telnet
   sensors:
     bigroom_backlight_window:
-      <<: *sensors2
       friendly_name: "Bigroom Backlight Window"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x01020009"
+      device_class: "binary"
+      unit_of_measurement: "on/off"
 - platform: ELKO_telnet
   sensors:
     bigroom_backlight_door:
-      <<: *sensors2
       friendly_name: "Bigroom Backlight Door"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x0102002a"
+      device_class: "binary"
+      unit_of_measurement: "on/off"
 - platform: ELKO_telnet
   sensors:
     bigroom_mirror:
-      <<: *sensors2
       friendly_name: "Bigroom Mirror"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x0102000a"
+      device_class: "binary"
+      unit_of_measurement: "on/off"
 - platform: ELKO_telnet
   sensors:
     bigroom_point_light:
-      <<: *sensors2
       friendly_name: "Bigroom Point Light"
+      host: "192.168.88.246"
+      port: 1111
       device_id: "0x0102002b"
+      device_class: "binary"
+      unit_of_measurement: "on/off"
